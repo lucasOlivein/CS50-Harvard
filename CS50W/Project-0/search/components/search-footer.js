@@ -104,14 +104,14 @@ class SearchFooter extends HTMLElement {
         </div>
         <div id="bottom-footer">
             <div>
-                <a class="a-footer" href="">Sobre</a>
-                <a class="a-footer" href="">Publicidade</a>
-                <a class="a-footer" href="">Negócios</a>
-                <a class="a-footer" href="">Como funciona a Pesquisa</a>
+                <a class="a-footer" href="https://about.google/">Sobre</a>
+                <a class="a-footer" href="https://ads.google.com/">Publicidade</a>
+                <a class="a-footer" href="https://www.google.com/business/">Negócios</a>
+                <a class="a-footer" href="https://www.google.com/search/howsearchworks/">Como funciona a Pesquisa</a>
             </div>
             <div>
-                <a class="a-footer" href="">Privacidade</a>
-                <a class="a-footer" href="">Termos</a>
+                <a class="a-footer" href="https://policies.google.com/privacy">Privacidade</a>
+                <a class="a-footer" href="https://policies.google.com/terms">Termos</a>
                 <div style="position: relative;">
                     <a id="config-btn" class="a-footer" href="">Configurações</a>
                     <div id="config-menu" class="config">
