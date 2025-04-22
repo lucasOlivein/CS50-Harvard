@@ -39,41 +39,13 @@
         </div>
     </form>
     <footer>
-        <div id="upper-footer">
-            <p>Brasil</p>
-        </div>
-        <div id="bottom-footer">
-            <div>
-                <a class="a-footer" href="">Sobre</a>
-                <a class="a-footer" href="">Publicidade</a>
-                <a class="a-footer" href="">Negócios</a>
-                <a class="a-footer" href="">Como funciona a Pesquisa</a>
-            </div>
-            <div>
-                <a class="a-footer" href="">Privacidade</a>
-                <a class="a-footer" href="">Termos</a>
-                <div style="position: relative;">
-                    <a id="config-btn" class="a-footer" href="">Configurações</a>
-                    <div id="config-menu" class="config">
-                        <div class="config-item">
-                            <a href="">Idioma</a>
-                        </div>
-                        <div class="config-item">
-                            <a href="">Pesquisa Avancada</a>
-                        </div>
-                        <div class="config-item">
-                            <a href="">Tema escuro: Desativado</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <search-footer></search-footer>
     </footer>
 
     <!--Div com as configurações-->
 
 
-    <script>
+    <script type="module" src="./components/search-footer.js">
         const configBtn = document.getElementById("config-btn");
         const menu = document.getElementById("config-menu");
 
