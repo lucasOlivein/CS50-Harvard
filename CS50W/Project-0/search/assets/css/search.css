@@ -9,17 +9,18 @@ body {
     display: block;
     font-size: 14px;
     font-family: Arial, sans-serif;
-    color: #1f1f1f;
 }
 
-.overlap {
+.color {
     background-color: #fff;
-    z-index: 3;
+    color: #1f1f1f;
 }
 
 .top-div {
     /* display: flex;
     justify-content: right; */
+    background-color: inherit;
+    color: inherit;
     display: block;
     position: relative;
     flex-shrink: 0;
@@ -27,9 +28,11 @@ body {
     align-items: center;
     padding: 6px;
     height: 60px;
+    z-index: 3;
 }
 
 .top-div .search-normal {
+    background-color: inherit;
     display: flex;
     justify-content: flex-end;
     padding-left: 0;
@@ -50,7 +53,7 @@ body {
     padding: 10px;
     text-decoration: none;
     cursor: pointer;
-    color: #1f1f1f;
+    color: inherit;
 }
 
 .top-div a:hover,
@@ -62,6 +65,8 @@ body {
 
 
 .g-logo {
+    background-color: inherit;
+    color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,6 +76,8 @@ body {
     height: calc(100% - 560px);
     max-height: 290px;
     position: relative;
+    z-index: 3;
+
 }
 
 .g-logo img {
@@ -85,7 +92,7 @@ body {
     overflow-clip-margin: content-box;
 }
 
-.g-image-logo-div{
+.g-image-logo-div {
     justify-self: center;
     max-height: 92px;
     position: relative;
@@ -93,7 +100,7 @@ body {
     margin-top: auto;
 }
 
-.g-image-logo{
+.g-image-logo {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
@@ -105,7 +112,7 @@ body {
     overflow: clip;
 }
 
-.g-image-span{
+.g-image-span {
     color: #4285f4;
     font: 16px / 16px Arial, sans-serif;
     position: absolute;
@@ -117,6 +124,8 @@ body {
 
 
 .search-div {
+    background-color: inherit;
+    color: inherit;
     position: relative;
     padding: 20px;
     max-height: 160px;
@@ -142,7 +151,7 @@ body {
     margin: 0 auto;
     max-width: 584px;
     margin-top: 10px;
-    background-color: #fff;
+    background-color: inherit;
     border: 1px solid #dfe1e5;
     border-radius: 24px;
     box-shadow: 0px 2px 8px 0px rgba(60, 64, 67, 0.25);
@@ -169,12 +178,17 @@ body {
 }
 
 .search-icon {
-    font-size: 18px;
+    /* font-size: 18px; */
     color: #888;
-    margin-right: 10px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    
 }
 
-.submit-input button {
+
+
+.submit-button {
     background-color: #f8f9fa;
     border: 1px solid #f8f9fa;
     border-radius: 4px;
@@ -199,6 +213,7 @@ footer {
     left: 0;
     width: 100%;
     z-index: 1;
+    color: #1f1f1f;
 }
 
 footer.hidden {
@@ -207,7 +222,8 @@ footer.hidden {
 
 #upper-footer {
     padding: 0px 30px;
-    color: #1f1f1f;
+    color: inherit;
+    background-color: inherit;
     border-bottom: 1px solid #dadce0;
     font-size: 15px;
     display: flex;
@@ -217,6 +233,7 @@ footer.hidden {
 }
 
 #bottom-footer {
+    background-color: inherit;
     justify-content: space-evenly;
     display: flex;
     flex-wrap: wrap;
@@ -230,10 +247,10 @@ footer.hidden {
 }
 
 .a-footer {
+    color: inherit;
     display: block;
     padding: 15px;
     white-space: nowrap;
-    color: #1f1f1f;
     cursor: pointer;
     text-decoration: none;
 }
@@ -281,4 +298,33 @@ a:hover {
     white-space: nowrap;
     font-size: 14px;
     text-decoration: none;
+}
+
+
+body.darkmode{
+    background-color: #202124;
+    color: #999da2
+}
+
+body.darkmode footer{
+    color: #ececec;
+    background-color: #171717;
+}
+
+body.darkmode .submit-button{
+    background-color: #303134;
+    border: 1px solid #303134;
+    color: #e8eaed;
+}
+body.darkmode .text-input{
+    background-color: #4d5156;
+    border: 1px solid transparent;;
+    color: #ececec;
+}
+body.darkmode #icon{
+    fill: white;
+}
+
+body.darkmode #search-bar{
+    color: #e8eaed;
 }
