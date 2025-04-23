@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="top-div overlap">
+    <div class="top-div">
         <div class="search-normal">
             <a href="./pages/image_seach.html">Imagens</a>
             <a href="./pages/advanced_search.html">Pesquisa Avançada</a>
@@ -18,21 +18,27 @@
     </div>
 
     <!-- Div com a logo -->
-    <div class="g-logo overlap">
+    <div class="g-logo">
         <img src="./assets/images/logo_color.png" alt="google_logo">
     </div>
 
     <!-- Div com 3 elementos: a barra de pesquisa e dois botoes -->
     <form method="get">
-        <div class="search-div overlap">
+        <div class="search-div">
             <div class="box">
                 <div class="text-input">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" name="q">
+                    <span class="search-icon"><svg id="icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                            width="20" height="20" viewBox="0 0 24 24">
+                            <path
+                                d="M 15.5 14 h -0.79 l -0.28 -0.27 A 6.471 6.471 0 0 0 16 9.5 A 6.5 6.5 0 1 0 9.5 16 c 1.61 0 3.09 -0.59 4.23 -1.57 l 0.27 0.28 v 0.79 l 5 4.99 L 20.49 19 l -4.99 -5 Z m -6 0 C 7.01 14 5 11.99 5 9.5 S 7.01 5 9.5 5 S 14 7.01 14 9.5 S 11.99 14 9.5 14 Z">
+                            </path>
+                        </svg></span>
+                    <input id="search-bar" type="text" name="q">
                 </div>
                 <div class="submit-input">
-                    <button type="submit" formaction="https://google.com/search">Pesquisa Google</button>
-                    <button type="submit" name="btnI" value="1" formaction="https://google.com/search" >Estou com sorte</button>
+                    <button class="submit-button" type="submit" formaction="https://google.com/search">Pesquisa Google</button>
+                    <button class="submit-button" type="submit" name="btnI" value="1" formaction="https://google.com/search">Estou com
+                        sorte</button>
                 </div>
             </div>
         </div>
@@ -45,19 +51,19 @@
 
 
     <script type="module" src="./components/search-footer.js">
-        const configBtn = document.getElementById("config-btn");
-        const menu = document.getElementById("config-menu");
+        // const configBtn = document.getElementById("config-btn");
+        // const menu = document.getElementById("config-menu");
 
-        configBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            menu.style.visibility = menu.style.visibility === 'visible' ? 'hidden' : 'visible';
-        });
+        // configBtn.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     menu.style.visibility = menu.style.visibility === 'visible' ? 'hidden' : 'visible';
+        // });
 
-        document.addEventListener('click', (e) => {
-            if (!configBtn.contains(e.target) && !menu.contains(e.target)) {
-                menu.style.visibility = 'hidden';
-            }
-        })
+        // document.addEventListener('click', (e) => {
+        //     if (!configBtn.contains(e.target) && !menu.contains(e.target)) {
+        //         menu.style.visibility = 'hidden';
+        //     }
+        // })
 
     </script>
 </body>
