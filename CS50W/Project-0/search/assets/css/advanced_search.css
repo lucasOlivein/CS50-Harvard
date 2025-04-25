@@ -1,9 +1,13 @@
+@import url(./colors.css);
+
 html {
     height: 100%;
 }
 body {
     font-family: Arial, sans-serif;
     height: 100%;
+    background-color: var(--background-color);
+    color: var(--texto-color);
 }
 
 div {
@@ -17,7 +21,7 @@ div {
     text-decoration: none;
 }
 
-input {
+/* input {
     text-rendering: auto;
     color: fieldtext;
     letter-spacing: normal;
@@ -31,20 +35,21 @@ input {
     appearance: auto;
     -webkit-rtl-ordering: logical;
     cursor: text;
-    background-color: field;
+    background-color: var(--background-color);
     margin: 0em;
-    padding: 1px 0px;
+    padding: 1px 8px;
     border-width: 2px;
     border-style: inset;
     border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
     border-image: initial;
-    padding-block: 1px;
-    padding-inline: 2px;
-}
+} */
 
 form {
     margin: 35px 2% 0 45px;
     display: block;
+}
+#logo_svg{
+    visibility: hidden;
 }
 
 .advanced-label{
@@ -72,7 +77,7 @@ form {
     min-width: 167px;
     width: 16%;
     height: 42px;
-    color: #222;
+    color: var(--span-color);
     font-size: 16px;
     line-height: 16px;
     vertical-align: middle;
@@ -105,7 +110,7 @@ form {
     min-width: 167px;
     width: 16%;
     height: 42px;
-    color: #222;
+    color: var(--label-color);
     font-size: 13px;
     line-height: 16px;
     vertical-align: middle;
@@ -136,16 +141,17 @@ form {
 }
 
 .form-input {
+    background-color: var(--background-color);
+    color: var(--form-text-color);
     -moz-border-radius: 1px;
     border-radius: 1px;
-    border: 1px solid #d9d9d9;
-    border-top: 1px solid #c0c0c0;
+    border: 1px solid var(--form-border);
+
     font-size: 13px;
     height: 25px;
     padding: 1px 8px;
     width: 100%;
     margin: 0;
-    padding: 0;
 }
 
 .form-button {
@@ -160,7 +166,7 @@ form {
     background-color: #4d90fe;
     background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
     border: 1px solid #3079ed;
-    color: #fff;
+    color: var(--button-text-color);
     border-radius: 2px;
     cursor: default;
     font-size: 11px;

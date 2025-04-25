@@ -7,14 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../assets/css/advanced_search.css">
+
+    <script type="module">
+        import {advancedSearchToggle} from "../components/darkmode-handler.js"
+        advancedSearchToggle()
+    </script>
     
 </head>
 
 <body>
+    
+
+
     <div class="top-div">
         <div class="advanced-head">
             <a href="../index.html">
-                <span><img src="../assets/images/googlelogo_clr_74x24px.svg" alt=""></span>
+                <span><img id="logo_svg" alt=""></span>
             </a>
         </div>
     </div>
@@ -43,7 +51,8 @@
                     <label for="all-of">todas estas palavras</label>
                 </div>
                 <div class="form-div-row-col-2"> <!--jYcx0e-->
-                    <input class="form-input" value autofocus="autofocus" autocomplete="off" type="text" name="as_q" id="all-of">
+                    <input class="form-input" value autofocus="autofocus" autocomplete="off" type="text" name="as_q"
+                        id="all-of">
                 </div>
                 <div class="form-div-row-col-3"> <!--cwqNnb-->
                     <!-- <div class="lOTAE"> -->

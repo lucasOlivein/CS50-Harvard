@@ -7,9 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/search.css">
 
+    <script type="module">
+        import { basicSearchToggle } from "./components/darkmode-handler.js"
+        basicSearchToggle()
+    </script>
+    
 </head>
 
 <body>
+    
+
     <div class="top-div">
         <div class="search-normal">
             <a href="./pages/image_seach.html">Imagens</a>
@@ -19,7 +26,7 @@
 
     <!-- Div com a logo -->
     <div class="g-logo">
-        <img id="logo" src="./assets/images/logo_color.png" alt="google_logo">
+        <img id="logo" alt="google_logo">
     </div>
 
     <!-- Div com 3 elementos: a barra de pesquisa e dois botoes -->
@@ -36,8 +43,10 @@
                     <input id="search-bar" type="text" name="q">
                 </div>
                 <div class="submit-input">
-                    <button class="submit-button" type="submit" formaction="https://google.com/search">Pesquisa Google</button>
-                    <button class="submit-button" type="submit" name="btnI" value="1" formaction="https://google.com/search">Estou com
+                    <button class="submit-button" type="submit" formaction="https://google.com/search">Pesquisa
+                        Google</button>
+                    <button class="submit-button" type="submit" name="btnI" value="1"
+                        formaction="https://google.com/search">Estou com
                         sorte</button>
                 </div>
             </div>
@@ -48,24 +57,9 @@
     </footer>
 
     <!--Div com as configurações-->
+    <script type="module" src="./components/search-footer.js"></script>
 
 
-    <script type="module" src="./components/search-footer.js">
-        // const configBtn = document.getElementById("config-btn");
-        // const menu = document.getElementById("config-menu");
-
-        // configBtn.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     menu.style.visibility = menu.style.visibility === 'visible' ? 'hidden' : 'visible';
-        // });
-
-        // document.addEventListener('click', (e) => {
-        //     if (!configBtn.contains(e.target) && !menu.contains(e.target)) {
-        //         menu.style.visibility = 'hidden';
-        //     }
-        // })
-
-    </script>
 </body>
 
 
