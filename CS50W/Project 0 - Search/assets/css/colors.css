@@ -11,10 +11,12 @@
     --fill-color:black;
 
     --span-color: #333;
-    --label-color: #222;
+    --descrip-color: #222;
     --form-border: #c0c0c0;
     --form-text-color: black;
     --button-text-color: white; 
+
+    --exemple-color: #666;
 }
 
 .darkmode {
@@ -30,8 +32,10 @@
     --fill-color:white;
 
     --span-color: #e8eaed;
-    --label-color: #969ba1;
+    --descrip-color: #969ba1;
     --form-border: #5c5f5e;
     --form-text-color: #bdc1c6;
     --button-text-color: #202124;
+
+    --exemple-color: #dadce0;
 }

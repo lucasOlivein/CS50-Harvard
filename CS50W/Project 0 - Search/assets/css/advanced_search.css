@@ -97,6 +97,17 @@ form {
     vertical-align: middle;
 }
 
+.tip {
+    color: var(--descrip-color);
+    
+}
+
+.exemple {
+    color: var(--exemple-color);
+    font-family: monospace;
+    white-space: pre;
+}
+
 .form-div {
     display: block;
     padding-left: 10px;
