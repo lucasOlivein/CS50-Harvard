@@ -11,6 +11,7 @@
     --fill-color:black;
 
     --span-color: #333;
+    --label-color: #d14836;
     --descrip-color: #222;
     --form-border: #c0c0c0;
     --form-text-color: black;
@@ -32,6 +33,7 @@
     --fill-color:white;
 
     --span-color: #e8eaed;
+    --label-color: #f28b82;
     --descrip-color: #969ba1;
     --form-border: #5c5f5e;
     --form-text-color: #bdc1c6;
