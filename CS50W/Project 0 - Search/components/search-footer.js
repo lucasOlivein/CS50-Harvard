@@ -5,24 +5,11 @@ class SearchFooter extends HTMLElement {
 
         this.shadowRoot.innerHTML = `
         <style> 
-            footer {
-                /* min-height: 8vh; */
-                /* ocupa 8% da altura da tela */
-                background-color: #f2f2f2;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                z-index: 1;
-            }
-
-            footer.hidden {
-                transform: translateY(100%);
-            }
 
             #upper-footer {
                 padding: 0px 30px;
-                color: #1f1f1f;
+                color: inherit;
+                background-color: inherit;
                 border-bottom: 1px solid #dadce0;
                 font-size: 15px;
                 display: flex;
@@ -32,6 +19,7 @@ class SearchFooter extends HTMLElement {
             }
 
             #bottom-footer {
+                background-color: inherit;
                 justify-content: space-evenly;
                 display: flex;
                 flex-wrap: wrap;
@@ -45,10 +33,10 @@ class SearchFooter extends HTMLElement {
             }
 
             .a-footer {
+                color: inherit;
                 display: block;
                 padding: 15px;
                 white-space: nowrap;
-                color: #1f1f1f;
                 cursor: pointer;
                 text-decoration: none;
             }
@@ -57,8 +45,8 @@ class SearchFooter extends HTMLElement {
                 text-decoration: underline;
             }
 
-
             .config {
+                color: #1f1f1f;
                 background-color: #fff;
                 position: absolute;
                 bottom: 100%;
@@ -76,7 +64,6 @@ class SearchFooter extends HTMLElement {
                 justify-content: left;
                 width: 100%;
                 padding: 0px 10px 0px 10px;
-
             }
 
             .config-item:hover {
@@ -84,7 +71,7 @@ class SearchFooter extends HTMLElement {
             }
 
             .config-item a {
-                color: #1f1f1f;
+                color: inherit;
                 line-height: normal;
                 align-items: center;
                 display: flex;
@@ -104,36 +91,39 @@ class SearchFooter extends HTMLElement {
         </div>
         <div id="bottom-footer">
             <div>
-                <a class="a-footer" href="">Sobre</a>
-                <a class="a-footer" href="">Publicidade</a>
-                <a class="a-footer" href="">Negócios</a>
-                <a class="a-footer" href="">Como funciona a Pesquisa</a>
+                <a class="a-footer" href="https://about.google/">Sobre</a>
+                <a class="a-footer" href="https://ads.google.com/">Publicidade</a>
+                <a class="a-footer" href="https://www.google.com/business/">Negócios</a>
+                <a class="a-footer" href="https://www.google.com/search/howsearchworks/">Como funciona a Pesquisa</a>
             </div>
             <div>
-                <a class="a-footer" href="">Privacidade</a>
-                <a class="a-footer" href="">Termos</a>
+                <a class="a-footer" href="https://policies.google.com/privacy">Privacidade</a>
+                <a class="a-footer" href="https://policies.google.com/terms">Termos</a>
                 <div style="position: relative;">
                     <a id="config-btn" class="a-footer" href="">Configurações</a>
                     <div id="config-menu" class="config">
                         <div class="config-item">
-                            <a href="">Idioma</a>
+                            <a href="../pages/advanced_search.html">Pesquisa Avancada</a>
                         </div>
                         <div class="config-item">
-                            <a href="">Pesquisa Avancada</a>
-                        </div>
-                        <div class="config-item">
-                            <a href="">Tema escuro: Desativado</a>
+                            <a id="darkmode">Tema escuro: Desativado</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-     
-        `
+        </div> `
+    }
+
+    connectedCallback() {
+        if (localStorage.getItem('darkMode') === null) {
+            localStorage.setItem('darkMode', 'false');
+        }
 
         const configBtn = this.shadowRoot.getElementById("config-btn");
         const menu = this.shadowRoot.getElementById("config-menu");
+
+        const logo = document.getElementById("logo")
+        const darkmodeButton = this.shadowRoot.getElementById("darkmode")
 
         configBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -148,7 +138,23 @@ class SearchFooter extends HTMLElement {
             }
         })
 
+        darkmodeButton.addEventListener("click", (e) => {
+            if (localStorage.getItem('darkMode') === 'true')
+                localStorage.setItem("darkMode", 'false')
+            else
+                localStorage.setItem("darkMode", 'true')
+
+            if (localStorage.getItem('darkMode') === 'true') {
+                logo.src = "../assets/images/logo_light.png"
+                darkmodeButton.innerText = "Tema escuro: Ativado"
+                document.body.classList.add("darkmode");
+            } else {
+                logo.src = "../assets/images/logo_color.png"
+                darkmodeButton.innerText = "Tema escuro: Desativado"
+                document.body.classList.remove("darkmode");
+            }
+        })
+
     }
 }
-
 customElements.define('search-footer', SearchFooter)

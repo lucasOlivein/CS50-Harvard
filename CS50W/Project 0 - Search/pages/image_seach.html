@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Google</title>
+    <title>Imagens do Google</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="../assets/css/search.css">
 
     <script type="module">
-        import { basicSearchToggle } from "./components/darkmode-handler.js"
+        import { basicSearchToggle } from "../components/darkmode-handler.js"
         basicSearchToggle()
     </script>
 </head>
 
 <body>
-    
+
     <div class="top-div">
         <div class="search-normal">
-            <a href="./pages/image_seach.html">Imagens</a>
-            <a href="./pages/advanced_search.html">Pesquisa Avançada</a>
+            <a href="../index.html">Google</a>
+            <a href="./advanced_search.html">Pesquisa Avançada</a>
         </div>
     </div>
 
     <div class="g-logo">
-        <img id="logo" alt="google_logo">
+        <div class="g-image-logo-div">
+            <img id="logo" class="g-image-logo" alt="google-logo">
+            <span class="g-image-span">Imagens</span>
+        </div>
     </div>
-
-    <form method="get">
+    
+    <form action="https://google.com/search" autocomplete="off" method="get" role="search">
         <div class="search-div">
             <div class="box">
                 <div class="text-input">
@@ -36,21 +39,20 @@
                                 d="M 15.5 14 h -0.79 l -0.28 -0.27 A 6.471 6.471 0 0 0 16 9.5 A 6.5 6.5 0 1 0 9.5 16 c 1.61 0 3.09 -0.59 4.23 -1.57 l 0.27 0.28 v 0.79 l 5 4.99 L 20.49 19 l -4.99 -5 Z m -6 0 C 7.01 14 5 11.99 5 9.5 S 7.01 5 9.5 5 S 14 7.01 14 9.5 S 11.99 14 9.5 14 Z">
                             </path>
                         </svg></span>
-                    <input id="search-bar" autocomplete="off" type="text" name="q">
+                    <input type="text" name="q">
                 </div>
                 <div class="submit-input">
-                    <button class="submit-button" type="submit" formaction="https://google.com/search">Pesquisa
-                        Google</button>
-                    <button class="submit-button" type="submit" name="btnI" value="1"
-                        formaction="https://google.com/search">Estou com
-                        sorte</button>
+                    <button class="submit-button" type="submit" name="tbm" value="isch">Pesquisa Google</button>
                 </div>
             </div>
         </div>
     </form>
+
     <footer>
         <search-footer></search-footer>
     </footer>
-    <script type="module" src="./components/search-footer.js"></script>
+
+    <script type="module" src="../components/search-footer.js"></script>
 </body>
+
 </html>

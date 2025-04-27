@@ -1,25 +1,24 @@
+@import url(./colors.css);
+
 html {
     height: 100%;
 }
 
 body {
+    visibility: hidden;
+    background-color: var(--background-color);
+    color: var(--text-color);
     height: 100%;
     margin: 0;
     min-width: 400px;
     display: block;
     font-size: 14px;
     font-family: Arial, sans-serif;
-    color: #1f1f1f;
-}
-
-.overlap {
-    background-color: #fff;
-    z-index: 3;
 }
 
 .top-div {
-    /* display: flex;
-    justify-content: right; */
+    background-color: inherit;
+    color: inherit;
     display: block;
     position: relative;
     flex-shrink: 0;
@@ -27,13 +26,14 @@ body {
     align-items: center;
     padding: 6px;
     height: 60px;
+    z-index: 3;
 }
 
 .top-div .search-normal {
+    background-color: inherit;
     display: flex;
     justify-content: flex-end;
     padding-left: 0;
-    /* float: right; */
     box-sizing: border-box;
     height: 48px;
     vertical-align: middle;
@@ -50,7 +50,7 @@ body {
     padding: 10px;
     text-decoration: none;
     cursor: pointer;
-    color: #1f1f1f;
+    color: inherit;
 }
 
 .top-div a:hover,
@@ -58,10 +58,13 @@ body {
     text-decoration: underline;
 }
 
-
-
-
+#logo{
+    visibility: hidden;
+    margin-top: auto;
+}
 .g-logo {
+    background-color: inherit;
+    color: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,6 +74,8 @@ body {
     height: calc(100% - 560px);
     max-height: 290px;
     position: relative;
+    z-index: 3;
+
 }
 
 .g-logo img {
@@ -85,7 +90,7 @@ body {
     overflow-clip-margin: content-box;
 }
 
-.g-image-logo-div{
+.g-image-logo-div {
     justify-self: center;
     max-height: 92px;
     position: relative;
@@ -93,7 +98,7 @@ body {
     margin-top: auto;
 }
 
-.g-image-logo{
+.g-image-logo {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
@@ -105,7 +110,7 @@ body {
     overflow: clip;
 }
 
-.g-image-span{
+.g-image-span {
     color: #4285f4;
     font: 16px / 16px Arial, sans-serif;
     position: absolute;
@@ -114,9 +119,9 @@ body {
     white-space: nowrap;
 }
 
-
-
 .search-div {
+    background-color: inherit;
+    color: inherit;
     position: relative;
     padding: 20px;
     max-height: 160px;
@@ -142,7 +147,7 @@ body {
     margin: 0 auto;
     max-width: 584px;
     margin-top: 10px;
-    background-color: #fff;
+    background-color: inherit;
     border: 1px solid #dfe1e5;
     border-radius: 24px;
     box-shadow: 0px 2px 8px 0px rgba(60, 64, 67, 0.25);
@@ -169,16 +174,18 @@ body {
 }
 
 .search-icon {
-    font-size: 18px;
     color: #888;
-    margin-right: 10px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    fill: var(--fill-color)
 }
 
-.submit-input button {
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
+.submit-button {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     border-radius: 4px;
-    color: #3c4043;
+    color: var(--secondary-color); 
     margin: 11px 4px;
     padding: 0 16px;
     line-height: 27px;
@@ -189,96 +196,12 @@ body {
     user-select: none;
 }
 
-
 footer {
-    /* min-height: 8vh; */
-    /* ocupa 8% da altura da tela */
-    background-color: #f2f2f2;
+    background-color: var(--footer-bg);
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     z-index: 1;
-}
-
-footer.hidden {
-    transform: translateY(100%);
-}
-
-#upper-footer {
-    padding: 0px 30px;
-    color: #1f1f1f;
-    border-bottom: 1px solid #dadce0;
-    font-size: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    unicode-bidi: isolate;
-}
-
-#bottom-footer {
-    justify-content: space-evenly;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 20px;
-    unicode-bidi: isolate;
-}
-
-#bottom-footer div {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.a-footer {
-    display: block;
-    padding: 15px;
-    white-space: nowrap;
-    color: #1f1f1f;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-
-.config {
-    background-color: #fff;
-    position: absolute;
-    bottom: 100%;
-    left: -25px;
-    width: 180px;
-    height: auto;
-    visibility: hidden;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
-    z-index: 1001;
-}
-
-.config-item {
-    display: flex;
-    justify-content: left;
-    width: 100%;
-    padding: 0px 10px 0px 10px;
-
-}
-
-.config-item:hover {
-    background-color: #e5e5e5;
-}
-
-.config-item a {
-    color: #1f1f1f;
-    line-height: normal;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 4px;
-    padding-top: 4px;
-    cursor: pointer;
-    line-height: 23px;
-    white-space: nowrap;
-    font-size: 14px;
-    text-decoration: none;
+    color: var(--footer-color);
 }

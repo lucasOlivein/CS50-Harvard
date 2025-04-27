@@ -1,0 +1,43 @@
+:root {
+    --background-color: #fff;
+    --text-color: #1f1f1f;
+    
+    --primary-color: #f8f9fa;
+    --secondary-color: #3c4043;
+    
+    --footer-bg:#f2f2f2;
+    --footer-color:#1f1f1f;
+
+    --fill-color:black;
+
+    --span-color: #333;
+    --label-color: #d14836;
+    --descrip-color: #222;
+    --form-border: #c0c0c0;
+    --form-text-color: black;
+    --button-text-color: white; 
+
+    --exemple-color: #666;
+}
+
+.darkmode {
+    --background-color:#202124;
+    --text-color: #999da2;
+
+    --primary-color:#303134;
+    --secondary-color: #e8eaed;
+
+    --footer-color:#ececec;
+    --footer-bg: #171717;
+
+    --fill-color:white;
+
+    --span-color: #e8eaed;
+    --label-color: #f28b82;
+    --descrip-color: #969ba1;
+    --form-border: #5c5f5e;
+    --form-text-color: #bdc1c6;
+    --button-text-color: #202124;
+
+    --exemple-color: #dadce0;
+}
