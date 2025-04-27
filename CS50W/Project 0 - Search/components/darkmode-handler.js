@@ -1,14 +1,16 @@
-export function basicSearchToggle() {
+function setMode () {
     const body = document.documentElement.querySelector('body')
     if (localStorage.getItem('darkMode') === null) {
         localStorage.setItem('darkMode', 'false');
     }
     if (localStorage.getItem('darkMode') === 'true') {
-        body.classList.add('darkmode');
+        body.classList.add('darkmode');   
     } else {
         body.classList.remove('darkmode');
     }
 
+export function basicSearchToggle() {
+    setMode()
     document.addEventListener('DOMContentLoaded', () => {
         const logo = document.getElementById("logo")
         const footerElement = document.querySelector('search-footer')
@@ -27,18 +29,7 @@ export function basicSearchToggle() {
 }
 
 export function advancedSearchToggle() {
-    const body = document.documentElement.querySelector('body')
-
-    if (localStorage.getItem('darkMode') === null) {
-        localStorage.setItem('darkMode', 'false'); // só define se ainda não tiver nada
-    }
-
-    if (localStorage.getItem('darkMode') === 'true') {
-        body.classList.add("darkmode");
-    } else {
-        body.classList.remove("darkmode");
-    }
-
+    setMode()
     document.addEventListener('DOMContentLoaded', () => {
         const logo = document.getElementById("logo_svg")
         if (localStorage.getItem('darkMode') === 'true') {
