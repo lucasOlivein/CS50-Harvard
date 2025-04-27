@@ -1,11 +1,10 @@
 export function basicSearchToggle() {
     const body = document.documentElement.querySelector('body')
     if (localStorage.getItem('darkMode') === null) {
-        localStorage.setItem('darkMode', 'false'); // só define se ainda não tiver nada
+        localStorage.setItem('darkMode', 'false');
     }
     if (localStorage.getItem('darkMode') === 'true') {
         body.classList.add('darkmode');
-        
     } else {
         body.classList.remove('darkmode');
     }
@@ -25,7 +24,6 @@ export function basicSearchToggle() {
             darkModeButton.innerText = "Tema escuro: Desativado"
         }
     })
-
 }
 
 export function advancedSearchToggle() {
@@ -50,6 +48,5 @@ export function advancedSearchToggle() {
             logo.src = "../assets/images/googlelogo_clr_74x24px.svg"
             logo.style.visibility = 'visible'
         }
-
     })
 }

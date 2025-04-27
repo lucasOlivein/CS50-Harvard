@@ -57,8 +57,6 @@ body {
     text-decoration: underline;
 }
 
-
-
 #logo{
     visibility: hidden;
 }
@@ -119,8 +117,6 @@ body {
     white-space: nowrap;
 }
 
-
-
 .search-div {
     background-color: inherit;
     color: inherit;
@@ -176,15 +172,12 @@ body {
 }
 
 .search-icon {
-    /* font-size: 18px; */
     color: #888;
     margin: auto;
     display: flex;
     align-items: center;
     fill: var(--fill-color)
 }
-
-
 
 .submit-button {
     background-color: var(--primary-color);
@@ -200,7 +193,6 @@ body {
     cursor: pointer;
     user-select: none;
 }
-
 
 footer {
     background-color: var(--footer-bg);
