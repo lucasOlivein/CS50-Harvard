@@ -9,6 +9,7 @@ body {
     height: 100%;
     background-color: var(--background-color);
     color: var(--texto-color);
+    margin: 0;
 }
 
 div {
