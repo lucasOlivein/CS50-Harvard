@@ -165,14 +165,13 @@ form {
 }
 
 .top-div {
-    /* display: flex;
-    justify-content: right; */
-    display: block;
+    justify-content: left;
+    display: flex;
     position: relative;
     flex-shrink: 0;
     box-sizing: border-box;
     align-items: center;
-    padding: 6px;
+    padding: 8px;
     height: 60px;
 }
 

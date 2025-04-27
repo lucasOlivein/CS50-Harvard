@@ -59,6 +59,7 @@ body {
 
 #logo{
     visibility: hidden;
+    margin-top: auto;
 }
 .g-logo {
     background-color: inherit;
