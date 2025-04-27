@@ -45,7 +45,6 @@ class SearchFooter extends HTMLElement {
                 text-decoration: underline;
             }
 
-
             .config {
                 color: #1f1f1f;
                 background-color: #fff;
@@ -104,9 +103,6 @@ class SearchFooter extends HTMLElement {
                     <a id="config-btn" class="a-footer" href="">Configurações</a>
                     <div id="config-menu" class="config">
                         <div class="config-item">
-                            <a href="">Idioma</a>
-                        </div>
-                        <div class="config-item">
                             <a href="../pages/advanced_search.html">Pesquisa Avancada</a>
                         </div>
                         <div class="config-item">
@@ -115,9 +111,7 @@ class SearchFooter extends HTMLElement {
                     </div>
                 </div>
             </div>
-        </div>
-        `
-
+        </div> `
     }
 
     connectedCallback() {
