@@ -8,6 +8,8 @@ function setMode () {
     } else {
         body.classList.remove('darkmode');
     }
+    body.style.visibility = "visible"
+}
 
 export function basicSearchToggle() {
     setMode()
