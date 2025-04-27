@@ -41,7 +41,7 @@ form {
 
 .advanced-label span {
     margin-left: 10px;
-    color: #d14836;
+    color: var(--label-color);
 }
 
 #form-div-1 {
@@ -73,6 +73,7 @@ form {
     height: 30px;
     display: table-cell;
     vertical-align: middle;
+    color: var(--span-color);
 }
 
 .tip {
@@ -99,7 +100,7 @@ form {
     min-width: 167px;
     width: 16%;
     height: 42px;
-    color: var(--label-color);
+    color: var(--descrip-color);
     font-size: 13px;
     line-height: 16px;
     vertical-align: middle;
