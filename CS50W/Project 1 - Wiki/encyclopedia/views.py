@@ -15,7 +15,7 @@ def content(request, entry):
         "content": util.get_entry(entry),
         "entry": entry
         })
-    return render(request, "encyclopedia/not_found.html", {
+    return render(request, "encyclopedia/entry_not_found.html", {
         "entry": entry
     } ,status=404)
 
