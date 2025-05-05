@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+import random
 from . import util
 
 
@@ -19,3 +19,7 @@ def content(request, entry):
         "entry": entry
     } ,status=404)
 
+def random_page(request):
+    entry = random.choice(util.list_entries())
+    return redirect("content", entry)
+    
