@@ -9,8 +9,13 @@ def index(request):
     })
 
 def content(request, entry):
-    return render(request, "encyclopedia/content.html", {
+    entries = util.list_entries()
+    if entry in entries:
+        return render(request, "encyclopedia/content.html", {
         "content": util.get_entry(entry),
         "entry": entry
-    })
+        })
+    return render(request, "encyclopedia/not_found.html", {
+        "entry": entry
+    } ,status=404)
 
