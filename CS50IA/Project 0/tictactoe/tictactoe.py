@@ -175,10 +175,51 @@ def utility(board):
         return 0
     
 
-
-
 def minimax(board):
+    # Alpha-beta pruning not implemented, since I plan to play perfectly.
+    # The AI should never beat me anyway.
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+    # This recursive function explores all possible game states.
+    def evaluate(board):
+        if terminal(board):
+            return utility(board)
+
+        res = []
+        # Recursively simulate all future board states.
+        # Apply each possible action to a copy of the current board in the recursive calls.
+        for action in actions(board):
+            board_result = result(board, action)
+            res.append(evaluate(board_result))
+        
+        # It returns the optimal result for the current player. 
+        if player(board) == X:
+            return max(res)
+        else:
+            return min(res)
+    
+    # Start the Minimax
+    if terminal(board):
+        return None
+    
+    results = []
+    action = list(actions(board))
+
+    # Evaluate all possible actions.
+    # The `results` list mirrors the `action` list —  
+    # the index of a result corresponds to the index of the action that produced it.
+    for act in action:
+        board_result = result(board, act)
+        results.append(evaluate(board_result))
+
+    # Select the optimal result based on the current player.
+    if player(board) == X:
+        optimal = max(results)
+    else:
+        optimal = min(results)
+
+    # Search for the action that produced the optimal result.
+    for i, act in enumerate(action):
+        if optimal == results[i]:
+            return act
