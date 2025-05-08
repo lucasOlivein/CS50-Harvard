@@ -29,7 +29,16 @@ def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    actions = set()
+    # i is the row index, and j is the column index. 
+    # (i, j) represents a possible action.
+    for i, rows in enumerate(board):
+        for j, cell in enumerate(rows):
+            # # A cell with value EMPTY indicates a valid action.
+            if cell == EMPTY:
+                actions.add((i, j))
+    
+    return actions
 
 
 def result(board, action):
