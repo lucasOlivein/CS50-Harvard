@@ -74,7 +74,16 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
+    if winner(board):
+        return True
+    
+    # If there is at least one empty cell, then it is not a terminal board.
+    for row in board: 
+        for cell in row:
+            if cell == EMPTY:
+                return False
+    
+    return True
 
 
 def utility(board):
