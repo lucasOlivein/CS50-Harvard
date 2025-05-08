@@ -77,7 +77,72 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
+    winner = None
+    # Vertical check
+    for col, _ in enumerate(board):  # Keep the column fixed and vary the row.
+        for row, _ in enumerate(board):
+            # The board is a list of rows, each row is a list of cells.
+            # So, board[i][j] refers to the cell at row i and column j.
+            if board[row][col] == EMPTY:
+                break
+            # At the first iteration of each column, set the potential winner.
+            # If the same value persists through all rows in the column, return the winner.
+            if row == 0:
+                winner = board[row][col]
+            else: 
+                if board[row][col] != winner: 
+                    winner = None
+                    break
+                elif row == 2:
+                    return winner
+
+    # Horizontal check
+    for row, _ in enumerate(board):  # Keep the row fixed and vary the colum.
+        for col, _ in enumerate(board):
+            if board[row][col] == EMPTY:
+                break
+            # At the first iteration of each row, set the potential winner.
+            # If the same value persists through all columns in the row, return the winner.
+            if col == 0:
+                winner = board[row][col]
+            else:
+                if board[row][col] != winner:
+                    winner = None
+                    break
+                elif col == 2:
+                    return winner
+
+    # Main Diagonal check
+    for main_diag, _ in enumerate(board):
+        if board[main_diag][main_diag] == EMPTY:
+            break
+        # Same logic as used in the previous checks, but applied to the main diagonal (top-left to bottom-right).
+        # If the same value persists through the diagonal, return the winner.
+        if main_diag == 0:
+            winner = board[main_diag][main_diag]
+        else:
+            if board[main_diag][main_diag] != winner:
+                winner = None
+                break
+            elif main_diag == 2:
+                return winner
+    
+    # Secondary Diagonal check
+    for sec_diag, _ in enumerate(board):
+        if board[sec_diag][2 - sec_diag] == EMPTY:
+            break
+        # Same logic as used in the previous checks, but aplied to the secondary diagonal (top-right to bottom-left).
+        # If the same value persists, return the winner.
+        if sec_diag == 0:
+            winner = board[sec_diag][2 - sec_diag]
+        else:
+            if board[sec_diag][2 - sec_diag] != winner:
+                winner = None
+                break
+            elif sec_diag == 2:
+                return winner
+    
+    return None
 
 
 def terminal(board):
