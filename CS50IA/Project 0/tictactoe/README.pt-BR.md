@@ -62,7 +62,7 @@ As seguintes funções em `tictactoe.py` foram deixadas para serem implementadas
 `result(board, action)`  
 - Deve retornar um **novo tabuleiro**, sem modificar o tabuleiro `board`.  
   - O *novo tabuleiro* deve ser o tabuleiro `board` com a jogada do jogador da vez (`X` ou `O`) aplicada na coordenada `action`.  
-- Se `action` não for uma coordenada válida, a função deve lançar uma `exceção`.
+- Se `action` não for uma coordenada válida, a função deve lançar uma exceção.
 
 `winner(board)`  
 - Retorna o vencedor (`X` ou `O`) do tabuleiro `board`, se houver um, ou `None` caso contrário.  
