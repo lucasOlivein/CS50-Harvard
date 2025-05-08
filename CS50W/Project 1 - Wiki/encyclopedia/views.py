@@ -27,8 +27,9 @@ def query(request):
     q = request.GET.get('q')
     entries = util.list_entries()
 
-    if q in entries:
-        return redirect("content", q)
+    for entry in entries:
+        if q.lower() == entry.lower():
+            return redirect("content", entry)
     
     results = []
     for entry in entries:
