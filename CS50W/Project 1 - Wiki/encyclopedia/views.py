@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-import random
+import random, re
 from . import util
 
 
@@ -22,4 +22,21 @@ def content(request, entry):
 def random_page(request):
     entry = random.choice(util.list_entries())
     return redirect("content", entry)
+
+def query(request):
+    q = request.GET.get('q')
+    entries = util.list_entries()
+
+    if q in entries:
+        return redirect("content", q)
+    
+    results = []
+    for entry in entries:
+        if re.search(q, entry, re.IGNORECASE):
+            results.append(entry)
+    
+    return render(request, "encyclopedia/search.html", {
+        "results": results
+    })
+
     
