@@ -60,7 +60,7 @@ def new_entry(request):
         else:
             util.save_entry(title, body)
             messages.success(request, "Success: Entry created")
-            return redirect("index")
+            return redirect("content", title)
 
     else:
         return render(request, "encyclopedia/new_entry.html")
