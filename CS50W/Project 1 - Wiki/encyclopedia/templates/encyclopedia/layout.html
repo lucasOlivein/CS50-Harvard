@@ -19,7 +19,7 @@
                     <a href="{% url 'index' %}">Home</a>
                 </div>
                 <div>
-                    Create New Page
+                    <a href="{% url 'new' %}">Create New Page</a>
                 </div>
                 <div>
                     <a href="{% url 'random' %}">Random Page</a>
@@ -32,6 +32,14 @@
                 {% endblock %}
             </div>
         </div>
+
+        {% if messages %}
+            {% for message in messages %}
+            <script>
+                alert("{{ message }}")
+            </script>
+            {% endfor %}
+        {% endif %}
 
     </body>
 </html>

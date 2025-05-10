@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 import random, re
 from . import util
 
@@ -40,4 +41,26 @@ def query(request):
         "results": results
     })
 
-    
+def new_entry(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        body = request.POST.get('content')
+
+        if not title:
+            messages.error(request, "Error: Missing tittle")
+            return render(request, "encyclopedia/new_entry.html")
+        
+        if not body:
+            messages.error(request, "Error: not content body")
+            return render(request, "encyclopedia/new_entry.html")
+
+        if util.search_entry(title):
+            messages.error(request, "Error: Entry already exist")
+            return render(request, "encyclopedia/new_entry.html")
+        else:
+            util.save_entry(title, body)
+            messages.success(request, "Success: Entry created")
+            return redirect("index")
+
+    else:
+        return render(request, "encyclopedia/new_entry.html")
