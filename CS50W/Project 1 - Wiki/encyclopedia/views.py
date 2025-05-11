@@ -64,3 +64,19 @@ def new_entry(request):
 
     else:
         return render(request, "encyclopedia/new_entry.html")
+    
+
+def edit(request, entry):
+    if request.method == 'POST':
+        body = request.POST.get('content')
+        title = request.POST.get('title')
+
+        normalized = body.replace("\r\n", "\n").strip()
+
+        util.save_entry(title, normalized)
+        return redirect("content", title)
+    content = util.get_entry(entry)
+    return render(request, "encyclopedia/edit_entry.html", {
+        "content": content,
+        "entry": entry,
+    })
