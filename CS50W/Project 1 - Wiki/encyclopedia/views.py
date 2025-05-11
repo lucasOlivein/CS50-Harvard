@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 import random, re
+import markdown2
 from . import util
 
 
@@ -12,8 +13,9 @@ def index(request):
 def content(request, entry):
     entries = util.list_entries()
     if entry in entries:
+        content = markdown2.markdown(util.get_entry(entry))
         return render(request, "encyclopedia/content.html", {
-        "content": util.get_entry(entry),
+        "content": content,
         "entry": entry
         })
     return render(request, "encyclopedia/entry_not_found.html", {

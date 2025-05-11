@@ -5,11 +5,10 @@
 {% endblock %}
 
 {% block body %}
-    <h1> {{entry}} </h1>
 
-    <ul>
-        {{content}}
-    </ul>
+    <div>
+        {{content|safe}}
+    </div>
 
     <div style="display: flex;">
         <a href="{% url 'edit' entry %}">Edit</a>
