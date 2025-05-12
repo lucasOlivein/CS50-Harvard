@@ -1,6 +1,6 @@
 # CS50's Introduction to Databases with SQL
 ### Problem Set 0 - Querying
-- [ ] Submit Cyberchase
+- [X] Submit Cyberchase
 - Submit one of:
   - [ ] 36 Views
   - [ ] Normals

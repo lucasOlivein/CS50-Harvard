@@ -1,0 +1,1 @@
+SELECT title, topic, season FROM episodes WHERE topic LIKE '%math%' AND substr(air_date, 1, 4) >= '2005'
