@@ -1,0 +1,1 @@
+SELECT title FROM episodes WHERE season = 6 AND substr(air_date, 1, 4) = '2007'

@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM episodes WHERE substr(air_date, 1, 4) BETWEEN '2018' AND '2023'
