@@ -4,7 +4,7 @@
 - Submit one of:
   - [ ] 36 Views
   - [X] Normals
-- [ ] Submit Players
+- [X] Submit Players
 ### Problem Set 1 - Relating
 
 ### Problem Set 2 - Designing

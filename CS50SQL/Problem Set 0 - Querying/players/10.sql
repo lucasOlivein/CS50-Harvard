@@ -1,0 +1,1 @@
+SELECT CONCAT(first_name, ' ', last_name) AS usa_players FROM players WHERE birth_country = 'USA' ORDER BY usa_players
