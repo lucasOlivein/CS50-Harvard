@@ -3,7 +3,7 @@
 - [X] Submit Cyberchase
 - Submit one of:
   - [ ] 36 Views
-  - [ ] Normals
+  - [X] Normals
 - [ ] Submit Players
 ### Problem Set 1 - Relating
 
