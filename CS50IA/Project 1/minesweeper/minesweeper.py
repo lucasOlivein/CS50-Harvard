@@ -105,27 +105,34 @@ class Sentence():
         """
         Returns the set of all cells in self.cells known to be mines.
         """
-        raise NotImplementedError
+        if len(self.cells) == self.count:
+            return self.cells 
+        return None
 
     def known_safes(self):
         """
         Returns the set of all cells in self.cells known to be safe.
         """
-        raise NotImplementedError
-
+        if self.count == 0:
+            return self.cells  
+        return None
+    
     def mark_mine(self, cell):
         """
         Updates internal knowledge representation given the fact that
         a cell is known to be a mine.
         """
-        raise NotImplementedError
-
+        if cell in self.cells:
+            self.cells.remove(cell)
+            self.count-= 1
+            
     def mark_safe(self, cell):
         """
         Updates internal knowledge representation given the fact that
         a cell is known to be safe.
         """
-        raise NotImplementedError
+        if cell in self.cells:
+            self.cells.remove(cell)
 
 
 class MinesweeperAI():
@@ -182,8 +189,127 @@ class MinesweeperAI():
             5) add any new sentences to the AI's knowledge base
                if they can be inferred from existing knowledge
         """
-        raise NotImplementedError
+        # I)
+        self.moves_made.add(cell)
 
+        # II)
+        self.mark_safe(cell)
+        
+        # III)
+        vertices = {
+            (0,0): "top-left",
+            (self.height - 1, 0): "button-left",
+            (0, self.width - 1): "top-right",
+            (self.height - 1, self.width - 1): "button-right"
+        }
+        edge = {
+            (0, -1): "top",
+            (self.height - 1, -1): "button",
+            (-1, self.width - 1): "right",
+            (-1 , 0): "left"
+        }
+
+        y, x = cell
+        if cell in vertices:
+            if vertices[cell] == "top-left":
+                neighbors = {(0, 1), (1,1), (1,0)}
+            elif vertices[cell] == "top-right":
+                neighbors = {(0, self.width - 2), (1, self.width - 2), (1, self.width - 1)}
+            elif vertices[cell] == "button-left":
+                neighbors = {(self.height - 2, 0), (self.height - 2, 1), (self.height - 1, 1)}
+            elif vertices[cell] == "button-right":
+                neighbors = {(self.height - 1, self.width - 2), (self.height - 2, self.width - 2), (self.height - 2, self.width - 1)}
+        
+        elif (y, -1) in edge:
+            if edge[(y, -1)] == 'top':
+                neighbors = {(0, x-1), (0, x+1), (1, x-1), (1, x), (1, x+1)}
+
+            elif edge[(y, -1)] == 'button':
+                neighbors = {(y, x-1), (y, x+1 ), (y-1, x-1), (y-1, x), (y-1, x+1)}
+        
+        elif (-1, x) in edge:
+            if edge[(-1, x)] == "left":
+                neighbors = {(y-1, 0), (y+1, 0), (y-1, 1), (y, 1), (y+1, 1)}
+
+            elif edge[(-1, x)] == "right":
+                neighbors = {(y-1, x), (y+1, x), (y-1, x-1), (y, x-1), (y+1, x-1)}
+        
+        else:
+            neighbors = {(y-1, x-1), (y-1, x), (y-1, x+1), (y, x-1), (y, x+1), (y+1, x-1), (y+1, x), (y+1, x+1)}
+        
+        for cell in neighbors.copy():
+            if cell in (self.moves_made | self.safes):
+                neighbors.remove(cell)
+            
+            if cell in self.mines:
+                neighbors.remove(cell)
+                count-= 1
+
+        knowledge = Sentence(cells=neighbors, count=count)
+        self.knowledge.append(knowledge)
+
+        temp = []
+        mines = set()
+        safes = set()
+        while True:
+
+            # IV
+            for sentence in self.knowledge:
+                known_mines = sentence.known_mines()
+                known_safes = sentence.known_safes()
+
+                if known_mines:
+                    for mine in known_mines:
+                        mines.add(mine)
+
+                if known_safes:
+                    for safe in known_safes:
+                        safes.add(safe)
+                        
+            if mines:
+                for mine in mines:
+                    self.mark_mine(mine)
+                mines.clear()
+            
+            if safes:
+                for safe in safes:
+                    self.mark_safe(safe)
+                safes.clear()
+            
+            # Check if a sentence is empty
+            for sentence in self.knowledge:
+                if len(sentence.cells) == 0:
+                    temp.append(sentence)
+
+            # Remove empty sentences from self.knowledge
+            if temp:
+                for sentence in temp:
+                    self.knowledge.remove(sentence)
+                temp.clear()
+
+            # V
+            for i, sentence_1 in enumerate(self.knowledge):
+                for j, sentence_2 in enumerate(self.knowledge):
+                    if i != j:
+                        if sentence_2.cells.issubset(sentence_1.cells):
+                            sentence = Sentence(sentence_1.cells - sentence_2.cells, sentence_1.count - sentence_2.count )
+
+                            for cell in sentence.cells.copy():
+                                if cell in (self.moves_made | self.safes):
+                                    sentence.cells.remove(cell)
+                                if cell in self.mines:
+                                    sentence.cells.remove(cell)
+                                    sentence.count-= 1
+                                    
+                            if sentence not in self.knowledge and sentence not in temp and len(sentence.cells):
+                                temp.append(sentence)
+            if temp:
+                for sentence in temp:
+                    self.knowledge.append(sentence)
+                temp.clear()
+            else:
+                break
+        
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
@@ -193,8 +319,11 @@ class MinesweeperAI():
         This function may use the knowledge in self.mines, self.safes
         and self.moves_made, but should not modify any of those values.
         """
-        raise NotImplementedError
-
+        for move in self.safes:
+            if move not in self.moves_made:
+                return move  
+        return None
+    
     def make_random_move(self):
         """
         Returns a move to make on the Minesweeper board.
@@ -202,4 +331,11 @@ class MinesweeperAI():
             1) have not already been chosen, and
             2) are not known to be mines
         """
-        raise NotImplementedError
+        moves = []
+        for i in range(self.height):
+            for j in range(self.width):
+                if (i,j) not in (self.moves_made | self.safes | self.mines):
+                    moves.append((i,j))
+        if moves:
+            return random.choice(moves)
+        return None
