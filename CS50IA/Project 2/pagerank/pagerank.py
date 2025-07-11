@@ -57,7 +57,28 @@ def transition_model(corpus, page, damping_factor):
     linked to by `page`. With probability `1 - damping_factor`, choose
     a link at random chosen from all pages in the corpus.
     """
-    raise NotImplementedError
+
+    # Outgoing links from the current page
+    linked = corpus[page]
+
+    # If a page has no links to other pages, it should be assumed that this page links to all (including itself)
+    for page in corpus:
+        if not corpus[page]:
+            corpus[page] = set(corpus)
+
+    # Probability of choosing a random or a linked page
+    choose_random = (1 - damping_factor) * (1 / len(corpus))
+    choose_linked = (damping_factor * (1 / len(linked))) + choose_random
+
+    # Build the distribution
+    prob_dist = {}
+    for pag in corpus:
+        if pag in linked:
+            prob_dist[pag] = choose_linked
+        else:
+            prob_dist[pag] = choose_random
+    
+    return prob_dist
 
 
 def sample_pagerank(corpus, damping_factor, n):
@@ -69,8 +90,28 @@ def sample_pagerank(corpus, damping_factor, n):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
 
+    model = {}
+    rank = {}
+    prob_weight = 1/n
+
+    # Build the transition model for each page
+    # Initialize the rank
+    for page in corpus:
+        model[page] = transition_model(corpus, page, damping_factor)
+        rank[page] = 0
+
+    # Start from a random page
+    page = random.choice(list(corpus))
+
+    # Perform sampling
+    for _ in range(n):
+        page = random.choices(list(model[page]), list(model[page].values()), k=1)[0]
+
+        rank[page] += prob_weight
+
+    return rank
+    
 
 def iterate_pagerank(corpus, damping_factor):
     """
@@ -81,7 +122,59 @@ def iterate_pagerank(corpus, damping_factor):
     their estimated PageRank value (a value between 0 and 1). All
     PageRank values should sum to 1.
     """
-    raise NotImplementedError
+
+    # The formula described in the background section of this problem:
+    #   PR(p) = (1 - d)/N + d * ∑ [PR(i) / NumLinks(i)] for all i linking to 'page'
+ 
+    # Initialize the rank
+    rank = {}
+    for page in corpus:
+        rank[page] = 1/len(corpus)
+
+    # If a page has no links to other pages, it should be assumed that this page links to all (including itself)
+    for page in corpus:
+        if not corpus[page]:
+            corpus[page] = set(corpus)
+    
+    # Define a constant representing the probability of randomly choosing a page and ending up on page `p`
+    # First part of the formula: `(1 - d)/N`
+    const = (1 - damping_factor) / len(corpus)
+
+    # For each page `p`, find all pages `i` such that `i` contains a link to `p` 
+    links_to = {}
+    for i, page in enumerate(corpus):
+        links_to[page] = []
+        for j, link in enumerate(corpus):
+            if page in corpus[link]:
+                links_to[page].append(link)
+
+    new_rank = {}
+    while True:
+        # With a probability `d`, the surfer follows a link from some page `i` to page `p`
+        for page in corpus:
+            probability_sum = 0
+
+            # Sum of contributions from all pages `i` that link to `page`
+            # Second part of the formula: `∑ [PR(i) / NumLinks(i)] for all `i` linking to 'page'`
+            for i in links_to[page]:
+                probability_sum += rank[i]/len(corpus[i])
+
+            # Apply the complete PageRank formula: 
+            # PR(p) = (1 - d)/N + d * ∑ [PR(i) / NumLinks(i)]
+            new_rank[page] = const + (damping_factor * probability_sum)
+
+        converged = True
+        # Check if the PageRank converged
+        for page in corpus:
+            if abs(rank[page] - new_rank[page]) > 0.001:
+                converged = False
+            rank[page] = new_rank[page]
+        new_rank.clear()
+
+        if converged:
+            break
+    
+    return rank
 
 
 if __name__ == "__main__":
