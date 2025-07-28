@@ -81,6 +81,7 @@ def main():
                 p = joint_probability(people, one_gene, two_genes, have_trait)
                 update(probabilities, one_gene, two_genes, have_trait, p)
 
+    
     # Ensure probabilities sum to 1
     normalize(probabilities)
 
@@ -139,8 +140,79 @@ def joint_probability(people, one_gene, two_genes, have_trait):
         * everyone in set `have_trait` has the trait, and
         * everyone not in set` have_trait` does not have the trait.
     """
-    raise NotImplementedError
+    # This function handles the inheritance of a gene from a parent
+    def gene_inherit(parent, transmit):
 
+        if transmit:
+            if parent in one_gene:
+                # (50% chance to transmit the gene) AND (the gene does not mutate) 
+                # OR (50% chance to do not pass the gene) AND (the gene does mutate)
+                #   :. 50% * 99% + 50% * 1% => 50% * (99% + 1%) == 50%
+                return 0.5
+            elif parent in two_genes:
+                # (100% chance to transmit the gene) AND (the gene does not mutate)
+                return 1 - PROBS["mutation"]
+            elif parent is None:
+                # Unconditional probability
+                #   Each probability of a parent do have 1, 2 or 0 gene and their respective probability to transmit a trait gene  
+                return (
+                        PROBS['gene'][1] * 0.5 +
+                        PROBS['gene'][2] * (1 - PROBS['mutation']) +
+                        PROBS['gene'][0] * PROBS['mutation']
+                    )
+            else:
+                # 100% chance to do not transmit the trait gene AND the gene mutate
+                return PROBS["mutation"]
+
+        elif not transmit:
+            if parent in one_gene:
+                # (50% chance to transmit the gene) AND (the gene does mutate) 
+                # OR (50% chance to do not transmit the gene) AND (the gene does mutate)
+                return 0.5
+            elif parent in two_genes:
+                # 100% chance to transmit the trait gene AND the gene mutate
+                return PROBS["mutation"]
+            elif parent is None:
+                # Each probability that the parent has 0, 1, or 2 genes and their respective chance of passing the gene
+                return ( PROBS['gene'][1] * 0.5 +
+                         PROBS['gene'][2] * 1 * PROBS['mutation'] +
+                         PROBS['gene'][0] * 1 * (1 - PROBS['mutation'])
+                        )
+            else:
+                # 100% chance to do not transmit the trait gene AND the gene does not mutate
+                return 1 - PROBS["mutation"]
+
+    # This function handles the probability of a person have the trait or does not
+    def trait_probability(person, has_trait):
+        mother = people[person]['mother']
+        father = people[person]['father']
+        
+        if mother != None and father != None:
+            if person in one_gene:
+                return  PROBS["trait"][1][has_trait] * (
+                    gene_inherit(mother, True) * gene_inherit(father, False) +
+                    gene_inherit(mother, False) * gene_inherit(father, True)
+                )
+            elif person in two_genes:
+                return PROBS["trait"][2][has_trait] * gene_inherit(mother, True) * gene_inherit(father, True)
+            else:
+                return PROBS['trait'][0][has_trait] * gene_inherit(mother, False) * gene_inherit(father, False)
+
+        else:
+            if person in one_gene:
+                return PROBS['gene'][1] * PROBS["trait"][1][has_trait]
+            elif person in two_genes:
+                return PROBS['gene'][2] * PROBS["trait"][2][has_trait]
+            else:
+                return PROBS["gene"][0] * PROBS["trait"][0][has_trait]
+
+    scenario_probability = 1
+    for person in people:
+        trait = person in have_trait
+        scenario_probability *= trait_probability(person, trait)
+    
+    print(scenario_probability)
+    return scenario_probability
 
 def update(probabilities, one_gene, two_genes, have_trait, p):
     """
