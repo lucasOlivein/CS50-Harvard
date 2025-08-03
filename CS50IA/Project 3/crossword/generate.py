@@ -228,8 +228,36 @@ class CrosswordCreator():
         degree. If there is a tie, any of the tied variables are acceptable
         return values.
         """
-        raise NotImplementedError
 
+        # Create a list of tuples.
+        # Each tuple contains a variable not yet in the assignment and the size of its domain.
+        variables = [(var, len(self.domains[var])) 
+                     for var in self.crossword.variables 
+                     if var not in assignment]
+
+        # Sort based on size of each variable's domain.
+        variables.sort(key=lambda var: var[1])
+        
+        # Count how many variables have the minimum domain size.
+        i = 0
+        min = variables[0][1]
+        for var in variables:
+            if var[1] == min:
+                i += 1
+                continue
+            break
+
+        # Create a new list of tuples.
+        # Each tuple contains a variable (tied for minimum domain size) and its degree (number of neighbours).
+        variables = [(var, len(self.crossword.neighbors(var))) 
+                     for var, _ in variables[:i]]
+        
+        # Sort based on the variable's degree.
+        variables.sort(key=lambda var: var[1], reverse=True)
+
+        # Return the variable with the highest degree.
+        return variables[0][0]
+            
     def backtrack(self, assignment):
         """
         Using Backtracking Search, take as input a partial assignment for the
