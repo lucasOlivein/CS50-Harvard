@@ -115,7 +115,25 @@ class CrosswordCreator():
         Return True if a revision was made to the domain of `x`; return
         False if no revision was made.
         """
-        raise NotImplementedError
+        # Check whether x and y overlap
+        if self.crossword.overlaps[(x, y)]:
+            i, j = self.crossword.overlaps[(x, y)]
+            values = set()
+
+            # Check which values in x's domain are arc-consistent with values in y's domain.
+            # Store the values that satisfy the constraint.
+            for x_value in self.domains[x]:
+                for y_value in self.domains[y]:
+                    if x_value[i] == y_value[j]:
+                        values.add(x_value)
+            
+            # Check if x's original domain was arc consistent.
+            # If not, replace it with the consistent set.
+            if self.domains[x] != values:
+                self.domains[x] = values
+                return True
+        
+        return False
 
     def ac3(self, arcs=None):
         """
