@@ -267,7 +267,30 @@ class CrosswordCreator():
 
         If no assignment is possible, return None.
         """
-        raise NotImplementedError
+
+        # Check if the assignment is complete.
+        if self.assignment_complete(assignment):
+            return assignment
+        
+        # Select an unassigned variable using the Degree Heuristic.
+        var = self.select_unassigned_variable(assignment)
+
+        # Order the domain values using the Least Constraining Value Heuristic.
+        ordered_domain = self.order_domain_values(var, assignment)
+        
+        # Backtrack algorithm adapted from lecture 3.
+        if ordered_domain:
+            for value in ordered_domain:
+                assignment[var] = value
+            
+                if self.consistent(assignment):    
+                    result = self.backtrack(assignment)
+                    if result:
+                        return result
+                else:
+                    assignment.pop(var)
+        
+        return None
 
 
 def main():
