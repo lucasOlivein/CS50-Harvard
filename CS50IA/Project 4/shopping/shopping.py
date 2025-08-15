@@ -59,7 +59,58 @@ def load_data(filename):
     labels should be the corresponding list of labels, where each label
     is 1 if Revenue is true, and 0 otherwise.
     """
-    raise NotImplementedError
+    # Month to integer
+    month = {
+        "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3,
+        "May": 4, "June": 5, "Jul": 6, "Aug": 7,
+        "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11
+    }
+
+    # Float data
+    floatTypes = [
+        "Administrative_Duration", "Informational_Duration", "ProductRelated_Duration",
+        "BounceRates", "ExitRates", "PageValues", "SpecialDay"
+    ]
+
+    evidence, label = [], []
+
+    with open(filename) as data:
+        reader = csv.DictReader(data)
+
+        for row in reader:
+            data_point = []
+
+            for col in row:
+                
+                if col == 'Month':
+                    data_point.append(month[row["Month"]])
+
+                elif col == 'VisitorType':
+                    temp = 0
+                    if row[col] == "Returning_Visitor":
+                        temp = 1
+                    data_point.append(temp)
+
+                elif col == 'Weekend':
+                    temp = 0
+                    if row[col] == 'TRUE':
+                        temp = 1
+                    data_point.append(temp)
+
+                elif col == 'Revenue':
+                    temp = 0
+                    if row[col] == 'TRUE':
+                        temp = 1
+                    label.append(temp)
+
+                elif col in floatTypes:
+                    data_point.append(float(row[col]))
+                else:
+                    data_point.append(int(row[col]))
+
+            evidence.append(data_point)
+
+    return (evidence, label)
 
 
 def train_model(evidence, labels):
@@ -67,7 +118,9 @@ def train_model(evidence, labels):
     Given a list of evidence lists and a list of labels, return a
     fitted k-nearest neighbor model (k=1) trained on the data.
     """
-    raise NotImplementedError
+    model = KNeighborsClassifier(n_neighbors=1)
+    model.fit(evidence, labels)
+    return model
 
 
 def evaluate(labels, predictions):
@@ -85,7 +138,24 @@ def evaluate(labels, predictions):
     representing the "true negative rate": the proportion of
     actual negative labels that were accurately identified.
     """
-    raise NotImplementedError
+
+    positive, negative = 0, 0
+    true_positive, true_negative = 0, 0
+
+    for prediction, label in zip(predictions, labels):
+        if label == 1:
+            positive += 1
+            if prediction == 1:
+                true_positive += 1
+        else:
+            negative += 1
+            if prediction == 0:
+                true_negative += 1
+    
+    sensitivity = true_positive / positive
+    specificity = true_negative / negative
+
+    return (sensitivity, specificity)
 
 
 if __name__ == "__main__":
