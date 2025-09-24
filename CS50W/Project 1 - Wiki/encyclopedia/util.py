@@ -35,3 +35,16 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+
+def search_entry(title):
+    if not title:
+        return None
+
+    entries = list_entries()
+
+    results = []
+    for entry in entries:
+        if entry.lower() == title.lower():
+            results.append(entry)
+    
+    return results
