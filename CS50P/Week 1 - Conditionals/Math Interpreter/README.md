@@ -1,3 +1,5 @@
+# 🧮 Math Interpreter
+
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for an **arithmetic expression**  
@@ -35,3 +37,6 @@ Where:
 
 ## 💻 Solution
 👉 [interpreter.py](interpreter.py)
+
+🔗 **Official exercise**: [Math Interpreter — CS50 Python, Pset 1](https://cs50.harvard.edu/python/psets/1/interpreter/)
+

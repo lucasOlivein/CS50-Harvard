@@ -1,3 +1,4 @@
+# ⏩ Playback Speed
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for input  
@@ -24,3 +25,5 @@ and then outputs that same input, replacing each space (` `) with `...` (three p
 ## 💻 Solution
 
 👉 [playback.py](playback.py)
+🔗 **Official exercise**: [Playback Speed — CS50 Python, Pset 0](https://cs50.harvard.edu/python/psets/0/playback)  
+

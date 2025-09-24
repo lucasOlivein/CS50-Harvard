@@ -30,3 +30,6 @@
 
 ## 💻 Solution
 👉 [seasons.py](seasons.py)
+
+🔗 **Official exercise**: [Seasons of Love — CS50 Python, Pset 8](https://cs50.harvard.edu/python/psets/8/seasons/)
+

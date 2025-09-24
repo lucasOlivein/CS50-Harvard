@@ -33,3 +33,6 @@
 
 ## 💻 Solution
 👉 [working.py](working.py)
+
+🔗 **Official exercise**: [Working 9 to 5 — CS50 Python, Pset 7](https://cs50.harvard.edu/python/psets/7/working/)
+

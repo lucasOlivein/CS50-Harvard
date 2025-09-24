@@ -1,3 +1,5 @@
+# 🌮 Felipe’s Taqueria
+
 ## 📌 Task
 Implement a program that enables a user to place an order, prompting them for items, one per line, until the user inputs control-d (which is a common way of ending one’s input to a program).  
 
@@ -22,3 +24,5 @@ and update the running total after each input.
 
 ## 💻 Solution
 👉 [taqueria.py](taqueria.py)
+
+🔗 **Official exercise**: [Felipe’s Taqueria — CS50 Python, Pset 3](https://cs50.harvard.edu/python/psets/3/taqueria/)

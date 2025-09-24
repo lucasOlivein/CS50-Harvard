@@ -1,3 +1,5 @@
+# 🧹 Scourgify
+
 ## 📌 Task
 
 Implement a program that “cleans up” student data in a CSV file:
@@ -34,3 +36,5 @@ The user supplies **two** command-line arguments:
 ## 💻 Solution
 
 👉 [scourgify.py](scourgify.py)
+
+🔗 **Official exercise**: [Scourgify — CS50 Python, Pset 6](https://cs50.harvard.edu/python/psets/6/scourgify/)

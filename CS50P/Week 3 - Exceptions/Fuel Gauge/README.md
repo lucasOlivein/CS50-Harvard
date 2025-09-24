@@ -1,3 +1,5 @@
+# ⛽ Fuel Gauge
+
 ## 📌 Task
 Implement a program that prompts the user for a fraction, formatted as **X/Y**, wherein each of X and Y is a positive integer, and then outputs, as a percentage rounded to the nearest integer, how much fuel is in the tank.  
 
@@ -24,3 +26,5 @@ If 99% or more remains, output **F** instead to indicate that the tank is essent
 
 ## 💻 Solution
 👉 [fuel.py](fuel.py)
+
+🔗 **Official exercise**: [Fuel Gauge — CS50 Python, Pset 3](https://cs50.harvard.edu/python/psets/3/fuel/)

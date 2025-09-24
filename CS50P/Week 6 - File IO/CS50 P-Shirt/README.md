@@ -1,5 +1,6 @@
-## 📌 Task
+# 👕 CS50 P-Shirt
 
+## 📌 Task
 
 Implement a program that expects exactly **two** command-line arguments:
 
@@ -43,3 +44,5 @@ The program should then:
 ## 💻 Solution
 
 👉 [shirt.py](shirt.py)
+
+🔗 **Official exercise**: [CS50 P-Shirt — CS50 Python, Pset 6](https://cs50.harvard.edu/python/psets/6/shirt/)

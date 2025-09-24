@@ -1,3 +1,5 @@
+# 🍽️ Meal Time  
+
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for a **time** and outputs  
@@ -37,3 +39,6 @@ Input format:
 ## 💻 Solution
 
 👉 [meal.py](meal.py)
+
+🔗 **Official exercise**: [Meal Time — CS50 Python, Pset 1](https://cs50.harvard.edu/python/psets/1/mealtime/)
+

@@ -1,3 +1,5 @@
+# 🎯 Guessing Game
+
 ## 📌 Task
 Implement a program that:  
 
@@ -35,4 +37,6 @@ Implement a program that:
 ---
 ## 💻 Solution
 
-👉 game.py
+👉 [game.py](game.py)
+
+🔗 **Official exercise**: [Guessing Game — CS50 Python, Pset 4](https://cs50.harvard.edu/python/psets/4/guess/)

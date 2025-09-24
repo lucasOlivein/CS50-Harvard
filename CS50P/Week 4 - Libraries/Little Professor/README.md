@@ -1,3 +1,5 @@
+# 🔢 Little Professor
+
 ## 📌 Task
 Implement a program that:  
 
@@ -39,3 +41,5 @@ Implement a program that:
 
 ## 💻 Solution
 👉 [professor.py](professor.py)
+
+🔗 **Official exercise**: [Little Professor — CS50 Python, Pset 4](https://cs50.harvard.edu/python/psets/4/little/)

@@ -31,3 +31,5 @@
 
 ## 💻 Solution
 👉 [numb3rs.py](numb3rs.py)
+
+🔗 **Official exercise**: [NUMB3RS — CS50 Python, Pset 7](https://cs50.harvard.edu/python/psets/7/numb3rs/)

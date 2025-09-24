@@ -1,3 +1,5 @@
+# 😃 Making Faces
+
 ## 📌 Task
 
 Implement a function called **`convert`** that accepts a string as input and returns that same input with:
@@ -30,3 +32,4 @@ All other text should be returned unchanged.
 ## 💻 Solution
 
 👉 [faces.py](faces.py)
+🔗 **Official exercise**: [Making Faces — CS50 Python, Pset 0](https://cs50.harvard.edu/python/psets/0/faces)  

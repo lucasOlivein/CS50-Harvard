@@ -1,3 +1,5 @@
+# 🥤 Coke Machine
+
 ## 📌 Task
 
 Implement a program in **Python** that simulates a **coke vending machine**.  
@@ -28,3 +30,6 @@ The program should:
 
 ## 💻 Solution
 👉 [coke.py](coke.py)
+
+🔗 **Official exercise**: [Coke Machine — CS50 Python, Pset 2](https://cs50.harvard.edu/python/psets/2/coke/)
+

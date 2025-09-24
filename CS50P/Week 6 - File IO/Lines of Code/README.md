@@ -1,3 +1,5 @@
+# 📄 Lines of Code
+
 ## 📌 Task
 
 Implement a program that, given a source file,  
@@ -32,3 +34,5 @@ The user will supply the filename as a **command-line argument**.
 ## 💻 Solution
 
 👉 [lines.py](lines.py)
+
+🔗 **Official exercise**: [Lines of Code — CS50 Python, Pset 6](https://cs50.harvard.edu/python/psets/6/lines/)

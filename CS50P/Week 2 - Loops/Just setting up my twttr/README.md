@@ -1,3 +1,5 @@
+# 🐦 Just setting up my twttr
+
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for a **string of text**  
@@ -25,3 +27,5 @@ and outputs that same text but with all **vowels** removed.
 
 ## 💻 Solution
 👉 [twttr.py](twttr.py)
+
+🔗 **Official exercise**: [Just setting up my twttr — CS50 Python, Pset 2](https://cs50.harvard.edu/python/psets/2/twttr/)

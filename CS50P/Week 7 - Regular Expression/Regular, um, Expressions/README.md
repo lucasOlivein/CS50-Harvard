@@ -29,3 +29,6 @@
 
 ## 💻 Solution
 👉 [um.py](um.py)
+
+🔗 **Official exercise**: [Regular, um, Expressions — CS50 Python, Pset 7](https://cs50.harvard.edu/python/psets/7/um/)
+

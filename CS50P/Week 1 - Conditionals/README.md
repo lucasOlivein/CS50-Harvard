@@ -1,4 +1,4 @@
-## 📚 Problem Set 1
+## 📚 [Problem Set 1](https://cs50.harvard.edu/python/psets/1/)
 
 📌 Submit all of the problems below:
 

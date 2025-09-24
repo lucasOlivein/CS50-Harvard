@@ -1,3 +1,4 @@
+# 🧠 Deep Thought  
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for the answer to  
@@ -22,3 +23,6 @@ the *Great Question of Life, the Universe and Everything*, outputting:
 
 ## 💻 Solution
 👉 [deep.py](deep.py)
+
+
+🔗 **Official exercise**: [Deep Thought — CS50 Python, Pset 1](https://cs50.harvard.edu/python/psets/1/deep-thought/)

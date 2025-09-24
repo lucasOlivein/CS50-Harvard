@@ -1,4 +1,5 @@
-## 📌 Problem
+# 💰 Tip Calculator
+## 📌 Task
 
 We’ve written most of a **tip calculator** for you.  
 Unfortunately, two functions still need to be implemented:
@@ -35,3 +36,6 @@ Unfortunately, two functions still need to be implemented:
 ## 💻 Solution
 
 👉 [tip.py](tip.py)
+
+🔗 **Official exercise**: [Tip Calculator — CS50 Python, Pset 0](https://cs50.harvard.edu/python/psets/0/tip)
+

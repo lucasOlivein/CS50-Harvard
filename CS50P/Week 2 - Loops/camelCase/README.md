@@ -1,3 +1,5 @@
+# 🐪 camelCase
+
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for the name of a variable in **camelCase**  
@@ -26,3 +28,6 @@ Example conversions:
 
 ## 💻 Solution
 👉 [camel.py](camel.py)
+
+🔗 **Official exercise**: [camelCase — CS50 Python, Pset 2](https://cs50.harvard.edu/python/psets/2/camelcase/)
+

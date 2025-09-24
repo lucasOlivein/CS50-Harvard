@@ -1,3 +1,5 @@
+# 💰 Bitcoin Price Index
+
 ## 📌 Task
 Implement a program that:  
 
@@ -52,3 +54,5 @@ Implement a program that:
 
 ## 💻 Solution
 👉 [bitcoin.py](bitcoin.py)
+
+🔗 **Official exercise**: [Bitcoin Price Index — CS50 Python, Pset 4](https://cs50.harvard.edu/python/psets/4/bitcoin/)

@@ -1,3 +1,5 @@
+# 📅 Outdated
+
 ## 📌 Task
 Implement a program that prompts the user for a date, anno Domini, in **month-day-year** order, formatted like `9/8/1636` or `September 8, 1636`,  
 wherein the month in the latter might be any of the values in the list below:
@@ -34,3 +36,5 @@ Assume that every month has no more than 31 days (i.e., no need to validate whet
 
 ## 💻 Solution
 👉 [outdated.py](outdated.py)
+
+🔗 **Official exercise**: [Outdated — CS50 Python, Pset 3](https://cs50.harvard.edu/python/psets/3/outdated/)

@@ -32,3 +32,6 @@
 
 ## 💻 Solution
 👉 [shirtificate.py](shirtificate.py)
+
+🔗 **Official exercise**: [CS50 Shirtificate — CS50 Python, Pset 8](https://cs50.harvard.edu/python/psets/8/shirtificate/)
+

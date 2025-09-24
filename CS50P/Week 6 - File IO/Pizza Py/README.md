@@ -1,3 +1,5 @@
+# 🍕 Pizza Py
+
 ## 📌 Task
 
 Implement a program that reads a **CSV file** representing a pizza menu  
@@ -26,3 +28,5 @@ and prints it in a neatly formatted table using the `tabulate` library.
 ## 💻 Solution
 
 👉 [pizza.py](pizza.py)
+
+🔗 **Official exercise**: [Pizza Py — CS50 Python, Pset 6](https://cs50.harvard.edu/python/psets/6/pizza/)

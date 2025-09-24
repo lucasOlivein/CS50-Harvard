@@ -1,3 +1,5 @@
+# 🛒 Grocery List
+
 ## 📌 Task
 Implement a program that prompts the user for items, one per line, until the user inputs **control-d** (which is a common way of ending one’s input to a program).  
 
@@ -27,3 +29,5 @@ No need to pluralize the items. Treat the user’s input **case-insensitively**.
 
 ## 💻 Solution
 👉 [grocery.py](grocery.py)
+
+🔗 **Official exercise**: [Grocery List — CS50 Python, Pset 3](https://cs50.harvard.edu/python/psets/3/grocery/)

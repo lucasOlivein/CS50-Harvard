@@ -1,55 +1,45 @@
+# 🏦 BACK TO THE BANK
+
 ## 📌 Task
-In a file called **`bank.py`**, reimplement *Home Federal Savings Bank* from Problem Set 1, restructuring your code per the below, wherein `value` expects a **str** as input and returns an **int**:  
 
-- `0` if that str starts with `"hello"`.  
-- `20` if that str starts with `"h"` (but not `"hello"`).  
-- `100` otherwise.  
+### Reimplementation
+- Reimplement **Home Federal Savings Bank** from **CS50 Python, Pset 1**.  
+- Restructure your code into functions:
+  - `main`: prompts the user for input and prints output.  
+  - `value`: takes a greeting as input and returns an integer:
+    - `0` if the greeting starts with `"hello"` (case-insensitive)  
+    - `20` if the greeting starts with `"h"` but not `"hello"`  
+    - `100` otherwise  
+- You may assume that the string passed to the `value` function will not contain any leading spaces.  
+- Only `main` should call `print`.  
 
-The function should treat the string **case-insensitively**, and you may assume the input has **no leading spaces**.  
-Only `main` should call `print`.  
-
-```python
-def main():
-    ...
-
-
-def value(greeting):
-    ...
-
-
-if __name__ == "__main__":
-    main()
-```
-
-Then, in a file called test_bank.py, implement three or more functions that collectively test your implementation of value thoroughly, each of whose names should begin with test_ so that you can execute your tests with:
-```
-pytest test_bank.py
-```
-
-## ⚙️ Requirements
-
-- Implement value(greeting) that returns the correct integer based on greeting rules.
-- Implement main() to prompt the user and call value.
-- Write at least 3 test functions in test_bank.py:
-    - Cover "hello" (in various cases, e.g., "Hello", "HELLO").
-    - Cover greetings starting with "h" but not "hello".
-    - Cover greetings not starting with "h".
+### Testing
+- In a separate file `test_bank.py`, implement at least three test functions using `pytest`.  
+- Each test should call `value()` to verify correctness.  
+- Ensure tests cover:
+  - Greetings starting with `"hello"`  
+  - Greetings starting with `"h"` but not `"hello"`  
+  - Other greetings  
+- Tests should raise exceptions for invalid inputs if applicable.  
 
 ---
 
-## 💡 Hint
-
-- Use .lower() to simplify case-insensitive comparisons.
-
-- Test both expected cases and edge cases (e.g., "hi", "hey", "hola", "good morning").
-
-- Use assert statements in your test functions.
-
-- Run pytest frequently to ensure correctness.
+### ⚙️ Requirements
+- Implement `main()` and `value(greeting)` in your program.  
+- Use `pytest` for testing and ensure tests are properly named with the `test_` prefix.  
+- Include any necessary import statements in the test file.  
 
 ---
+
+### 💡 Hints
+- Keep functions small and focused: `main` handles I/O, `value` handles logic.  
+- Use `pytest test_bank.py` to run your tests.  
+- Test edge cases like `"Hello"`, `"hey"`, `"good morning"`.  
+
+---
+
 ## 💻 Solution
 👉 [bank.py](bank.py)
-👉 [test_bank.py](test_bank.py)
 
-🔗 **Official exercise**: [Back to the Bank — CS50 Python, Pset 5](https://cs50.harvard.edu/python/psets/5/test_bank/)  
+🔗 **Official exercise**: [Back to the Bank — CS50 Python, Pset 5](https://cs50.harvard.edu/python/psets/5/bank/)
+

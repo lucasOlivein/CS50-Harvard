@@ -1,3 +1,5 @@
+# 📄 File Extensions  
+
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for the **name of a file**  
@@ -30,3 +32,6 @@ If the file extension is unknown, the program should output **`application/octet
 
 ## 💻 Solution
 👉 [extensions.py](extensions.py)
+
+🔗 **Official exercise**: [File Extensions — CS50 Python, Pset 1](https://cs50.harvard.edu/python/psets/1/extensions/)
+

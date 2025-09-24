@@ -1,3 +1,5 @@
+# 🏦 Home Federal Savings Bank
+
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for a **greeting** and outputs a value according to these rules:
@@ -23,3 +25,5 @@ Implement a program in **Python** that prompts the user for a **greeting** and o
 
 ## 💻 Solution
 👉 [bank.py](bank.py)
+
+🔗 **Official exercise**: [Home Federal Savings Bank — CS50 Python, Pset 1](https://cs50.harvard.edu/python/psets/1/bank/)

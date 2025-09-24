@@ -1,3 +1,5 @@
+# 🥗 Nutrition Facts
+
 ## 📌 Task
 Implement a program in **Python** that prompts the user to input the name of a **fruit** (case-insensitively)  
 and then outputs the **number of calories** in one portion of that fruit, according to the **FDA’s nutrition poster**.  
@@ -26,3 +28,6 @@ and then outputs the **number of calories** in one portion of that fruit, accord
 
 ## 💻 Solution
 👉 [nutrition.py](nutrition.py)
+
+🔗 **Official exercise**: [Nutrition Facts — CS50 Python, Pset 2](https://cs50.harvard.edu/python/psets/2/nutrition/)
+

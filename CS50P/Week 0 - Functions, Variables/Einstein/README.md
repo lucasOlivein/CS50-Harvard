@@ -1,3 +1,4 @@
+# 🧠 Einstein
 ## 📌 Task
 
 Implement a program in **Python** that prompts the user for mass (as an integer in kilograms)  
@@ -28,3 +29,6 @@ Where:
 ## 💻 Solution
 
 👉 [einstein.py](einstein.py)
+
+🔗 **Official exercise**: [Einstein — CS50 Python, Pset 0](https://cs50.harvard.edu/python/psets/0/einstein)  
+ 

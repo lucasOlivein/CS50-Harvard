@@ -1,3 +1,5 @@
+# 📝 Adieu, Adieu
+
 ## 📌 Task
 Implement a program that prompts the user for **names**, one per line, until the user inputs **Control-D** (end-of-file).  
 Assume that the user will input at least one name.  
@@ -41,3 +43,4 @@ Adieu, adieu, to Liesl, Friedrich, Louisa, Kurt, Brigitta, Marta, and Gretl
 ## 💻 Solution
 👉 [adieu.py](adieu.py)
 
+🔗 **Official exercise**: [Adieu, Adieu — CS50 Python, Pset 4](https://cs50.harvard.edu/python/psets/4/adieu/)

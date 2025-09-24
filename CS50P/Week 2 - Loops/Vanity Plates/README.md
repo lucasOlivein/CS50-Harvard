@@ -1,3 +1,5 @@
+# 🚗 Vanity Plates
+
 ## 📌 Task
 
 Implement a program that prompts the user for a **vanity plate** and then outputs **Valid** if it meets all of the requirements, or **Invalid** otherwise.  
@@ -31,3 +33,6 @@ The program must be structured such that:
 
 ## 💻 Solution
 👉 [plates.py](plates.py)
+
+🔗 **Official exercise**: [Vanity Plates — CS50 Python, Pset 2](https://cs50.harvard.edu/python/psets/2/plates/)
+

@@ -1,3 +1,5 @@
+# 😊 Emojize
+
 ## 📌 Task
 Implement a program that prompts the user for a **string** in English and then outputs the **“emojized”** version of that string,  
 converting any emoji codes (aliases) contained within to their corresponding emoji characters.  
@@ -24,3 +26,5 @@ converting any emoji codes (aliases) contained within to their corresponding emo
 
 ## 💻 Solution
 👉 [emojize.py](emojize.py)
+
+🔗 **Official exercise**: [Emojize — CS50 Python, Pset 4](https://cs50.harvard.edu/python/psets/4/emojize/)

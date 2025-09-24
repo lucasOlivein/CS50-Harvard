@@ -30,3 +30,6 @@
 
 ## 💻 Solution
 👉 [watch.py](watch.py)
+
+🔗 **Official exercise**: [Watch on YouTube — CS50 Python, Pset 7](https://cs50.harvard.edu/python/psets/7/watch/)
+

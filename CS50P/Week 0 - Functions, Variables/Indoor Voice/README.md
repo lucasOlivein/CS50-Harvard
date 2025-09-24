@@ -1,3 +1,4 @@
+# 🎤 Indoor Voice
 ## 📌 Task
 
 Implement a program in **Python** that asks the user for input  
@@ -20,3 +21,6 @@ and prints the same text in **lowercase**.
 ## 💻 Solution
 
 👉 [indoor.py](indoor.py)
+
+🔗 **Official exercise**: [Indoor Voice — CS50 Python, Pset 0](https://cs50.harvard.edu/python/psets/0/indoor/)  
+ 

@@ -1,3 +1,5 @@
+# ✉️ Frank, Ian and Glen’s Letters
+
 ## 📌 Task
 Implement a program that:  
 
@@ -40,3 +42,5 @@ Implement a program that:
 
 ## 💻 Solution
 👉 [figlet.py](figlet.py)
+
+🔗 **Official exercise**: [Frank, Ian and Glen’s Letters — CS50 Python, Pset 4](https://cs50.harvard.edu/python/psets/4/letters/)
