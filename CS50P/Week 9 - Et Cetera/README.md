@@ -1,5 +1,5 @@
 # 🧠 Final Project
-
+After solved each and every course's problem, it's time to the final project, a Python program of your very own! The design and implamentation is entirely up to you, albeit subject to these requirements:
 ## ⚙️ Requirements
 ### 🐍 Implementation
 - ⬜ The project must be implemented in Python.
@@ -22,52 +22,42 @@
 ### 💭  Q1.  What will your software do?
 _What features will it have? How will it be executed?_
 
-
-
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 10px;">💬</div>
-  <pre style="margin: 0;"><code></code></pre>
-</div>
+1. > 💬 In the beginning, it will draw **basic shapes** such as triangles, squares, and circles. Later, it will support **3D objects** like cubes, pyramids, and spheres.
+2. > 💬 Then, it will include **input support** to select or modify objects and to control the **camera perspective** through rotation, scaling, and translation.
+3. > 💬 Finally, it will have a **logic module** responsible for handling geometric forms and transformations.
+  
 
 ### 📘 Q2. What new skills will you need to acquire?
 _What topics will you need to research?_
 
-
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 10px;">💬</div>
-  <pre style="margin: 0;"><code></code></pre>
-</div>
+1. > 💬 I’ll need to learn how to use the **Pygfx library** and understand how to apply **linear transformations**.
+2. > 💬 I’ll also review the **Unit Tests** (Week 5) topic from the course to explore how testing can be applied in this project’s context.
+3. > 💬 I might also use **Object-Oriented Programming** (Week 8), implementing a **base class** to represent geometric objects and **derived classes** for specific shapes such as triangles, spheres, and so on.
 
 ### 🧑‍🤝‍🧑 If working with one or two classmates, who will do what?
-
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 10px;">💬</div>
-  <pre style="margin: 0;"><code></code></pre>
-</div>
+> 💬 ...
 
 ### 🎯  What would be good, better, and best outcomes for your project?
 
-<div style="display: flex; align-items: center;">
-  <div style="margin-right: 10px;">💬</div>
-  <pre style="margin: 0;"><code></code></pre>
-</div>
+> 💬 ...
+  
 
 ## 📤 Submittion
 ### 🎬 Step 1 of 3
 - ⬜ Create a short video to present your project to the world.
-    - Should have no more than 3 minutes in length
+    - Should have no more than 3 minutes in length.
 - ⬜ Your video must begin with an opening section that displays:
-    - Your project’s title
-    - Your name
-    - Your GitHub and edX usernames
-    - Your city and country
-    - The date you have recorded this video
+    - Your project’s title.
+    - Your name.
+    - Your GitHub and edX usernames.
+    - Your city and country.
+    - The date you have recorded this video.
 
 ### 📝  Step 2 of 3
 - ✅ Create a `README.md` text file (named exactly that!) in your ~/project folder that explains your project. 
 - ⬜ This file should include:
     - ✅ The project title. 
-    - ⬜ The URL of your video (created in step 1 above) 
+    - ⬜ The URL of your video (created in step 1 above).
     - ⬜ A description of your project. 
 - ✅ You may use the below as a template.
     ```
