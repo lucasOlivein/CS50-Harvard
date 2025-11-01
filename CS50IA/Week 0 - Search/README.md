@@ -1,0 +1,6 @@
+# 🚀  Project 0
+
+📌 Complete both of the below.
+
+- ✅ [Degrees](./degrees/)   
+- ✅ [Tic-Tac-Toe](./tictactoe/)
