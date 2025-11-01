@@ -1,18 +1,22 @@
-# CS50's Introduction to Databases with SQL
-### Problem Set 0 - Querying
-- [X] Submit Cyberchase
-- Submit one of:
-  - [ ] 36 Views
-  - [X] Normals
-- [X] Submit Players
-### Problem Set 1 - Relating
+# 🗄️  CS50's Introduction to Databases with SQL
 
-### Problem Set 2 - Designing
+<p align="left">
+  <img src="https://img.shields.io/badge/Progress-1%2F7%20weeks-6C757D?style=for-the-badge&logo=databricks&logoColor=white"/> 
+  <img src="https://img.shields.io/badge/14%25-red?style=for-the-badge"/>
+  
+</p>
 
-### Problem Set 3 - Writing
 
-### Problem Set 4 - Viewing
+- ✅ [Week 0 - Querying](./Week%200%20-%20Querying/)
 
-### Problem Set 5 - Optimizing
+- ⬜ Week 1 - Relating
 
-### Problem Set 6 - Scaling
+- ⬜ Week 2 - Designing
+
+- ⬜ Week 3 - Writing
+
+- ⬜ Week 4 - Viewing
+
+- ⬜ Week 5 - Optimizing
+
+- ⬜ Week 6 - Scaling
