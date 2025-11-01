@@ -1,5 +1,6 @@
-# CS50’s Introduction to Artificial Intelligence with Python
-## Project 2
-Complete both of the below.
-[ ] Shopping
-[ ] Nim
+# 🚀 Project 4
+
+📌 Complete both of the below.
+
+- ✅ [Shopping](./shopping/)  
+- ✅ [Nim](./nim/)
