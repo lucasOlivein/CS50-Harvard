@@ -1,5 +1,6 @@
-# CS50’s Introduction to Artificial Intelligence with Python
-## Project 2
-Complete both of the below.
-[ ] PageRank
-[ ] MHeredity
+# 🚀 Project 2
+
+📌 Complete both of the below.
+
+- ✅ [PageRank](./pagerank/)  
+- ✅ [Heredity](./heredity/)
