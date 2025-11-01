@@ -1,4 +1,6 @@
-# CS50’s Introduction to Artificial Intelligence with Python
-## Project 1
-- Kights
-- Minesweeper
+# 🚀 Project 1
+
+📌 Complete both of the below.
+
+- ✅ [Knights](./knights/)  
+- ✅ [Minesweeper](./minesweeper/)
