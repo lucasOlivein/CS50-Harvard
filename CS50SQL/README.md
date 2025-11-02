@@ -6,17 +6,14 @@
   
 </p>
 
-
+## 🗓  Weeks & Problem Sets
 - ✅ [Week 0 - Querying](./Week%200%20-%20Querying/)
-
-- ⬜ Week 1 - Relating
-
+- 👉 ⬜ Week 1 - Relating
 - ⬜ Week 2 - Designing
-
 - ⬜ Week 3 - Writing
-
 - ⬜ Week 4 - Viewing
-
 - ⬜ Week 5 - Optimizing
-
 - ⬜ Week 6 - Scaling
+
+## 📂  Projects
+- ⬜ Final Project
