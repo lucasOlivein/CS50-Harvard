@@ -3,6 +3,10 @@
 
   <img src="https://img.shields.io/badge/Progress-4%2F9%20weeks-00BFFF?style=for-the-badge&logo=django&logoColor=white"/> 
   <img src="https://img.shields.io/badge/44%25-yellow?style=for-the-badge"/>
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey?style=for-the-badge&logo=creativecommons&logoColor=white"/>
+  </a>
+
 </p>
 
 
@@ -26,3 +30,11 @@
 3. ⬜ Mail
 4. ⬜ Network
 5. ⬜ Final Project
+
+## 📄 License
+This course is part of a personal study repository based on 
+[CS50 by Harvard University](https://cs50.harvard.edu/), 
+licensed under the 
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+See the [main license file](../LICENSE) for details.
