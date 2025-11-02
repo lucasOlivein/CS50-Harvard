@@ -1,7 +1,7 @@
-# 📘 CS50's Introduction to Artificial Intelligence with Python
+# 🔮 CS50's Introduction to Artificial Intelligence with Python
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Progress-5%2F7%20weeks-blue?style=for-the-badge&logo=python&logoColor=white"/> 
+  <img src="https://img.shields.io/badge/Progress-5%2F7%20weeks-4B0082?style=for-the-badge&logo=python&logoColor=white"/> 
   <img src="https://img.shields.io/badge/71%25-9CCC65?style=for-the-badge"/>
 </p>
 
