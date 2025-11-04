@@ -1,5 +1,10 @@
-# 🚀 [Project 3](https://cs50.harvard.edu/ai/projects/3/)
+# 🗓 Week 3 - Optimization
 
-📌 Complete the below.
+_Task:_  
+📌 Complete the following project.
+
+## 📂 Project
 
 - ✅ [Crossword](./crossword/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/3/)
