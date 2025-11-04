@@ -1,5 +1,10 @@
-# 🚀 [Project 5](https://cs50.harvard.edu/ai/projects/5/)
+# 🗓 Week 5 - Neural Networks
 
-📌 Complete the below.
+_Task:_  
+📌 Complete the following project.
 
-- ⬜  Traffic
+## 📂 Project
+
+- ⬜ [Traffic](./traffic/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/5/)

@@ -1,6 +1,11 @@
-# 🚀 [Project 6](https://cs50.harvard.edu/ai/projects/6/)
+# 🗓 Week 6 - Language
 
-📌 Complete both of the below:
+_Task:_  
+📌 Complete both of the following projects.
 
-- ⬜ Parser
-- ⬜ Attention
+## 📂 Projects
+
+- ⬜ [Parser](./parser/)
+- ⬜ [Questions](./questions/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/6/)

@@ -1,6 +1,11 @@
-# 🚀  [Project 0](https://cs50.harvard.edu/ai/projects/0/)
+# 🗓 Week 0 - Search
 
-📌 Complete both of the below.
+_Task:_  
+📌 Complete both of the following projects.
 
-- ✅ [Degrees](./degrees/)   
+## 📂 Projects
+
+- ✅ [Degrees](./degrees/)
 - ✅ [Tic-Tac-Toe](./tictactoe/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/0/)
