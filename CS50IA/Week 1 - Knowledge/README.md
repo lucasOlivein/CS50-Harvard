@@ -1,6 +1,11 @@
-# 🚀 [Project 1](https://cs50.harvard.edu/ai/projects/1/)
+# 🗓 Week 1 - Knowledge
 
-📌 Complete both of the below.
+_Task:_  
+📌 Complete both of the projects below.
 
-- ✅ [Knights](./knights/)  
+## 📂 Projects
+
+- ✅ [Knights](./knights/)
 - ✅ [Minesweeper](./minesweeper/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/1/)
