@@ -1,6 +1,11 @@
-# 🚀 [Project 2](https://cs50.harvard.edu/ai/projects/2/)
+# 🗓 Week 2 - Uncertainty
 
-📌 Complete both of the below.
+_Task:_  
+📌 Complete both of the following projects.
 
-- ✅ [PageRank](./pagerank/)  
+## 📂 Projects
+
+- ✅ [PageRank](./pagerank/)
 - ✅ [Heredity](./heredity/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/2/)
