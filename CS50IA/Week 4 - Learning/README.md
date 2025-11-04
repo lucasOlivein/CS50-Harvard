@@ -1,6 +1,11 @@
-# 🚀 [Project 4](https://cs50.harvard.edu/ai/projects/4/)
+# 🗓 Week 4 - Learning
 
-📌 Complete both of the below.
+_Task:_  
+📌 Complete both of the following projects.
 
-- ✅ [Shopping](./shopping/)  
+## 📂 Projects
+
+- ✅ [Shopping](./shopping/)
 - ✅ [Nim](./nim/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/4/)
