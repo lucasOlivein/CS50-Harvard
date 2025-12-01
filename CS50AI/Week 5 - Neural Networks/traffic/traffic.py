@@ -1,4 +1,4 @@
-import cv2
+import cv2 as cv
 import numpy as np
 import os
 import sys
@@ -58,8 +58,33 @@ def load_data(data_dir):
     be a list of integer labels, representing the categories for each of the
     corresponding `images`.
     """
-    raise NotImplementedError
+    # Check if data_dir is a valid directory
+    if not os.path.isdir(data_dir):
+        sys.exit("Invaled data directory")
+    
+    images = []
+    labels = []
 
+    # Iterate over each directory in data_dir
+    for directory in os.listdir(data_dir):
+        path = os.path.join(data_dir, directory)
+
+        # Check for valid directories in data_dir
+        if os.path.isdir(path):
+
+            # Iterate over each file in a specific directory in data_dir
+            for file in os.listdir(path):
+
+                # Reading and resizing the image
+                img = cv.resize(src=cv.imread(os.path.join(path, file)),
+                                dsize=(IMG_WIDTH, IMG_HEIGHT),
+                                fx=0, fy=0, 
+                                interpolation=cv.INTER_AREA)
+                
+                images.append(img)
+                labels.append(directory)
+
+    return (images, labels)
 
 def get_model():
     """
