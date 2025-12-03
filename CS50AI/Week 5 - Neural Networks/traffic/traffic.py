@@ -1,8 +1,13 @@
 import cv2 as cv
 import numpy as np
-import os
 import sys
+
+import os
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
+
 import tensorflow as tf
+from tensorflow.keras import Sequential, Input
+from tensorflow.keras.layers import Conv2D, Flatten, Dense
 
 from sklearn.model_selection import train_test_split
 
@@ -92,7 +97,22 @@ def get_model():
     `input_shape` of the first layer is `(IMG_WIDTH, IMG_HEIGHT, 3)`.
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
-    raise NotImplementedError
+
+    model = Sequential([
+        Input(shape=(30, 30, 3)),
+        Conv2D(filters=8, kernel_size=3, strides=1, padding="same", use_bias=False),
+        Flatten(),
+        Dense(NUM_CATEGORIES, activation="softmax")
+    ])
+
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+        loss="categorical_crossentropy",
+        metrics=['accuracy'])
+    
+    return model
+
+
 
 
 if __name__ == "__main__":
