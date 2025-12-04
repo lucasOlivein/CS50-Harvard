@@ -7,7 +7,9 @@ os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 import tensorflow as tf
 from tensorflow.keras import Sequential, Input, Model
-from tensorflow.keras.layers import Conv2D, Flatten, Dense, BatchNormalization, ReLU, Add, GlobalAveragePooling2D, MaxPooling2D
+from tensorflow.keras.layers import ( Conv2D, Flatten, Dense, BatchNormalization, 
+                                     ReLU, Add, AveragePooling2D, GlobalAveragePooling2D, MaxPooling2D, 
+                                     Concatenate)
 
 from sklearn.model_selection import train_test_split
 
@@ -98,84 +100,83 @@ def get_model():
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
 
-    def bottleneck_block(tensor, filters, stride=1, projection=False):
-        f1, f2, f3 = filters
-        shortcut = tensor
+    def conv_block(tensor, growth_rate):
+        x = BatchNormalization()(tensor)
+        x = ReLU()(x)
+        x = Conv2D(4 * growth_rate, 1, use_bias=False)(x)
 
-        # Convolution
-        tensor = Conv2D(f1, 1, strides=stride, padding="same", use_bias=False)(tensor)
-        tensor = BatchNormalization()(tensor)
-        tensor = ReLU()(tensor)
+        x = BatchNormalization()(x)
+        x = ReLU()(x)
 
-        tensor = Conv2D(f2, 3, padding="same", use_bias=False)(tensor)
-        tensor = BatchNormalization()(tensor)
-        tensor = ReLU()(tensor)
+        # Bottleneck
+        x = Conv2D(growth_rate, 3, padding="same", use_bias=False)(x)
 
-        tensor = Conv2D(f3, 1, padding="same", use_bias=False)(tensor)
-        tensor = BatchNormalization()(tensor)
-
-        # Skip
-        if projection or shortcut.shape[-1] != f3:
-            shortcut = Conv2D(f3, 1, strides=stride, padding="same", use_bias=False)(shortcut)
-            shortcut = BatchNormalization()(shortcut)
-        
-        tensor = Add()([tensor, shortcut])
-        tensor = ReLU()(tensor)
+        # Dense conection
+        tensor = Concatenate()([tensor, x])
         return tensor
 
-    # Initial
+    def dense_block(tensor, num_layers, growth_rate):
+        for _ in range(num_layers):
+            tensor = conv_block(tensor, growth_rate)
+        return tensor
+
+    def transition_layer(tensor, compression=0.5):
+        filters = int(tensor.shape[-1] * compression)
+        tensor = BatchNormalization()(tensor)
+        tensor = ReLU()(tensor)
+
+        # Compression
+        tensor = Conv2D(filters, 1, use_bias=False)(tensor)
+
+        # Pooling
+        tensor = AveragePooling2D(2, strides=2)(tensor)
+        return tensor
+
     input = Input((IMG_WIDTH, IMG_HEIGHT, 3))
 
-    # Data Augmentation
-    layer = tf.keras.Sequential([
-        tf.keras.layers.RandomFlip("horizontal"),
-        tf.keras.layers.RandomRotation(0.1),
-        tf.keras.layers.RandomZoom(0.1),
-    ])(input)
+    # DenseNet-121 
+    blocks = [6, 12, 24, 16]
+    
+    # DenseNet-169
+    # blocks=[6, 12, 32, 32]
 
-    layer = Conv2D(8, 7, strides=2, padding="same", use_bias=False)(layer)
+    # DenseNet-201
+    # blocks=[6, 12, 48, 32]
+
+    # DenseNet-264
+    # blocks=[6, 12, 64, 48]
+    
+    # growth_rate = 32
+    # compression = 0.5
+
+    # Custom growth_rate & compression
+    growth_rate = 4
+    compression = 0.6
+
+    # Initial
+    layer = Conv2D(64, 7, strides=2, padding="same", use_bias=False)(input)
     layer = BatchNormalization()(layer)
     layer = ReLU()(layer)
     layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
 
-    # Stage 1
-    layer = bottleneck_block(layer, filters=(2,2,8), projection=True) 
-    layer = bottleneck_block(layer, filters=(2,2,8))                  
-    layer = bottleneck_block(layer, filters=(2,2,8)) 
+    # Dense blocks & Transitions
+    for i, num_layers in enumerate(blocks):
+        layer = dense_block(layer, num_layers, growth_rate)
 
-    # Stage 2
-    layer = bottleneck_block(layer, filters=(4,4,16), stride=2, projection=True)
-    layer = bottleneck_block(layer, filters=(4,4,16))
-    layer = bottleneck_block(layer, filters=(4,4,16))
-    layer = bottleneck_block(layer, filters=(4,4,16))
-
-    # Stage 3
-    layer = bottleneck_block(layer, filters=(32, 32, 128), stride=2, projection=True)
-    layer = bottleneck_block(layer, filters=(32, 32, 128))
-    layer = bottleneck_block(layer, filters=(32, 32, 128))
-    layer = bottleneck_block(layer, filters=(32, 32, 128))
-    layer = bottleneck_block(layer, filters=(32, 32, 128))
-    layer = bottleneck_block(layer, filters=(32, 32, 128))
-
-    # Stage 4
-    layer = bottleneck_block(layer, filters=(64, 64, 256), stride=2, projection=True)
-    layer = bottleneck_block(layer, filters=(64, 64, 256))
-    layer = bottleneck_block(layer, filters=(64, 64, 256))
+        # Skip transition on the last block
+        if i != len(blocks) - 1:
+            layer = transition_layer(layer, compression)
 
     # Final
+    layer = BatchNormalization()(layer)
+    layer = ReLU()(layer)
     layer = GlobalAveragePooling2D()(layer)
     output = Dense(NUM_CATEGORIES, activation="softmax")(layer)
 
     model = Model(input, output)
-
-    learningSchenduler = tf.keras.optimizers.schedules.CosineDecay(
-        initial_learning_rate=1e-3,  
-        decay_steps=50000,
-        alpha=0.0
-        )
     
     model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=learningSchenduler),
+        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
         loss="categorical_crossentropy",
         metrics=['accuracy'])
     
