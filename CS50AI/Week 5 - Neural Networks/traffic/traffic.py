@@ -11,7 +11,7 @@ from tensorflow.keras.layers import Conv2D, Flatten, Dense, BatchNormalization, 
 
 from sklearn.model_selection import train_test_split
 
-EPOCHS = 10
+EPOCHS = 50
 IMG_WIDTH = 30
 IMG_HEIGHT = 30
 NUM_CATEGORIES = 43
@@ -125,7 +125,15 @@ def get_model():
 
     # Initial
     input = Input((IMG_WIDTH, IMG_HEIGHT, 3))
-    layer = Conv2D(8, 7, strides=2, padding="same", use_bias=False)(input)
+
+    # Data Augmentation
+    layer = tf.keras.Sequential([
+        tf.keras.layers.RandomFlip("horizontal"),
+        tf.keras.layers.RandomRotation(0.1),
+        tf.keras.layers.RandomZoom(0.1),
+    ])(input)
+
+    layer = Conv2D(8, 7, strides=2, padding="same", use_bias=False)(layer)
     layer = BatchNormalization()(layer)
     layer = ReLU()(layer)
     layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
@@ -159,8 +167,15 @@ def get_model():
     output = Dense(NUM_CATEGORIES, activation="softmax")(layer)
 
     model = Model(input, output)
+
+    learningSchenduler = tf.keras.optimizers.schedules.CosineDecay(
+        initial_learning_rate=1e-3,  
+        decay_steps=50000,
+        alpha=0.0
+        )
+    
     model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+        optimizer=tf.keras.optimizers.Adam(learning_rate=learningSchenduler),
         loss="categorical_crossentropy",
         metrics=['accuracy'])
     
