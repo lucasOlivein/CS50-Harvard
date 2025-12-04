@@ -6,8 +6,8 @@ import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 import tensorflow as tf
-from tensorflow.keras import Sequential, Input
-from tensorflow.keras.layers import Conv2D, Flatten, Dense
+from tensorflow.keras import Sequential, Input, Model
+from tensorflow.keras.layers import Conv2D, Flatten, Dense, BatchNormalization, ReLU, Add, GlobalAveragePooling2D, MaxPooling2D
 
 from sklearn.model_selection import train_test_split
 
@@ -98,13 +98,67 @@ def get_model():
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
 
-    model = Sequential([
-        Input(shape=(30, 30, 3)),
-        Conv2D(filters=8, kernel_size=3, strides=1, padding="same", use_bias=False),
-        Flatten(),
-        Dense(NUM_CATEGORIES, activation="softmax")
-    ])
+    def bottleneck_block(tensor, filters, stride=1, projection=False):
+        f1, f2, f3 = filters
+        shortcut = tensor
 
+        # Convolution
+        tensor = Conv2D(f1, 1, strides=stride, padding="same", use_bias=False)(tensor)
+        tensor = BatchNormalization()(tensor)
+        tensor = ReLU()(tensor)
+
+        tensor = Conv2D(f2, 3, padding="same", use_bias=False)(tensor)
+        tensor = BatchNormalization()(tensor)
+        tensor = ReLU()(tensor)
+
+        tensor = Conv2D(f3, 1, padding="same", use_bias=False)(tensor)
+        tensor = BatchNormalization()(tensor)
+
+        # Skip
+        if projection or shortcut.shape[-1] != f3:
+            shortcut = Conv2D(f3, 1, strides=stride, padding="same", use_bias=False)(shortcut)
+            shortcut = BatchNormalization()(shortcut)
+        
+        tensor = Add()([tensor, shortcut])
+        tensor = ReLU()(tensor)
+        return tensor
+
+    # Initial
+    input = Input((IMG_WIDTH, IMG_HEIGHT, 3))
+    layer = Conv2D(8, 7, strides=2, padding="same", use_bias=False)(input)
+    layer = BatchNormalization()(layer)
+    layer = ReLU()(layer)
+    layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
+
+    # Stage 1
+    layer = bottleneck_block(layer, filters=(2,2,8), projection=True) 
+    layer = bottleneck_block(layer, filters=(2,2,8))                  
+    layer = bottleneck_block(layer, filters=(2,2,8)) 
+
+    # Stage 2
+    layer = bottleneck_block(layer, filters=(4,4,16), stride=2, projection=True)
+    layer = bottleneck_block(layer, filters=(4,4,16))
+    layer = bottleneck_block(layer, filters=(4,4,16))
+    layer = bottleneck_block(layer, filters=(4,4,16))
+
+    # Stage 3
+    layer = bottleneck_block(layer, filters=(32, 32, 128), stride=2, projection=True)
+    layer = bottleneck_block(layer, filters=(32, 32, 128))
+    layer = bottleneck_block(layer, filters=(32, 32, 128))
+    layer = bottleneck_block(layer, filters=(32, 32, 128))
+    layer = bottleneck_block(layer, filters=(32, 32, 128))
+    layer = bottleneck_block(layer, filters=(32, 32, 128))
+
+    # Stage 4
+    layer = bottleneck_block(layer, filters=(64, 64, 256), stride=2, projection=True)
+    layer = bottleneck_block(layer, filters=(64, 64, 256))
+    layer = bottleneck_block(layer, filters=(64, 64, 256))
+
+    # Final
+    layer = GlobalAveragePooling2D()(layer)
+    output = Dense(NUM_CATEGORIES, activation="softmax")(layer)
+
+    model = Model(input, output)
     model.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
         loss="categorical_crossentropy",
