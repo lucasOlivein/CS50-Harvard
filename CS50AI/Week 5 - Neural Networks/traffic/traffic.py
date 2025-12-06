@@ -1,15 +1,16 @@
 import cv2 as cv
 import numpy as np
 import sys
+import math
 
 import os
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 
 import tensorflow as tf
 from tensorflow.keras import Sequential, Input, Model
-from tensorflow.keras.layers import ( Conv2D, Flatten, Dense, BatchNormalization, 
+from tensorflow.keras.layers import ( Conv2D, DepthwiseConv2D, Flatten, Dense, BatchNormalization, 
                                      ReLU, Add, AveragePooling2D, GlobalAveragePooling2D, MaxPooling2D, 
-                                     Concatenate)
+                                     Concatenate, Reshape, Multiply, Activation, Lambda, Dropout)
 
 from sklearn.model_selection import train_test_split
 
@@ -99,78 +100,149 @@ def get_model():
     `input_shape` of the first layer is `(IMG_WIDTH, IMG_HEIGHT, 3)`.
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
+    # Round filters based on width coefficient
+    def round_filters(filters, width_coefficient, depth_divisor=8):
+        if not width_coefficient:
+            return filters
+        
+        filters *= width_coefficient
+        new_filters = int(filters + depth_divisor / 2) // depth_divisor * depth_divisor
+        new_filters = max(depth_divisor, new_filters)
+        
+        if new_filters < 0.9 * filters:
+            new_filters += depth_divisor
+        
+        return int(new_filters)
 
-    def conv_block(tensor, growth_rate):
-        x = BatchNormalization()(tensor)
-        x = ReLU()(x)
-        x = Conv2D(4 * growth_rate, 1, use_bias=False)(x)
+    def round_repeats(repeats, depth_coefficient):
+        if not depth_coefficient:
+            return repeats
+        return int(math.ceil(depth_coefficient * repeats))
 
-        x = BatchNormalization()(x)
-        x = ReLU()(x)
+    # Squeeze-and-Excitation
+    def sq_ex_block(tensor, sq_ex_ratio):
+        filters = tensor.shape[-1]
+        reduced = max(1, int(filters * sq_ex_ratio))
 
-        # Bottleneck
-        x = Conv2D(growth_rate, 3, padding="same", use_bias=False)(x)
+        layer = GlobalAveragePooling2D()(tensor)
+        layer = Reshape((1, 1, filters))(layer)
+        layer = Conv2D(reduced, 1, activation="swish")(layer)
+        layer = Conv2D(filters, 1, activation="sigmoid")(layer)
 
-        # Dense conection
-        tensor = Concatenate()([tensor, x])
-        return tensor
+        return Multiply()([tensor, layer])
 
-    def dense_block(tensor, num_layers, growth_rate):
-        for _ in range(num_layers):
-            tensor = conv_block(tensor, growth_rate)
-        return tensor
+    # Stochastic depth (DropConnect)
+    class DropConnect(tf.keras.Layer):
+        def __init__(self, rate=0.0, **kwargs):
+            super().__init__(**kwargs)
+            self.rate = rate
 
-    def transition_layer(tensor, compression=0.5):
-        filters = int(tensor.shape[-1] * compression)
-        tensor = BatchNormalization()(tensor)
-        tensor = ReLU()(tensor)
+        def call(self, x, training=False):
+            if not training or self.rate == 0:
+                return x
+            keep_prob = 1 - self.rate
+            batch = tf.shape(x)[0]
+            random_tensor = keep_prob + tf.random.uniform([batch,1,1,1])
+            binary = tf.floor(random_tensor)
+            return (x / keep_prob) * binary
 
-        # Compression
-        tensor = Conv2D(filters, 1, use_bias=False)(tensor)
+    
 
-        # Pooling
-        tensor = AveragePooling2D(2, strides=2)(tensor)
-        return tensor
+    # MBConv (mobile inverted bottleneck)
+    def mbconv_block(tensor, in_filters, out_filters, kernel_size, strides,
+                    expand_ratio, se_ratio, drop_connect_rate):
+
+        layer = tensor
+        expanded_filters = in_filters * expand_ratio
+
+        # Expand
+        if expand_ratio != 1:
+            layer = Conv2D(expanded_filters, 1, padding="same", use_bias=False)(layer)
+            layer = BatchNormalization()(layer)
+            layer = Activation("swish")(layer)
+
+        # Depthwise
+        layer = DepthwiseConv2D(kernel_size, strides=strides,
+                                padding="same", use_bias=False)(layer)
+        layer = BatchNormalization()(layer)
+        layer = Activation("swish")(layer)
+
+        # Squeeze and excitation
+        if se_ratio and 0 < se_ratio <= 1:
+            layer = sq_ex_block(layer, se_ratio)
+
+        # Project
+        layer = Conv2D(out_filters, 1, padding="same", use_bias=False)(layer)
+        layer = BatchNormalization()(layer)
+
+        # Skip connection
+        if strides == 1 and in_filters == out_filters:
+            if drop_connect_rate:
+                layer = DropConnect(drop_connect_rate)(layer)
+            layer = Add()([layer, tensor])
+
+        return layer
+    
+    # (kernel, repeats, in_filters, out_filters, expand, stride, squ_exci)
+    blocks_args = [
+        (3, 1, 32, 16, 1, 1, 0.25),
+        (3, 2, 16, 24, 6, 2, 0.25),
+        (5, 2, 24, 40, 6, 2, 0.25),
+        (3, 3, 40, 80, 6, 2, 0.25),
+        (5, 3, 80, 112, 6, 1, 0.25),
+        (5, 4, 112, 192, 6, 2, 0.25),
+        (3, 1, 192, 320, 6, 1, 0.25),
+    ]
+
+    # Custom values
+    width_coefficient = 0.35
+    depth_coefficient = 0.35
+    dropout_rate = 0.2
+    drop_connect_rate = 0.2
 
     input = Input((IMG_WIDTH, IMG_HEIGHT, 3))
 
-    # DenseNet-121 
-    blocks = [6, 12, 24, 16]
-    
-    # DenseNet-169
-    # blocks=[6, 12, 32, 32]
-
-    # DenseNet-201
-    # blocks=[6, 12, 48, 32]
-
-    # DenseNet-264
-    # blocks=[6, 12, 64, 48]
-    
-    # growth_rate = 32
-    # compression = 0.5
-
-    # Custom growth_rate & compression
-    growth_rate = 4
-    compression = 0.6
-
-    # Initial
-    layer = Conv2D(64, 7, strides=2, padding="same", use_bias=False)(input)
+    # Stem
+    out_channels = round_filters(32, width_coefficient)
+    layer = Conv2D(out_channels, 3, strides=2, padding="same", use_bias=False)(input)
     layer = BatchNormalization()(layer)
-    layer = ReLU()(layer)
-    layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
+    layer = Activation("swish")(layer)
 
-    # Dense blocks & Transitions
-    for i, num_layers in enumerate(blocks):
-        layer = dense_block(layer, num_layers, growth_rate)
+    # Blocks
+    total_blocks = sum(round_repeats(r, depth_coefficient) for (_, r, _, _, _, _, _) in blocks_args)
+    block_i = 0
 
-        # Skip transition on the last block
-        if i != len(blocks) - 1:
-            layer = transition_layer(layer, compression)
+    for (k, r, in_f, out_f, exp, s, se) in blocks_args:
 
-    # Final
+        repeats = round_repeats(r, depth_coefficient)
+        in_filters  = round_filters(in_f, width_coefficient)
+        out_filters = round_filters(out_f, width_coefficient)
+
+        for j in range(repeats):
+            stride = s if j == 0 else 1
+            layer = mbconv_block(
+                layer,
+                in_filters=in_filters if j == 0 else out_filters,
+                out_filters=out_filters,
+                kernel_size=k,
+                strides=stride,
+                expand_ratio=exp,
+                se_ratio=se,
+                drop_connect_rate=drop_connect_rate * block_i / total_blocks
+            )
+            block_i += 1
+
+    # Head
+    head_filters = round_filters(1280, width_coefficient)
+    layer = Conv2D(head_filters, 1, padding="same", use_bias=False)(layer)
     layer = BatchNormalization()(layer)
-    layer = ReLU()(layer)
+    layer = Activation("swish")(layer)
+
+    # Classification
     layer = GlobalAveragePooling2D()(layer)
+    if dropout_rate:
+        layer = Dropout(dropout_rate)(layer)
+
     output = Dense(NUM_CATEGORIES, activation="softmax")(layer)
 
     model = Model(input, output)
