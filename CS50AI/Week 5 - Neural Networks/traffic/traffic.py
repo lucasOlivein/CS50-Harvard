@@ -10,7 +10,8 @@ import tensorflow as tf
 from tensorflow.keras import Sequential, Input, Model
 from tensorflow.keras.layers import ( Conv2D, DepthwiseConv2D, Flatten, Dense, BatchNormalization, 
                                      ReLU, Add, AveragePooling2D, GlobalAveragePooling2D, MaxPooling2D, 
-                                     Concatenate, Reshape, Multiply, Activation, Lambda, Dropout)
+                                     Concatenate, Reshape, Multiply, Activation, Lambda, Dropout,
+                                     LayerNormalization, DepthwiseConv2D)
 
 from sklearn.model_selection import train_test_split
 
@@ -100,162 +101,116 @@ def get_model():
     `input_shape` of the first layer is `(IMG_WIDTH, IMG_HEIGHT, 3)`.
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
-    # Round filters based on width coefficient
-    def round_filters(filters, width_coefficient, depth_divisor=8):
-        if not width_coefficient:
-            return filters
-        
-        filters *= width_coefficient
-        new_filters = int(filters + depth_divisor / 2) // depth_divisor * depth_divisor
-        new_filters = max(depth_divisor, new_filters)
-        
-        if new_filters < 0.9 * filters:
-            new_filters += depth_divisor
-        
-        return int(new_filters)
 
-    def round_repeats(repeats, depth_coefficient):
-        if not depth_coefficient:
-            return repeats
-        return int(math.ceil(depth_coefficient * repeats))
-
-    # Squeeze-and-Excitation
-    def sq_ex_block(tensor, sq_ex_ratio):
-        filters = tensor.shape[-1]
-        reduced = max(1, int(filters * sq_ex_ratio))
-
-        layer = GlobalAveragePooling2D()(tensor)
-        layer = Reshape((1, 1, filters))(layer)
-        layer = Conv2D(reduced, 1, activation="swish")(layer)
-        layer = Conv2D(filters, 1, activation="sigmoid")(layer)
-
-        return Multiply()([tensor, layer])
-
-    # Stochastic depth (DropConnect)
-    class DropConnect(tf.keras.Layer):
-        def __init__(self, rate=0.0, **kwargs):
+    # DropPath (Stochastic Depth)
+    class DropPath(tf.keras.Layer):
+        def __init__(self, drop_prob=0.0, **kwargs):
             super().__init__(**kwargs)
-            self.rate = rate
+            self.drop_prob = float(drop_prob)
 
         def call(self, x, training=False):
-            if not training or self.rate == 0:
+            if (not training) or (self.drop_prob == 0.0):
                 return x
-            keep_prob = 1 - self.rate
+
+            keep_prob = 1.0 - self.drop_prob
             batch = tf.shape(x)[0]
-            random_tensor = keep_prob + tf.random.uniform([batch,1,1,1])
-            binary = tf.floor(random_tensor)
-            return (x / keep_prob) * binary
+            # broadcast mask shape: (batch, 1, 1, 1) for channels-last
+            shape = (batch,) + (1,) * (len(x.shape) - 1)
+            random_tensor = keep_prob + tf.random.uniform(shape, dtype=x.dtype)
+            binary_mask = tf.floor(random_tensor)
 
+            return (x / keep_prob) * binary_mask
     
+    # Layer Scale
+    class LayerScale(tf.keras.Layer):
+        def __init__(self, dim, init_value=1e-6, **kwargs):
+            super().__init__(**kwargs)
+            self.dim = int(dim)
+            self.init_value = float(init_value)
 
-    # MBConv (mobile inverted bottleneck)
-    def mbconv_block(tensor, in_filters, out_filters, kernel_size, strides,
-                    expand_ratio, se_ratio, drop_connect_rate):
+        def build(self, input_shape):
+            self.gamma = self.add_weight(
+                name="gamma",
+                shape=(self.dim,),
+                initializer=tf.keras.initializers.Constant(self.init_value),
+                trainable=True,
+                dtype=self.dtype,
+            )
 
-        layer = tensor
-        expanded_filters = in_filters * expand_ratio
+        def call(self, x):
+            return x * self.gamma
 
-        # Expand
-        if expand_ratio != 1:
-            layer = Conv2D(expanded_filters, 1, padding="same", use_bias=False)(layer)
-            layer = BatchNormalization()(layer)
-            layer = Activation("swish")(layer)
 
-        # Depthwise
-        layer = DepthwiseConv2D(kernel_size, strides=strides,
-                                padding="same", use_bias=False)(layer)
-        layer = BatchNormalization()(layer)
-        layer = Activation("swish")(layer)
+    # ConvNeXt block
+    class ConvNeXtBlock(tf.keras.Layer):
+        def __init__(self, dim, drop_prob=0.0, layer_scale_init=1e-6, **kwargs):
+            super().__init__(**kwargs)
+            self.dim = int(dim)
+            self.drop_prob = float(drop_prob)
+            self.layer_scale_init = float(layer_scale_init)
 
-        # Squeeze and excitation
-        if se_ratio and 0 < se_ratio <= 1:
-            layer = sq_ex_block(layer, se_ratio)
+            self.dw = DepthwiseConv2D(kernel_size=7, padding="same")
+            self.norm = LayerNormalization(epsilon=1e-6)
+            self.pw1 = Conv2D(4 * self.dim, kernel_size=1)
+            self.pw2 = Conv2D(self.dim, kernel_size=1)
+            self.ls = LayerScale(self.dim, self.layer_scale_init)
+            self.dp = DropPath(self.drop_prob)
 
-        # Project
-        layer = Conv2D(out_filters, 1, padding="same", use_bias=False)(layer)
-        layer = BatchNormalization()(layer)
-
-        # Skip connection
-        if strides == 1 and in_filters == out_filters:
-            if drop_connect_rate:
-                layer = DropConnect(drop_connect_rate)(layer)
-            layer = Add()([layer, tensor])
-
-        return layer
-    
-    # (kernel, repeats, in_filters, out_filters, expand, stride, squ_exci)
-    blocks_args = [
-        (3, 1, 32, 16, 1, 1, 0.25),
-        (3, 2, 16, 24, 6, 2, 0.25),
-        (5, 2, 24, 40, 6, 2, 0.25),
-        (3, 3, 40, 80, 6, 2, 0.25),
-        (5, 3, 80, 112, 6, 1, 0.25),
-        (5, 4, 112, 192, 6, 2, 0.25),
-        (3, 1, 192, 320, 6, 1, 0.25),
-    ]
-
-    # Custom values
-    width_coefficient = 0.35
-    depth_coefficient = 0.35
-    dropout_rate = 0.2
-    drop_connect_rate = 0.2
+        def call(self, x, training=False):
+            shortcut = x
+            x = self.dw(x)
+            x = self.norm(x)
+            x = self.pw1(x)
+            x = tf.nn.gelu(x)
+            x = self.pw2(x)
+            x = self.ls(x)
+            x = self.dp(x, training=training)
+            return shortcut + x
 
     input = Input((IMG_WIDTH, IMG_HEIGHT, 3))
 
+    drop_path_rate = 0.0
+    layer_scale_init_value = 1e-6
+    
+    # Custom values
+    depths = (2, 2, 4, 2)
+    dims = (35, 70, 140, 280)
+
+
     # Stem
-    out_channels = round_filters(32, width_coefficient)
-    layer = Conv2D(out_channels, 3, strides=2, padding="same", use_bias=False)(input)
-    layer = BatchNormalization()(layer)
-    layer = Activation("swish")(layer)
+    layer = Conv2D(dims[0], kernel_size=4, strides=4, padding="same")(input)
+    layer = LayerNormalization(epsilon=1e-6)(layer)
 
-    # Blocks
-    total_blocks = sum(round_repeats(r, depth_coefficient) for (_, r, _, _, _, _, _) in blocks_args)
-    block_i = 0
+    # DropPath rates lineares
+    total_blocks = sum(depths)
+    dp_rates = [float(r) for r in tf.linspace(0.0, drop_path_rate, total_blocks).numpy()]
+    dp_index = 0
 
-    for (k, r, in_f, out_f, exp, s, se) in blocks_args:
+    # Stage 0
+    for _ in range(depths[0]):
+        layer = ConvNeXtBlock(dims[0], drop_prob=dp_rates[dp_index], layer_scale_init=layer_scale_init_value)(layer)
+        dp_index += 1
 
-        repeats = round_repeats(r, depth_coefficient)
-        in_filters  = round_filters(in_f, width_coefficient)
-        out_filters = round_filters(out_f, width_coefficient)
-
-        for j in range(repeats):
-            stride = s if j == 0 else 1
-            layer = mbconv_block(
-                layer,
-                in_filters=in_filters if j == 0 else out_filters,
-                out_filters=out_filters,
-                kernel_size=k,
-                strides=stride,
-                expand_ratio=exp,
-                se_ratio=se,
-                drop_connect_rate=drop_connect_rate * block_i / total_blocks
-            )
-            block_i += 1
-
-    # Head
-    head_filters = round_filters(1280, width_coefficient)
-    layer = Conv2D(head_filters, 1, padding="same", use_bias=False)(layer)
-    layer = BatchNormalization()(layer)
-    layer = Activation("swish")(layer)
-
-    # Classification
+    # Stages 1, 2, 3
+    for stage in range(1, 4):
+        layer = Conv2D(dims[stage], kernel_size=2, strides=2, padding="valid")(layer)
+        layer = LayerNormalization(epsilon=1e-6)(layer)
+        for _ in range(depths[stage]):
+            layer = ConvNeXtBlock(dims[stage], drop_prob=dp_rates[dp_index], layer_scale_init=layer_scale_init_value)(layer)
+            dp_index += 1
+    
     layer = GlobalAveragePooling2D()(layer)
-    if dropout_rate:
-        layer = Dropout(dropout_rate)(layer)
-
+    layer = LayerNormalization(epsilon=1e-6)(layer)
     output = Dense(NUM_CATEGORIES, activation="softmax")(layer)
 
     model = Model(input, output)
     
     model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+        optimizer=tf.keras.optimizers.AdamW(learning_rate=0.001),
         loss="categorical_crossentropy",
         metrics=['accuracy'])
     
     return model
-
-
-
 
 if __name__ == "__main__":
     main()
