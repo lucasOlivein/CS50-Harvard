@@ -1,4 +1,10 @@
-# CS50’s Introduction to Artificial Intelligence with Python
-## Project 5
-Complete the below.
-[ ] Traffic
+# 🗓 Week 5 - Neural Networks
+
+_Task:_  
+📌 Complete the following project.
+
+## 📂 Project
+
+- ✅ [Traffic](./traffic/)
+
+🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/5/)
