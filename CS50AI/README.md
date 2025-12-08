@@ -15,7 +15,7 @@
 - ✅ [Week 3 - Optimization](./Week%203%20-%20Optimization/)
 - ✅ [Week 4 - Learning](./Week%204%20-%20Learning/)
 - ✅ [Week 5 - Neural Networks](./Week%205%20-%20Neural%20Networks/)
-- ⬜ [Week 6 - Language](./Week%206%20-%20Language/)
+- 👉 ⬜ [Week 6 - Language](./Week%206%20-%20Language/)
 
 ## 📂 Projects
 
@@ -27,7 +27,7 @@
 | 3    | ✅ [Crossword](./Week%203%20-%20Optimization/crossword/) | - |
 | 4    | ✅ [Shopping](./Week%204%20-%20Learning/shopping/) | ✅ [Nim](./Week%204%20-%20Learning/nim/) |
 | 5    | ✅ [Traffic](./Week%205%20-%20Neural%20Networks/traffic/) | - |
-| 6    | ⬜ Parser | ⬜ Attention |
+| 6    | ⬜ [Parser](./Week%206%20-%20Language/parser/) | ⬜ [Attention](./Week%206%20-%20Language/attention/) |
 
 ## 📄 License
 This course is part of a personal study repository based on 
