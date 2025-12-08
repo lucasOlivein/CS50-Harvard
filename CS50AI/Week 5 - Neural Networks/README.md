@@ -5,6 +5,6 @@ _Task:_
 
 ## 📂 Project
 
-- ⬜ [Traffic](./traffic/)
+- ✅ [Traffic](./traffic/)
 
 🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/5/)

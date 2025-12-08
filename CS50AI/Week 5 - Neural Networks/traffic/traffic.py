@@ -1,9 +1,11 @@
-import cv2
-import numpy as np
-import os
-import sys
+from tensorflow.keras.layers import (Conv2D, Dense, ReLU, GlobalAveragePooling2D, MaxPooling2D)
+from tensorflow.keras import Input, Model
 import tensorflow as tf
-
+import cv2 as cv
+import numpy as np
+import sys
+import math
+import os
 from sklearn.model_selection import train_test_split
 
 EPOCHS = 10
@@ -58,7 +60,33 @@ def load_data(data_dir):
     be a list of integer labels, representing the categories for each of the
     corresponding `images`.
     """
-    raise NotImplementedError
+    # Check if data_dir is a valid directory
+    if not os.path.isdir(data_dir):
+        sys.exit("Invaled data directory")
+    
+    images = []
+    labels = []
+
+    # Iterate over each directory in data_dir
+    for directory in os.listdir(data_dir):
+        path = os.path.join(data_dir, directory)
+
+        # Check for valid directories in data_dir
+        if os.path.isdir(path):
+
+            # Iterate over each file in a specific directory in data_dir
+            for file in os.listdir(path):
+
+                # Reading and resizing the image
+                img = cv.resize(src=cv.imread(os.path.join(path, file)),
+                                dsize=(IMG_WIDTH, IMG_HEIGHT),
+                                fx=0, fy=0, 
+                                interpolation=cv.INTER_AREA)
+                
+                images.append(img)
+                labels.append(directory)
+
+    return (images, labels)
 
 
 def get_model():
@@ -67,7 +95,34 @@ def get_model():
     `input_shape` of the first layer is `(IMG_WIDTH, IMG_HEIGHT, 3)`.
     The output layer should have `NUM_CATEGORIES` units, one for each category.
     """
-    raise NotImplementedError
+    input = Input((IMG_WIDTH, IMG_HEIGHT, 3))
+
+    layer = Conv2D(32, kernel_size=4, strides=1, padding="same")(input)
+    layer = ReLU()(layer)
+    
+    layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
+    layer = Conv2D(64, kernel_size=4, strides=1, padding="same")(layer)
+    layer = ReLU()(layer)
+
+    layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
+    layer = Conv2D(124, kernel_size=4, strides=1, padding="same")(layer)
+    layer = ReLU()(layer)
+
+    layer = MaxPooling2D(pool_size=2, strides=2, padding="same")(layer)
+    layer = Conv2D(64, kernel_size=4, strides=1, padding="same")(layer)
+    layer = ReLU()(layer)
+
+    layer = GlobalAveragePooling2D()(layer)
+    output = Dense(NUM_CATEGORIES, activation="softmax")(layer)
+
+    model = Model(input, output)
+    
+    model.compile(
+        optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
+        loss="categorical_crossentropy",
+        metrics=['accuracy'])
+    
+    return model
 
 
 if __name__ == "__main__":
