@@ -1,5 +1,7 @@
+from nltk.tokenize import word_tokenize
 import nltk
 import sys
+import re
 
 TERMINALS = """
 Adj -> "country" | "dreadful" | "enigmatical" | "little" | "moist" | "red"
@@ -15,7 +17,13 @@ V -> "smiled" | "tell" | "were"
 """
 
 NONTERMINALS = """
-S -> N V
+S -> CS | CS Conj CS | CS Conj VP | NP | VP
+CS -> NP VP
+
+NP -> Det Adj N | N PP | Det NP | Adj NP | N
+VP -> V NP | Adv VP |Adv V | V Adv | V | V PP Adv | V PP
+PP -> P NP | P
+
 """
 
 grammar = nltk.CFG.fromstring(NONTERMINALS + TERMINALS)
@@ -62,7 +70,17 @@ def preprocess(sentence):
     and removing any word that does not contain at least one alphabetic
     character.
     """
-    raise NotImplementedError
+    
+    # Lowercase and tokenize the sentence
+    tokens = word_tokenize(sentence.lower())
+
+    words = []
+    # Keep only tokens that contain letters
+    for token in tokens:
+        if re.search(r"[a-z]", token):
+            words.append(token)
+
+    return words
 
 
 def np_chunk(tree):
@@ -72,7 +90,24 @@ def np_chunk(tree):
     whose label is "NP" that does not itself contain any other
     noun phrases as subtrees.
     """
-    raise NotImplementedError
+    chunks = []
+    
+    for s in tree.subtrees():
+        count = 0
+        
+        # Check if the subtree 's' is labeled as NP
+        if s.label() == "NP": 
+            for s2 in s.subtrees():
+                
+                # Count how many NP-labeled subtrees exist within 's'
+                if s2.label() == "NP":
+                    count += 1
+
+            # Keep only the subtrees of `s` with exacly one 'NP' node
+            if count == 1:
+                chunks.append(s)
+
+    return chunks
 
 
 if __name__ == "__main__":
