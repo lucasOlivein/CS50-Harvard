@@ -5,8 +5,8 @@ _Task:_
 
 ## 📂 Projects
 
-- ⬜ [Parser](./parser/)
-- ⬜ [Attention](./attention/)
+- ✅ [Parser](./parser/)
+- ✅ [Attention](./attention/)
 
 🔗 [View assignment page →](https://cs50.harvard.edu/ai/projects/6/)
 
