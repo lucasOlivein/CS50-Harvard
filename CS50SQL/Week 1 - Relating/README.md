@@ -5,9 +5,9 @@ _Problem Set 1:_
 
 ## 📝 Problems
 
-- ⬜ Packages, Please
-- ⬜ DESE
-- ⬜ Moneyball
+- ⬜ [Packages, Please](./packages/)
+- ⬜ [DESE](./dese/)
+- ⬜ [Moneyball](./moneyball/)
 
 🔗 [View assignment page →](https://cs50.harvard.edu/sql/psets/1/#problem-set-1)
 
