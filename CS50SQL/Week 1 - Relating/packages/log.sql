@@ -67,5 +67,43 @@ WHERE "package_id" = 384;
 
 -- *** The Devious Delivery ***
 
+-- Start: The Devious Delivery
+
+-- Query 1 (FAILED): Retrieve `adresses.*` for "Fiftyville"
+SELECT * FROM "addresses"
+WHERE "address" = 'Fiftyville';
+
+-- Query 2 (FAILED): Retrieve `packages.*` where `to_address_id` IS NULL
+-- NOTE: The prompt refers to "Afraid there’s no 'From' address".
+--       i.e., I was looking at the incorrect column.
+SELECT * FROM "packages"
+WHERE `to_address_id` IS NULL;
+
+-- Query 2 (FAILED): Retrieve `packages.*` where `packages.to_address_id` = ''
+-- NOTE: The prompt refers to "Afraid there’s no 'From' address".
+--       i.e., I was looking at the incorrect column.
+-- NOTE: The value type of `packages.to_address_id` is INT.
+SELECT * FROM "packages"
+WHERE `to_address_id` = '';
+
+-- Query 3 (SUCCEEDED): Retrieve `packages.*` where `packages.from_address_id` IS NULL
+-- Result: 5098 | Duck debugger | | 50
+SELECT * FROM "packages"
+WHERE "from_address_id" IS NULL;
+
+-- Query 4 (SUCCEEDED): Retrieve `scans.*` where `scans.package_id` = 5098
+-- Results: 
+--  - 30123 | 10 | 5098 | 50 | Pick | 2023-10-24 08:40:16.246648
+--  - 30140 | 10 | 5098 | 348 | Drop | 2023-10-24 10:08:55.610754
+SELECT * FROM "scans"
+WHERE "package_id" = 5098;
+
+-- Query 5 (SUCCEEDED): Retrieve `adresses.*` where `addresses.id` = 348
+-- Result: 348 | 7 Humboldt Place | Police Station
+SELECT * FROM "addresses"
+WHERE "id" = 348;
+
+-- Finish: The Devious Delivery — The package was delivered to the "Police Station" and was a "Duck Debugger".
+
 -- *** The Forgotten Gift ***
 
