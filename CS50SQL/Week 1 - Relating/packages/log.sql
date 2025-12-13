@@ -107,3 +107,62 @@ WHERE "id" = 348;
 
 -- *** The Forgotten Gift ***
 
+-- Start: The Forgotten Gift
+
+-- Query 1 (SUCCEEDED): Retrieve `addresses.*` for `addresses.address` = "728 Maple Place"
+-- Result: 4983 | 728 Maple Place | Residential
+-- NOTE: 4983 is the `to_address_id` for this question.
+SELECT * FROM "addresses"
+WHERE "address" = '728 Maple Place';
+
+-- Query 2 (SUCCEEDED): Retrieve `addresses.*` for `addresses.address` = "109 Tileston Street"
+-- Result: 9873 | 109 Tileston Street | Residential
+-- NOTE: 9873 is the `to_address_id` for this question.
+SELECT * FROM "addresses"
+WHERE "address" = '109 Tileston Street';
+
+-- Query 3 (FAILED): Retrieve `packages.*` where `packages.from_address_id` = 9873 and
+--                   `packages.to_address_id` = 109
+-- NOTE: 109 is the house number of the from address.
+SELECT * FROM "packages"
+WHERE "from_address_id" = 9873 AND "to_address_id" = 109;
+
+-- Query 4 (FAILED): Retrieve `packages.*` where `packages.from_address_id` = 109 and
+--                   `packages.to_address_id` = 9873
+-- NOTE: 109 is the house number of the from address.
+SELECT * FROM "packages"
+WHERE "from_address_id" = 109 AND "to_address_id" = 9873;
+
+-- Query 5 (FAILED): Retrieve `packages.*` where `packages.from_address_id` = 109 and
+--                   `packages.to_address_id` = 4983
+-- NOTE: 109 is the house number of the from address.
+SELECT * FROM "packages"
+WHERE "from_address_id" = 109 AND "to_address_id" = 4983;
+
+-- Query 6 (SUCCEEDED): Retrieve `packages.*` where `packages.from_address_id` = 9873 and
+--                      `packages.to_address_id` = 4983
+-- Result: 9523 | Flowers | 9873 | 4983
+-- NOTE: Correct the `from_address_id` and `to_address_id`.
+SELECT * FROM "packages"
+WHERE "from_address_id" = 9873 AND "to_address_id" = 4983;
+
+-- Query 7 (SUCCEEDED): Retrieve `scans.*` for `scans.package_id` = 9523
+-- Results:
+--  - 10432 | 11 | 9523 | 9873 | Pick | 2023-08-16 21:41:43.219831
+--  - 10500 | 11 | 9523 | 7432 | Drop | 2023-08-17 03:31:36.856889
+--  - 12432 | 17 | 9523 | 7432 | Pick | 2023-08-23 19:41:47.913410
+SELECT * FROM "scans"
+WHERE "package_id" = 9523;
+
+-- Query 8 (SUCCEEDED): Retrieve `addresses.*` for `addresses.id` = 7432
+-- Result: 7432 | 950 Brannon Harris Way | Warehouse
+SELECT * FROM "addresses"
+WHERE "id" = 7432;
+
+-- Query 9 (SUCCEEDED): Retrieve `driver.*` for `driver.id` = 17
+-- Result: 17 | Mikel
+SELECT * FROM "drivers"
+WHERE "id" = 17;
+
+-- Finish: The Forgotten Gift — The package was delivered to an incorrect address and was returned. It is now with the driver, Mikel.
+
