@@ -143,7 +143,7 @@ In `13.sql`, write a SQL query to answer a question you have about the data! The
 ### 🎯 Solution
 <table>
   <tr>
-    <td style="vertical-align: top; padding-left: 15px;">
+    <td>
 
 | Question | Commit |
 |:---------:|--------|
@@ -156,8 +156,7 @@ In `13.sql`, write a SQL query to answer a question you have about the data! The
 | `7.sql` | [4b9e596](https://github.com/lucasOlivein/CS50-Harvard/commit/4b9e596ff3d35cea431e4f93d66f2499adf9ce66) |
 
 </td>
-
-<td style="vertical-align: top; padding-left: 15px;">
+<td valign="top">
 
 | Question | Commit |
 |:---------:|--------|
