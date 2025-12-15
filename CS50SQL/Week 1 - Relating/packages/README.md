@@ -81,7 +81,7 @@ _Your third report of a missing package comes from a grandparent who lives down 
 </details>
 
 ### 🎯 Solution
-| Package | Commit |
+| Query Log | Commit |
 |----------|--------|
 | `The Forgotten Gift` | [688ea7e](https://github.com/lucasOlivein/CS50-Harvard/commit/688ea7e25cae4261c79f220377d6634cb71e3f1e) |
 | `The Devious Delivery` | [49887fd](https://github.com/lucasOlivein/CS50-Harvard/commit/49887fdf9b1aa2f7f6938e4a23ebeeae4c8e5f71) |
