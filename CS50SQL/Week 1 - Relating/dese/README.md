@@ -4,13 +4,21 @@
 ### 📄 Description (Adapted)
 ...
 ### ⚙️ Specification
-📌 For each of the following questions, you should write a single SQL query that outputs the results specified by each problem. 
+<details><summary>📌 <strong>Task:</strong> <em>For each of the following questions, you should write a single SQL query that outputs the results specified by each problem.</em></summary>
+
+
+
 - Your response must take the form of a single SQL query. 
 - You should not assume anything about the `id`s of any particular rows:
     - your queries should be accurate even if the `id`s were different. 
 - Finally, each query should return only the data necessary to answer the question.
 
-#### 📋 Questions
+</details>
+
+<details><summary> 📋 <strong>Questions:</strong></summary>
+
+<br>
+
 <details><summary>✅ <strong>01</strong>: <em>Your colleague is preparing a map of all public schools in Massachusetts.</em></summary>
 
 <br>
@@ -152,6 +160,7 @@ WHERE "column" > (
 - Involve at least one JOIN or subquery
 
 ---
+</details>
 </details>
 
 ### 🎯 Solution
