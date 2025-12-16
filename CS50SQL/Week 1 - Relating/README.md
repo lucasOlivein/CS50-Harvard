@@ -5,9 +5,9 @@ _Problem Set 1:_
 
 ## 📝 Problems
 
-- ⬜ [Packages, Please](./packages/)
-- ⬜ [DESE](./dese/)
-- ⬜ [Moneyball](./moneyball/)
+- ✅ [Packages, Please](./packages/)
+- ✅ [DESE](./dese/)
+- ✅ [Moneyball](./moneyball/)
 
 🔗 [View assignment page →](https://cs50.harvard.edu/sql/psets/1/#problem-set-1)
 
@@ -15,7 +15,9 @@ _Problem Set 1:_
 
 
 <details><summary><strong>Relatioships</strong></summary>
-    
+
+<br>
+
 - One-to-one 
 - One-to-many
 - Many-to-many
@@ -25,12 +27,16 @@ _Problem Set 1:_
 
 <details><summary><strong>Entity Relationship Diagrams</strong></summary>
 
+<br>
+
 - Crow's foot notation
 
 </details>
 
 
 <details><summary><strong>Keys</strong></summary>
+
+<br>
 
 - Primary Key
 - Forein Key 
@@ -39,10 +45,14 @@ _Problem Set 1:_
 
 <details><summary><strong>Subqueries</strong></summary>
 
+<br>
+
 _Also called nested queries._   
 _The querie fursthest inside the parentheses will run first._
 
 - <details><summary>Nested queries</summary>
+
+    <br>
 
     - <details><summary>One-to-many</summary>
 
@@ -79,6 +89,8 @@ _The querie fursthest inside the parentheses will run first._
 
 - <details><summary><strong>IN</strong> clasule</summary>
 
+    <br>
+
     _Used in the `WHERE` clasule to say: SELECT ... FROM ... WHERE `<expression> IN <set_or_subquery>`_
     ```sql
     SELECT "title"
@@ -100,7 +112,9 @@ _The querie fursthest inside the parentheses will run first._
 
 <details><summary><strong>Joins</strong></summary>
 
-- <details><summary>Inner Join</summary>
+<br>
+
+- <details><summary><code>INNER JOIN</code></summary>
 
     ```sql
     SELECT *
@@ -117,12 +131,17 @@ _The querie fursthest inside the parentheses will run first._
 
 - <details><summary>Outer joins</summary>
 
-    - LEFT JOIN
-    - RIGHT JOIN
-    - FULL JOIN
+    <br>
+
+    - `LEFT JOIN`
+    - `RIGHT JOIN`
+    - `FULL JOIN`
+
     </details>
 
-- <details><summary>Natural Join</summary>
+- <details><summary><code>Natural Join</code></summary>
+
+    <br>
 
     _It's used when two tables share one or more columns with the same name_. 
     _In this example, the `NATURAL JOIN` is performed using the shared `id` column_:
@@ -136,7 +155,7 @@ _The querie fursthest inside the parentheses will run first._
 
 <details><summary><strong>Sets</strong></summary>
 
-- <details><summary>INTERSECT</summary>
+- <details><summary><code>INTERSECT</code></summary>
 
     ```sql
     SELECT "book_id" FROM "translated"
@@ -153,7 +172,7 @@ _The querie fursthest inside the parentheses will run first._
     ```
     </details>
 
-- <details><summary>UNION</summary>
+- <details><summary><code>UNION</code></summary>
 
     ```sql
     SELECT 'author' AS "profession", "name" 
@@ -164,7 +183,7 @@ _The querie fursthest inside the parentheses will run first._
     ```
     </details>
 
-- <details><summary>EXCEPT</summary>
+- <details><summary><code>EXCEPT</code></summary>
 
     ```sql
     SELECT "name" FROM "authors"
@@ -178,7 +197,9 @@ _The querie fursthest inside the parentheses will run first._
 
 <details><summary><strong>Groups</strong></summary>
 
-- <details><summary>GROUP BY</summary>
+<br>
+
+- <details><summary><code>GROUP BY</code></summary>
 
     ```sql
     SELECT "book_id", AVG("rating") AS "average rating"
@@ -187,7 +208,7 @@ _The querie fursthest inside the parentheses will run first._
     ```
     </details>
 
-- <details><summary>HAVING</summary>
+- <details><summary><code>HAVING</code></summary>
 
     ```sql
         SELECT "book_id", ROUND(AVG("rating"), 2) AS "average rating"
@@ -195,6 +216,7 @@ _The querie fursthest inside the parentheses will run first._
         GROUP BY "book_id"
         HAVING "average rating" > 4.0;
     ```
+
     </details>
 
 </details>
