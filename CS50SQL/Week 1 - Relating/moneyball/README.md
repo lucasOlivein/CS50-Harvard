@@ -7,9 +7,9 @@
 ### ⚙️ Specification
 #### 📋 Questions
 
-<details><summary><code> ✅ 1.sql</code></summary>
+<details><summary> ✅ <strong>01</strong>: <em>You should start by getting a sense for how average player salaries have changed over time.</em></summary>
 
-<br>_You should start by getting a sense for how average player salaries have changed over time._ 
+<br> 
 
 📌 In `1.sql`, write a SQL query to find the average player salary by year.
 - Sort by year in descending order.
@@ -17,18 +17,18 @@
 - Your query should return a table with two columns, one for year and one for average salary.
 ---
 </details>
-<details><summary><code> ✅ 2.sql</code></summary>
+<details><summary> ✅ <strong>02</strong>: <em>Your general manager (i.e., the person who makes decisions about player contracts) asks you whether the team should trade a current player for Cal Ripken Jr., a star player who’s likely nearing his retirement.</em></summary>
 
-<br>_Your general manager (i.e., the person who makes decisions about player contracts) asks you whether the team should trade a current player for Cal Ripken Jr., a star player who’s likely nearing his retirement.__
+<br>
 
 📌 In `2.sql`, write a SQL query to find Cal Ripken Jr.’s salary history.
 - Sort by year in descending order.
 - Your query should return a table with two columns, one for year and one for salary.
 ---
 </details>
-<details><summary><code> ✅ 3.sql</code></summary>
+<details><summary> ✅ <strong>03</strong>: <em>Your team is going to need a great home run hitter. Ken Griffey Jr., a long-time Silver Slugger and Gold Glove award winner, might be a good prospect.</em></summary>
 
-<br>_Your team is going to need a great home run hitter. Ken Griffey Jr., a long-time Silver Slugger and Gold Glove award winner, might be a good prospect._
+<br>
 
 📌 In `3.sql`, write a SQL query to find Ken Griffey Jr.’s home run history.
 
@@ -37,9 +37,9 @@
 - Your query should return a table with two columns, one for year and one for home runs.
 ---
 </details>
-<details><summary><code> ✅ 4.sql</code></summary>
+<details><summary> ✅ <strong>04</strong>: <em>You need to make a recommendation about which players the team should consider hiring. With the team’s dwindling budget, the general manager wants to know which players were paid the lowest salaries in 2001.</em></summary>
 
-<br>_You need to make a recommendation about which players the team should consider hiring. With the team’s dwindling budget, the general manager wants to know which players were paid the lowest salaries in 2001._ 
+<br>
 
 📌 In `4.sql`, write a SQL query to find the 50 players paid the least in 2001.
 
@@ -49,18 +49,20 @@
 - Your query should return three columns, one for players’ first names, one for their last names, and one for their salaries.
 ---
 </details>
-<details><summary><code> ✅ 5.sql</code></summary>
+<details><summary> ✅ <strong>05</strong>: <em>It’s a bit of a slow day in the office.</em></summary>
 
-<br>_It’s a bit of a slow day in the office._
+<br>
 
-Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams that [Satchel Paige](https://en.wikipedia.org/wiki/Satchel_Paige) played for.
+_Though Satchel no longer plays,_    
+
+📌 in `5.sql`, write a SQL query to find all teams that [Satchel Paige](https://en.wikipedia.org/wiki/Satchel_Paige) played for.
 
 - Your query should return a table with a single column, one for the name of the teams.
 ---
 </details>
-<details><summary><code> ✅ 6.sql</code></summary>
+<details><summary> ✅ <strong>06</strong>: <em>Which teams might be the biggest competition for the A’s this year?</em></summary>
 
-<br>_Which teams might be the biggest competition for the A’s this year?_
+<br>
 
 📌 In `6.sql`, write a SQL query to return the top 5 teams, sorted by the total number of hits by players in 2001.
 
@@ -69,27 +71,27 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return two columns, one for the teams’ names and one for their total hits in 2001.
 
 </details>
-<details><summary><code> ✅ 7.sql</code></summary>
+<details><summary> ✅ <strong>07</strong>: <em>You need to make a recommendation about which player (or players) to avoid recruiting.</em></summary>
 
-<br>_You need to make a recommendation about which player (or players) to avoid recruiting._
+<br>
 
 📌 In `7.sql`, write a SQL query to find the name of the player who’s been paid the highest salary, of all time, in Major League Baseball.
 
 - Your query should return a table with two columns, one for the player’s first name and one for their last name.
 ---
 </details>
-<details><summary><code> ✅ 8.sql</code></summary>
+<details><summary> ✅ <strong>08</strong>: <em>How much would the A’s need to pay to get the best home run hitter this past season?</em></summary>
 
-<br>_How much would the A’s need to pay to get the best home run hitter this past season?_
+<br>
 
 📌 In `8.sql`, write a SQL query to find the 2001 salary of the player who hit the most home runs in 2001.
 
 - Your query should return a table with one column, the salary of the player.
 ---
 </details>
-<details><summary><code> ✅ 9.sql</code></summary>
+<details><summary> ✅ <strong>09</strong>: <em>What salaries are other teams paying?</em></summary>
 
-<br>_What salaries are other teams paying?_
+<br>
 
 📌 In `9.sql`, write a SQL query to find the 5 lowest paying teams (by average salary) in 2001.
 
@@ -98,10 +100,9 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return a table with two columns, one for the teams’ names and one for their average salary.
 ---
 </details>
-<details><summary><code> ✅ 10.sql</code></summary>
-<br>
+<details><summary> ✅ <strong>10</strong>: <em>The general manager has asked you for a report which details each player’s name, their salary for each year they’ve been playing, and their number of home runs for each year they’ve been playing.</em></summary>
 
-_The general manager has asked you for a report which details each player’s name, their salary for each year they’ve been playing, and their number of home runs for each year they’ve been playing._ 
+<br>
     
 To be precise, the table should include:
 
@@ -149,10 +150,9 @@ As an aside, based on the schema of the database, why do you think Todd Zeile ap
 
 ---
 </details>
-<details><summary><code> ✅ 11.sql</code></summary>
-<br>
+<details><summary> ✅ <strong>11</strong>: <em>You need a player that can get hits. Who might be the most underrated?</em></summary>
 
-_You need a player that can get hits. Who might be the most underrated?_
+<br>
 
 📌 In `11.sql`, write a SQL query to find the 10 least expensive players per hit in 2001.
 
@@ -164,10 +164,9 @@ _You need a player that can get hits. Who might be the most underrated?_
 - You may assume, for simplicity, that a player will only have one salary and one performance in 2001.
 
 </details>
-<details><summary><code> ✅ 12.sql</code></summary>
-<br>
+<details><summary> ✅ <strong>12</strong>: <em>Hits are great, but so are RBIs!</em></summary>
 
-_Hits are great, but so are RBIs!_
+<br>
 
 📌 In `12.sql`, write a SQL query to find the players among the 10 least expensive players per hit and among the 10 least expensive players per RBI in 2001.
 
