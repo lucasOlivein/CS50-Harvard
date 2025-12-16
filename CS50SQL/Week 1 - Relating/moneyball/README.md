@@ -5,7 +5,11 @@
 ### 📄 Description (Adapted)
 ...
 ### ⚙️ Specification
-#### 📋 Questions
+📌 **Task**: _For each of the following questions, you should write a single SQL query that outputs the results specified by each problem._
+
+<details><summary> 📋 <strong>Questions</strong></summary>
+
+<br>
 
 <details><summary> ✅ <strong>01</strong>: <em>You should start by getting a sense for how average player salaries have changed over time.</em></summary>
 
@@ -177,7 +181,7 @@ As an aside, based on the schema of the database, why do you think Todd Zeile ap
 - Keep in mind the lessons you’ve learned in 10.sql and 11.sql!
 
 </details>
-
+</details>
 
 ### 🎯 Solution
 
