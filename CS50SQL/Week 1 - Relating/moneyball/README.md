@@ -7,7 +7,7 @@
 ### ⚙️ Specification
 #### 📋 Questions
 
-<details><summary><code> ⬜ 1.sql</code></summary>
+<details><summary><code> ✅ 1.sql</code></summary>
 
 <br>_You should start by getting a sense for how average player salaries have changed over time._ 
 
@@ -17,7 +17,7 @@
 - Your query should return a table with two columns, one for year and one for average salary.
 ---
 </details>
-<details><summary><code> ⬜ 2.sql</code></summary>
+<details><summary><code> ✅ 2.sql</code></summary>
 
 <br>_Your general manager (i.e., the person who makes decisions about player contracts) asks you whether the team should trade a current player for Cal Ripken Jr., a star player who’s likely nearing his retirement.__
 
@@ -26,7 +26,7 @@
 - Your query should return a table with two columns, one for year and one for salary.
 ---
 </details>
-<details><summary><code> ⬜ 3.sql</code></summary>
+<details><summary><code> ✅ 3.sql</code></summary>
 
 <br>_Your team is going to need a great home run hitter. Ken Griffey Jr., a long-time Silver Slugger and Gold Glove award winner, might be a good prospect._
 
@@ -37,7 +37,7 @@
 - Your query should return a table with two columns, one for year and one for home runs.
 ---
 </details>
-<details><summary><code> ⬜ 4.sql</code></summary>
+<details><summary><code> ✅ 4.sql</code></summary>
 
 <br>_You need to make a recommendation about which players the team should consider hiring. With the team’s dwindling budget, the general manager wants to know which players were paid the lowest salaries in 2001._ 
 
@@ -49,7 +49,7 @@
 - Your query should return three columns, one for players’ first names, one for their last names, and one for their salaries.
 ---
 </details>
-<details><summary><code> ⬜ 5.sql</code></summary>
+<details><summary><code> ✅ 5.sql</code></summary>
 
 <br>_It’s a bit of a slow day in the office._
 
@@ -58,7 +58,7 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return a table with a single column, one for the name of the teams.
 ---
 </details>
-<details><summary><code> ⬜ 6.sql</code></summary>
+<details><summary><code> ✅ 6.sql</code></summary>
 
 <br>_Which teams might be the biggest competition for the A’s this year?_
 
@@ -69,7 +69,7 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return two columns, one for the teams’ names and one for their total hits in 2001.
 
 </details>
-<details><summary><code> ⬜ 7.sql</code></summary>
+<details><summary><code> ✅ 7.sql</code></summary>
 
 <br>_You need to make a recommendation about which player (or players) to avoid recruiting._
 
@@ -78,7 +78,7 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return a table with two columns, one for the player’s first name and one for their last name.
 ---
 </details>
-<details><summary><code> ⬜ 8.sql</code></summary>
+<details><summary><code> ✅ 8.sql</code></summary>
 
 <br>_How much would the A’s need to pay to get the best home run hitter this past season?_
 
@@ -87,7 +87,7 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return a table with one column, the salary of the player.
 ---
 </details>
-<details><summary><code> ⬜ 9.sql</code></summary>
+<details><summary><code> ✅ 9.sql</code></summary>
 
 <br>_What salaries are other teams paying?_
 
@@ -98,7 +98,7 @@ Though Satchel no longer plays, in 5.sql, write a SQL query to find all teams th
 - Your query should return a table with two columns, one for the teams’ names and one for their average salary.
 ---
 </details>
-<details><summary><code> ⬜ 10.sql</code></summary>
+<details><summary><code> ✅ 10.sql</code></summary>
 <br>
 
 _The general manager has asked you for a report which details each player’s name, their salary for each year they’ve been playing, and their number of home runs for each year they’ve been playing._ 
@@ -149,7 +149,7 @@ As an aside, based on the schema of the database, why do you think Todd Zeile ap
 
 ---
 </details>
-<details><summary><code> ⬜ 11.sql</code></summary>
+<details><summary><code> ✅ 11.sql</code></summary>
 <br>
 
 _You need a player that can get hits. Who might be the most underrated?_
@@ -164,7 +164,7 @@ _You need a player that can get hits. Who might be the most underrated?_
 - You may assume, for simplicity, that a player will only have one salary and one performance in 2001.
 
 </details>
-<details><summary><code> ⬜ 12.sql</code></summary>
+<details><summary><code> ✅ 12.sql</code></summary>
 <br>
 
 _Hits are great, but so are RBIs!_
@@ -181,7 +181,41 @@ _Hits are great, but so are RBIs!_
 
 
 ### 🎯 Solution
-...
+
+
+<table>
+  <tr>
+    <td>
+
+| Question | Commit |
+|:---------:|--------|
+| 01 | [5544085](https://github.com/lucasOlivein/CS50-Harvard/commit/5544085a7d62591a133dad2516e478d62d8dcd16) |
+| 02 | [12f5043](https://github.com/lucasOlivein/CS50-Harvard/commit/12f50436506b330e1a0749c7fcb58924865462ac) |
+| 03 | [a41b972](https://github.com/lucasOlivein/CS50-Harvard/commit/a41b9720cf9f883baf19f8e8c1dfdba6272a7fee) |
+| 04 | [db9b82e](https://github.com/lucasOlivein/CS50-Harvard/commit/db9b82e869bbf5c6b47b12bc41da0f8cce8c1451) |
+| 05 | [08153cb](https://github.com/lucasOlivein/CS50-Harvard/commit/08153cb0ec4f4772f33dd445ea97b3eb5fb456cb) |
+| 06 | [90546a0](https://github.com/lucasOlivein/CS50-Harvard/commit/90546a022e62184fb78ab9b5d687dc061fbd03f0) |
+
+
+</td>
+<td valign="top">
+
+| Question | Commit |
+|:---------:|--------|
+| 07 | [4455f72](https://github.com/lucasOlivein/CS50-Harvard/commit/4455f72885e717ce6c0b429969ebbb889ac7dfba) |
+| 08 | [8f6b2d8](https://github.com/lucasOlivein/CS50-Harvard/commit/8f6b2d8d80db725fe7deeb9dc564689251882aa3) |
+| 09 | [e416f44](https://github.com/lucasOlivein/CS50-Harvard/commit/e416f4491ce557123dd0ad619bd91fda54f244ec) |
+| 10 | [67163b2](https://github.com/lucasOlivein/CS50-Harvard/commit/67163b261bd095251d1b20468e1e2c9983abab0d) |
+| 11 | [1c8a8fd](https://github.com/lucasOlivein/CS50-Harvard/commit/1c8a8fd01c4eb639cddf86f44e73bb44d8231f5e) |
+| 12 | [0827fa6](https://github.com/lucasOlivein/CS50-Harvard/commit/0827fa618e78a4803c5aaadadb07e42143416120) |
+
+
+</td>
+  </tr>
+</table>
+
+⚠︎ Queries tested on SQLite 3 only
+
 ### 📚 Source
 Based on the *Moneyball* problem from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/1/moneyball/
 ### 📂 Download
