@@ -21,3 +21,12 @@ CREATE TABLE "flights" (
     "expected_arrival" TEXT NOT NULL,
     FOREIGN KEY("airline") REFERENCES "airlines"("id")
 );
+
+CREATE TABLE "check-in" (
+    "id" INTEGER PRIMARY KEY,
+    "passenger_id" INTEGER,
+    "flight_id" INTEGER,
+    "datetime" TEXT NOT NULL,
+    FOREIGN KEY("passenger_id") REFERENCES "passengers"("id"),
+    FOREIGN KEY("flight_id") REFERENCES "flights"("id")
+);
