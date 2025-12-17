@@ -125,6 +125,17 @@ _Your database should be able to represent:_
 
 
 ### 🎯 Solution
-...
+
+| Table | Commit |
+|:----------|--------|
+| `company_connections` | [cc044ba](https://github.com/lucasOlivein/CS50-Harvard/commit/cc044ba1c27f5de3dfa4022aa33bbe64e42bb767)
+| `school_connections` | [92d3a9d](https://github.com/lucasOlivein/CS50-Harvard/commit/92d3a9dad5d92523e224543864c95c6ba85a1b57)
+| `users_connections` | [966fd2f](https://github.com/lucasOlivein/CS50-Harvard/commit/966fd2f07c35e33164d67377b7c76fd4c98baa88)
+| `companies` | [c82c190](https://github.com/lucasOlivein/CS50-Harvard/commit/c82c1904bdb801dd50e39e2713737838f6f87232)
+| `schools` | [b3d42cd](https://github.com/lucasOlivein/CS50-Harvard/commit/b3d42cd6d3265123d41d7cd33f3d60d73ffd0002)
+| `users` | [27efa1c](https://github.com/lucasOlivein/CS50-Harvard/commit/27efa1c14019feb387aa880eb7d17bca9edfcc5a)
+
+**Sample Data Script**: [daa25ee](https://github.com/lucasOlivein/CS50-Harvard/commit/daa25ee1a3fd2231b9a8efe666c752acf57760c6)
+
 ### 📚 Source
 Based on the *Happy to Connect* problem from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/2/connect/
