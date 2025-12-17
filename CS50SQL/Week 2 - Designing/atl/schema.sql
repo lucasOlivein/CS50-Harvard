@@ -10,3 +10,14 @@ CREATE TABLE "airlines" (
     "name" TEXT NOT NULL,
     "concourse" TEXT NOT NULL
 );
+
+CREATE TABLE "flights" (
+    "id" INTEGER PRIMARY KEY,
+    "flight_number" INTEGER,
+    "airline" INTEGER,
+    "departure_airport_code" TEXT NOT NULL,
+    "arrival_airport_code" TEXT NOT NULL,
+    "expected_departure" TEXT NOT NULL,
+    "expected_arrival" TEXT NOT NULL,
+    FOREIGN KEY("airline") REFERENCES "airlines"("id")
+);
