@@ -13,3 +13,10 @@ CREATE TABLE "schools" (
     "location" TEXT NOT NULL,
     "founded_year" INTEGER
 );
+
+CREATE TABLE "companies" (
+    "id" INTEGER PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "industry" TEXT NOT NULL,
+    "location" TEXT NOT NULL
+);
