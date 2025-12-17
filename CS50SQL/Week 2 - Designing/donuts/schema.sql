@@ -17,3 +17,10 @@ CREATE TABLE "customers" (
     "first_name" TEXT,
     "last_name" TEXT
 );
+
+CREATE TABLE "orders" (
+    "id" INTEGER PRIMARY KEY,
+    "order_number" INTEGER NOT NULL,
+    "customer_id" INTEGER,
+    FOREIGN KEY("customer_id") REFERENCES "customers"("id")
+);
