@@ -26,3 +26,14 @@ CREATE TABLE "users_connections" (
     "user1_id" INTEGER,
     "user2_id" INTEGER 
 );
+
+CREATE TABLE "school_connections" (
+    "id" INTEGER PRIMARY KEY,
+    "user_id" INTEGER,
+    "school_id" INTEGER,
+    "enrollment_date" TEXT NOT NULL,
+    "graduation_date" TEXT NOT NULL,
+    "degree_type" TEXT NOT NULL,
+    FOREIGN KEY("user_id") REFERENCES "users"("id"),
+    FOREIGN KEY("school_id") REFERENCES "schools"("id")
+);
