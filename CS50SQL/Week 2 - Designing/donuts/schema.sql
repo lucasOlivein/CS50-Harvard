@@ -11,3 +11,9 @@ CREATE TABLE "donuts" (
     "gluten-free" TEXT NOT NULL,
     "price" REAL
 );
+
+CREATE TABLE "customers" (
+    "id" INTEGER PRIMARY KEY,
+    "first_name" TEXT,
+    "last_name" TEXT
+);
