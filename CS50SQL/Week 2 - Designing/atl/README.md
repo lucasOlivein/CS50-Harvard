@@ -94,6 +94,14 @@ Your database should be able to represent:
 
 
 ### 🎯 Solution
-...
+| Table | Commit |
+|:----------|--------|
+| `check-in` | [60faabf](https://github.com/lucasOlivein/CS50-Harvard/commit/60faabfaaac22f33d211950d433005f60db12114) |
+| `flights` | [307d153](https://github.com/lucasOlivein/CS50-Harvard/commit/307d15382dad20114eddd030c20ef6a266b337f5) |
+| `airlines` | [260594e](https://github.com/lucasOlivein/CS50-Harvard/commit/260594e726449e1c6f7fcacf668ca1ced1fb7e69) |
+| `passengers` | [2f29318](https://github.com/lucasOlivein/CS50-Harvard/commit/2f2931809bdbc11db267654f60fb61e46298bf00) |
+
+**Sample Data Script**: [427acf2](https://github.com/lucasOlivein/CS50-Harvard/commit/427acf231a2279eeb0b459c41b13ae4ecdb9acbd)
+
 ### 📚 Source
 Based on the *ATL* problem from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/2/atl/
