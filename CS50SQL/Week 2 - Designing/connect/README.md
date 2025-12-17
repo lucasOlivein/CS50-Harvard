@@ -7,26 +7,26 @@
 ### ⚙️ Specification
 📌 **Task**: _In a file called `schema.sql` in a folder called `connect`, write a set of SQL statements to design a database **LinkedIn** could use._
 
-<details><summary>📋 <strong>Requirements:</strong></summary>
+<details><summary>📋 <strong>Requirements</strong> ✔️ </summary>
 
 <br>
 
 _The implementation details are up to you, though you should minimally ensure that your database meets the **platform’s specification** and that it can represent the given **sample data**._
 
 
-<details><summary><strong> ⬜ Platform’s Specification</strong></summary>
+<details><summary><strong> ✅ Platform’s Specification</strong></summary>
 
 <br>
 
-- <details><summary><strong> ⬜ Users</strong></summary>
+- <details><summary><strong> ✅ Users</strong></summary>
 
     <br>
 
     _The heart of LinkedIn’s platform is its people. Your database should be able to represent the following information about LinkedIn’s users:_
 
-    - Their first and last name
-    - Their username
-    - Their password
+    - Their **first** and **last** name
+    - Their **username**
+    - Their **password**
 
     Keep in mind that, if a company is following best practices, application passwords are “[hashed](https://en.wikipedia.org/wiki/Hash_function)”.   
     No need to worry about hashing passwords here, though.
@@ -34,21 +34,21 @@ _The implementation details are up to you, though you should minimally ensure th
     ---
     </details>
 
-- <details><summary><strong> ⬜ Schools and Universities</strong></summary>
+- <details><summary><strong> ✅ Schools and Universities</strong></summary>
 
     <br>
 
     _LinkedIn also allows for official school or university accounts, such as [that for Harvard](https://www.linkedin.com/school/harvard-university/), so alumni (i.e., those who’ve attended) can identify their affiliation. Ensure that LinkedIn’s database can store the following information about each school:_
 
-    - The name of the school
-    - The type of school (e.g., “Elementary School”, “Middle School”, “High School”, “Lower School”, “Upper School”, “College”, “University”, etc.)
-    - The school’s location
-    - The year in which the school was founded
+    - The **name of the school**
+    - The **type of school** (e.g., “Elementary School”, “Middle School”, “High School”, “Lower School”, “Upper School”, “College”, “University”, etc.)
+    - The **school’s location**
+    - The **year in which the school was founded**
 
     ---
     </details>
 
-- <details><summary><strong> ⬜ Companies</strong></summary>
+- <details><summary><strong> ✅ Companies</strong></summary>
 
     <br>
 
@@ -61,20 +61,20 @@ _The implementation details are up to you, though you should minimally ensure th
     ---
     </details>
 
-- <details><summary><strong> ⬜ Connections</strong></summary>
+- <details><summary><strong> ✅ Connections</strong></summary>
 
     <br>
 
     _And finally, the essence of LinkedIn is its ability to facilitate connections between people. Ensure LinkedIn’s database can support each of the following connections._
 
-    - <details><summary><strong>Connections with People</strong></summary>
+    - <details><summary> ✅ <strong>Connections with People</strong></summary>
     
         <br>
 
         _LinkedIn’s database should be able to represent mutual (reciprocal, two-way) connections between users. No need to worry about one-way connections, such as user A “following” user B without user B “following” user A._
         </details>
 
-    - <details><summary><strong>Connections with Schools</strong></summary>
+    - <details><summary> ✅ <strong>Connections with Schools</strong></summary>
     
         <br>
 
@@ -88,7 +88,7 @@ _The implementation details are up to you, though you should minimally ensure th
 
         </details>
 
-    - <details><summary><strong>Connections with Companies</strong></summary>
+    - <details><summary>✅ <strong>Connections with Companies</strong></summary>
     
         <br>
 
@@ -105,7 +105,7 @@ _The implementation details are up to you, though you should minimally ensure th
     </details>
 </details>
 
-<details><summary><strong> ⬜ Sample Data</strong></summary>
+<details><summary><strong> ✅ Sample Data</strong></summary>
 
 <br>
 
@@ -125,6 +125,17 @@ _Your database should be able to represent:_
 
 
 ### 🎯 Solution
-...
+
+| Table | Commit |
+|:----------|--------|
+| `company_connections` | [cc044ba](https://github.com/lucasOlivein/CS50-Harvard/commit/cc044ba1c27f5de3dfa4022aa33bbe64e42bb767)
+| `school_connections` | [92d3a9d](https://github.com/lucasOlivein/CS50-Harvard/commit/92d3a9dad5d92523e224543864c95c6ba85a1b57)
+| `users_connections` | [966fd2f](https://github.com/lucasOlivein/CS50-Harvard/commit/966fd2f07c35e33164d67377b7c76fd4c98baa88)
+| `companies` | [c82c190](https://github.com/lucasOlivein/CS50-Harvard/commit/c82c1904bdb801dd50e39e2713737838f6f87232)
+| `schools` | [b3d42cd](https://github.com/lucasOlivein/CS50-Harvard/commit/b3d42cd6d3265123d41d7cd33f3d60d73ffd0002)
+| `users` | [27efa1c](https://github.com/lucasOlivein/CS50-Harvard/commit/27efa1c14019feb387aa880eb7d17bca9edfcc5a)
+
+**Sample data script**: [daa25ee](https://github.com/lucasOlivein/CS50-Harvard/commit/daa25ee1a3fd2231b9a8efe666c752acf57760c6)
+
 ### 📚 Source
 Based on the *Happy to Connect* problem from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/2/connect/
