@@ -37,3 +37,14 @@ CREATE TABLE "school_connections" (
     FOREIGN KEY("user_id") REFERENCES "users"("id"),
     FOREIGN KEY("school_id") REFERENCES "schools"("id")
 );
+
+CREATE TABLE "company_connections" (
+    "id" INTEGER PRIMARY KEY,
+    "user_id" INTEGER,
+    "company_id" INTEGER,
+    "start_date" TEXT NOT NULL,
+    "end_date" TEXT NOT NULL,
+    "position" TEXT NOT NULL,
+    FOREIGN KEY("user_id") REFERENCES "users"("id"),
+    FOREIGN KEY("company_id") REFERENCES "company"("id")
+);
