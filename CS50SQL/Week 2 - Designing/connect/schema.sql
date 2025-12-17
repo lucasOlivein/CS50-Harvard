@@ -20,3 +20,9 @@ CREATE TABLE "companies" (
     "industry" TEXT NOT NULL,
     "location" TEXT NOT NULL
 );
+
+CREATE TABLE "users_connections" (
+    "id" INTEGER PRIMARY KEY,
+    "user1_id" INTEGER,
+    "user2_id" INTEGER 
+);
