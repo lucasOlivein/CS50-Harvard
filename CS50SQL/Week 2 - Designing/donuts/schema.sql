@@ -24,3 +24,11 @@ CREATE TABLE "orders" (
     "customer_id" INTEGER,
     FOREIGN KEY("customer_id") REFERENCES "customers"("id")
 );
+
+CREATE TABLE "donuts per order" (
+    "id" INTEGER PRIMARY KEY,
+    "order_id" INTEGER,
+    "donut_id" INTEGER,
+    FOREIGN KEY("order_id") REFERENCES "orders"("id"),
+    FOREIGN KEY("donut_id") REFERENCES "donuts"("id")
+);
