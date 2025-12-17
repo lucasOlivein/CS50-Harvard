@@ -8,7 +8,7 @@
 
 📌 **Task**: _In a file called `schema.sql` in a folder called `atl`, write a set of SQL statements to design a database with which Hartsfield-Jackson could keep track of its passengers and their flights._
 
-<details><summary><strong>📋 Requirements</strong></summary>
+<details><summary><strong>📋 Requirements</strong> ✔️</summary>
 
 <br>
 
