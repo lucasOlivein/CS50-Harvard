@@ -5,3 +5,11 @@ CREATE TABLE "users" (
     "username" TEXT NOT NULL,
     "password" TEXT NOT NULL
 );
+
+CREATE TABLE "schools" (
+    "id" INTEGER PRIMARY KEY,
+    "name" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
+    "location" TEXT NOT NULL,
+    "founded_year" INTEGER
+);
