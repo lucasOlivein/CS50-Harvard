@@ -32,3 +32,11 @@ CREATE TABLE "donuts per order" (
     FOREIGN KEY("order_id") REFERENCES "orders"("id"),
     FOREIGN KEY("donut_id") REFERENCES "donuts"("id")
 );
+
+CREATE TABLE "ingredients per donut" (
+    "id" INTEGER PRIMARY KEY,
+    "ingredient_id" INTEGER,
+    "donut_id" INTEGER,
+    FOREIGN KEY("ingredient_id") REFERENCES "ingredients"("id"),
+    FOREIGN KEY("donut_id") REFERENCES "donuts"("id")
+);
