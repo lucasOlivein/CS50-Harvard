@@ -7,26 +7,26 @@
 ### ⚙️ Specification
 📌 **Task**: _In a file called `schema.sql` in a folder called `donuts`, write a set of SQL statements to create a database that [Union Square Donuts](https://www.unionsquaredonuts.com/about) could use to manage their day-to-day operations._
 
-<details><summary>📋 <strong>Requirements:</strong></summary>
+<details><summary>📋 <strong>Requirements</strong> ✔️</summary>
 
 <br>
 
 _The implementation details are up to you, though you should minimally ensure that your database meets the team’s **expectations** and that it can represent the **sample data**._
 
-<details><summary><strong> ⬜ Expectations</strong></summary>
+<details><summary><strong> ✅ Expectations</strong></summary>
 
 <br>
 
 _To understand the team’s expectations for their database, you sat down to talk with them after the shop closed for the day._
 
-- <details><summary><strong>⬜ Ingredients</strong></summary>
+- <details><summary><strong> ✅ Ingredients</strong></summary>
 
     <br>
 
     _We certainly need to keep track of our ingredients. Some of the typical ingredients we use include flour, yeast, oil, butter, and several different types of sugar. Moreover, we would love to keep track of the price we pay per unit of ingredient (whether it’s pounds, grams, etc.)._ 
     </details>
 
-- <details><summary><strong>⬜ Donuts</strong></summary>
+- <details><summary><strong>✅ Donuts</strong></summary>
 
     <br>
 
@@ -38,7 +38,7 @@ _To understand the team’s expectations for their database, you sat down to tal
 
     </details>
 
-- <details><summary><strong>⬜ Orders</strong></summary>
+- <details><summary><strong>✅ Orders</strong></summary>
 
     <br>
     
@@ -52,7 +52,7 @@ _To understand the team’s expectations for their database, you sat down to tal
 
     </details>
 
-- <details><summary><strong>⬜ Customers</strong></summary>
+- <details><summary><strong>✅ Customers</strong></summary>
 
     <br>
 
@@ -67,7 +67,7 @@ _To understand the team’s expectations for their database, you sat down to tal
 </details>
 
 
-<details><summary><strong> ⬜ Sample Data</strong></summary>
+<details><summary><strong> ✅ Sample Data</strong></summary>
 
 <br>
 
@@ -92,6 +92,16 @@ _Your database should be able to represent:_
 </details>
 
 ### 🎯 Solution
-...
+| Feature | Commit |
+|:----------|--------|
+| `ingredients per donut` | [70c9d1f](https://github.com/lucasOlivein/CS50-Harvard/commit/70c9d1fbb68ebf0eea181d1800dc2382fab00b83)
+| `donuts per order` | [da2c33b](https://github.com/lucasOlivein/CS50-Harvard/commit/da2c33bdf3b3a95c9803b322794d688ad0107ce4)
+| `orders` | [21e393e](https://github.com/lucasOlivein/CS50-Harvard/commit/21e393e711715cb99a0cdd058e1b6f3701dacd4b)
+| `customers` | [4ab04df](https://github.com/lucasOlivein/CS50-Harvard/commit/4ab04df8d31315cda6fe03c65d4c6b1a6d72118c)
+| `donuts` | [70c2fd2](https://github.com/lucasOlivein/CS50-Harvard/commit/70c2fd245959f28df3453ffbd5b4cc2189e4cf4d)
+| `ingredients` | [14465eb](https://github.com/lucasOlivein/CS50-Harvard/commit/14465eb5fd71b32d1df665d0aba9bc5330da2874)
+
+**Sample data script**: [a8154e7](https://github.com/lucasOlivein/CS50-Harvard/commit/a8154e75f8f65886792bd48d67cbd6d64e35e23c)
+
 ### 📚 Source
 Based on the *Union Square Donuts* problem from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/2/donuts/
