@@ -4,9 +4,9 @@
 
 ## 📝 Problems
 
-- ⬜ [ATL](./atl/)
-- ⬜ [Happy to Connect](./connect/)
-- ⬜ [Union Square Donuts](./donuts/)
+- ✅ [ATL](./atl/)
+- ✅ [Happy to Connect](./connect/)
+- ✅ [Union Square Donuts](./donuts/)
 
 🔗 [View assignment page →](https://cs50.harvard.edu/sql/psets/2/#problem-set-2)
 
