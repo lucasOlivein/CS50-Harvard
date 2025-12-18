@@ -1,20 +1,16 @@
 # 🗓 Week 2 - Designing
 
-_Problem Set 2:_
-📌 Submit the problems bellow.
+📌**Problem Set 2**: _Submit the problems bellow._
 
 ## 📝 Problems
 
-- ⬜ ATL
-- ⬜ Happy to Connect
-- ⬜ Union Square Donuts
+- ✅ [ATL](./atl/)
+- ✅ [Happy to Connect](./connect/)
+- ✅ [Union Square Donuts](./donuts/)
 
 🔗 [View assignment page →](https://cs50.harvard.edu/sql/psets/2/#problem-set-2)
 
 ## 🏷️ Topics
-
-
-
 
 <details><summary><strong>Normalizing</strong></summary>
 
@@ -316,7 +312,8 @@ CREATE TABLE users (
 
 <br>
 
-### </> Syntax
+### `</>` Syntax
+---
 <details><summary><strong>CREATE TABLE</strong></summary>
 
 ```sql
