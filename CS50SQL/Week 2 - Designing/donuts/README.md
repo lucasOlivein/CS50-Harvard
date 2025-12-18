@@ -7,26 +7,26 @@
 ### ⚙️ Specification
 📌 **Task**: _In a file called `schema.sql` in a folder called `donuts`, write a set of SQL statements to create a database that [Union Square Donuts](https://www.unionsquaredonuts.com/about) could use to manage their day-to-day operations._
 
-<details><summary>📋 <strong>Requirements:</strong></summary>
+<details><summary>📋 <strong>Requirements</strong> ✔️</summary>
 
 <br>
 
 _The implementation details are up to you, though you should minimally ensure that your database meets the team’s **expectations** and that it can represent the **sample data**._
 
-<details><summary><strong> ⬜ Expectations</strong></summary>
+<details><summary><strong> ✅ Expectations</strong></summary>
 
 <br>
 
 _To understand the team’s expectations for their database, you sat down to talk with them after the shop closed for the day._
 
-- <details><summary><strong>⬜ Ingredients</strong></summary>
+- <details><summary><strong> ✅ Ingredients</strong></summary>
 
     <br>
 
     _We certainly need to keep track of our ingredients. Some of the typical ingredients we use include flour, yeast, oil, butter, and several different types of sugar. Moreover, we would love to keep track of the price we pay per unit of ingredient (whether it’s pounds, grams, etc.)._ 
     </details>
 
-- <details><summary><strong>⬜ Donuts</strong></summary>
+- <details><summary><strong>✅ Donuts</strong></summary>
 
     <br>
 
@@ -38,7 +38,7 @@ _To understand the team’s expectations for their database, you sat down to tal
 
     </details>
 
-- <details><summary><strong>⬜ Orders</strong></summary>
+- <details><summary><strong>✅ Orders</strong></summary>
 
     <br>
     
@@ -52,7 +52,7 @@ _To understand the team’s expectations for their database, you sat down to tal
 
     </details>
 
-- <details><summary><strong>⬜ Customers</strong></summary>
+- <details><summary><strong>✅ Customers</strong></summary>
 
     <br>
 
@@ -67,7 +67,7 @@ _To understand the team’s expectations for their database, you sat down to tal
 </details>
 
 
-<details><summary><strong> ⬜ Sample Data</strong></summary>
+<details><summary><strong> ✅ Sample Data</strong></summary>
 
 <br>
 
