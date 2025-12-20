@@ -6,3 +6,8 @@ SET "password" = (
     WHERE "username" = 'emily33'
 )
 WHERE "username" = 'admin';
+
+-- Set admin’s password to the hash of 'oops!'
+UPDATE "users"
+SET "password" = '982c0381c279d139fd221fce974916e7'
+WHERE "username" = 'admin';
