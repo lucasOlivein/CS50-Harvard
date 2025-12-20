@@ -5,8 +5,8 @@
 
 ## 📝 Problems
 
-- Don’t Panic!
-- Meteorite Cleaning
+-  ⬜ [Don’t Panic!](./dont-panic/)
+-  ⬜ [Meteorite Cleaning](./meteorites/)
 
 ## 🏷️ Topics
 
