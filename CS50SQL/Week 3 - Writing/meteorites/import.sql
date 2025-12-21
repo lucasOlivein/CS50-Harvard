@@ -10,3 +10,6 @@ CREATE TABLE meteorites_temp (
     lat REAL,
     long REAL
 );
+
+-- Load raw meteorite CSV data (skip header) into the staging table
+.import --csv --skip 1 meteorites.csv meteorites_temp
