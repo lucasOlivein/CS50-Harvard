@@ -31,3 +31,14 @@ WHERE "lat" = '';
 UPDATE "meteorites_temp"
 SET "long" = NULL
 WHERE "long" = '';
+
+-- Data cleaning: round to 2 decimal places
+-- Columns: mass, lat, long
+UPDATE "meteorites_temp"
+SET "mass" = ROUND("mass", 2);
+
+UPDATE "meteorites_temp"
+SET "lat" = ROUND("lat", 2);
+
+UPDATE "meteorites_temp"
+SET "long" = ROUND("long", 2);
