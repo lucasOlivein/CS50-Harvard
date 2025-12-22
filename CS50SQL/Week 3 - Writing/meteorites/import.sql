@@ -46,3 +46,15 @@ SET "long" = ROUND("long", 2);
 -- Data cleaning: exclude 'Relict' entries
 DELETE from "meteorites_temp"
 WHERE "nametype" = 'Relict';
+
+-- Final meteorites table
+CREATE TABLE meteorites (
+    "id" INTEGER PRIMARY KEY,
+    "name" TEXT,
+    "class" TEXT,
+    "mass" REAL,
+    "discovery" TEXT,
+    "year" TEXT,
+    "lat" REAL,
+    "long" REAL
+);
