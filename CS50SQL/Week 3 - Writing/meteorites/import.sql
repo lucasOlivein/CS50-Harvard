@@ -58,3 +58,9 @@ CREATE TABLE meteorites (
     "lat" REAL,
     "long" REAL
 );
+
+-- Load cleaned data from meteorites_temp into the final meteorites table
+INSERT INTO meteorites("name", "class", "mass", "discovery", "year", "lat", "long")
+SELECT "name", "class", "mass", "discovery", "year", "lat", "long"
+FROM "meteorites_temp"
+ORDER BY "year", "name";
