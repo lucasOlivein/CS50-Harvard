@@ -64,3 +64,6 @@ INSERT INTO meteorites("name", "class", "mass", "discovery", "year", "lat", "lon
 SELECT "name", "class", "mass", "discovery", "year", "lat", "long"
 FROM "meteorites_temp"
 ORDER BY "year", "name";
+
+-- Drop temporary table
+DROP TABLE meteorites_temp
