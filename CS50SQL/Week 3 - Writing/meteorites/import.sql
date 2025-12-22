@@ -42,3 +42,7 @@ SET "lat" = ROUND("lat", 2);
 
 UPDATE "meteorites_temp"
 SET "long" = ROUND("long", 2);
+
+-- Data cleaning: exclude 'Relict' entries
+DELETE from "meteorites_temp"
+WHERE "nametype" = 'Relict';
