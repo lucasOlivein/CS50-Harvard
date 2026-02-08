@@ -4,13 +4,11 @@
 
 ## 📝 Problems
 
-- ⬜ Census Taker
-- ⬜ The Private Eye
-- ⬜ Bed and Breakfast
+- ⬜ [Census Taker](./census/)
+- ⬜ [The Private Eye](./private/)
+- ⬜ [Bed and Breakfast](./bnb/)
 
 ## 🏷️ Topics
-
-
 
 
 
