@@ -13,10 +13,10 @@
 
 ⭐ **Note**: while views can be created from other views, each of your views should stand alone (i.e., not rely on a prior view).
 
-<details><summary><strong>📋 Requirements</strong></summary>
+<details><summary><strong>✔️ Requirements</strong></summary>
 
-
-- <details><summary><strong>⬜ Rural</strong></summary>
+---
+- <details><summary><strong>✅ Rural</strong></summary>
 
     --- 
     
@@ -28,7 +28,7 @@
 
     </details>
 
-- <details><summary><strong>⬜ Total</strong></summary>
+- <details><summary><strong>✅ Total</strong></summary>
 
     ---
 
@@ -47,7 +47,7 @@
 
     </details>
 
-- <details><summary><strong>⬜ By District</strong></summary>
+- <details><summary><strong>✅ By District</strong></summary>
 
     ---
 
@@ -68,7 +68,7 @@
     </details>
 
 
-- <details><summary><strong>⬜ Most Populated</strong></summary>
+- <details><summary><strong>✅ Most Populated</strong></summary>
 
     ---
     In `most_populated.sql`, write a SQL statement to create a view named `most_populated`. 
@@ -87,10 +87,17 @@
     ---
     </details>
 
+---
 </details>
 
 ### 🎯 Solution
-...
+| View | Commit |
+|:----------|--------|
+|`most_populated` | [910afc0](https://github.com/lucasOlivein/CS50-Harvard/commit/910afc05efc4f70f03bfa907b7ee90bea9a29e17) |  
+|`by_district` | [bfeb7c2](https://github.com/lucasOlivein/CS50-Harvard/commit/bfeb7c271676c56ed6f0e15a30d9b8e04bc75abc) |
+|`total` | [35dc47e](https://github.com/lucasOlivein/CS50-Harvard/commit/35dc47ed689b533509757800271ca2ffe9832c7a) |
+| `rural` | [e49d4c1](https://github.com/lucasOlivein/CS50-Harvard/commit/e49d4c1ad66ee2c3655c9d35d7af37dcfb748d34) |
+
 ### 📚 Source
 _Census Taker_ from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/4/census/
 
