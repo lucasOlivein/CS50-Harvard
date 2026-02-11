@@ -62,11 +62,11 @@ The `sentences` table contains all sentences in _The Adventures of Sherlock Holm
 
 ⭐ **Note**: How you do is up to you!
 
-<details><summary>📋 <strong>Requirements</strong>:</summary> 
+<details><summary>✔️ <strong>Requirements</strong>:</summary> 
 
 ---
 
-⬜ At the end of your process, you should have a view structured as follows:
+✅ At the end of your process, you should have a view structured as follows:
 
 - The view should be named `message`
 - The view should have a single column, `phrase`
@@ -76,7 +76,7 @@ The `sentences` table contains all sentences in _The Adventures of Sherlock Holm
     SELECT "phrase" FROM "message";
     ```
 
-⬜ In `private.sql`, you should write all SQL statements required to replicate your creation of the view. That is:
+✅ In `private.sql`, you should write all SQL statements required to replicate your creation of the view. That is:
 
 - If creating the view requires creating a separate table and inserting data into it, you should ensure that `private.sql` contains the statements to create that table and insert that data. (Don’t be afraid to add tables and add data as you wish!)
 - `private.sql`, when run a fresh instance of `private.db`, should be able to fully reconstruct your view.
@@ -130,7 +130,9 @@ Keep in mind that the other arguments to _substr_ can be entire columns themselv
 </details>
 
 ### 🎯 Solution
-...
+| View | Commit |
+|:----------|--------|
+| `message` | [e413d81](https://github.com/lucasOlivein/CS50-Harvard/commit/e413d8143fdd5d0dbc6c40653a24857d2fa07086)
 
 ### 📚 Source
 _The Private Eye_ from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/4/private/
