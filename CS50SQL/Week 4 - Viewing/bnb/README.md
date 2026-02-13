@@ -80,11 +80,11 @@ The availabilities table contains the following columns:
 
 ⭐ **Note**: while views can be created from other views, each of your views should stand alone (i.e., not rely on a prior view).
 
-<details><summary><strong>📋 Requirements</strong></summary>
+<details><summary><strong>✔️ Requirements</strong></summary>
 
 ---
 
--  <details><summary><strong>⬜ No Descriptions</strong></summary>
+-  <details><summary><strong>✅ No Descriptions</strong></summary>
 
     ---
     You might notice that when running
@@ -100,7 +100,7 @@ The availabilities table contains the following columns:
 
     </details>
 
-- <details><summary><strong>⬜ One-Bedrooms</strong></summary>
+- <details><summary><strong>✅ One-Bedrooms</strong></summary>
 
     ---
 
@@ -118,7 +118,7 @@ The availabilities table contains the following columns:
     ---
     </details>
 
-- <details><summary><strong>⬜ Available</strong></summary>
+- <details><summary><strong>✅ Available</strong></summary>
 
     --- 
     In `available.sql`, write a SQL statement to create a view named `available`. 
@@ -135,7 +135,7 @@ The availabilities table contains the following columns:
     ---
     </details>
 
-- <details><summary><strong>⬜ Frequently Reviewed</strong></summary>
+- <details><summary><strong>✅ Frequently Reviewed</strong></summary>
 
     ---
     In `frequently_reviewed.sql`, write a SQL statement to create a view named `frequently_reviewed`. 
@@ -153,7 +153,7 @@ The availabilities table contains the following columns:
     ---
     </details>
 
-- <details><summary><strong>⬜ June Vacancies</strong></summary>
+- <details><summary><strong>✅ June Vacancies</strong></summary>
 
     ---
 
@@ -163,10 +163,10 @@ The availabilities table contains the following columns:
     
     Ensure the view contains the following columns:
 
-    `id`, which is the id of the listing from the listings table.
-    `property_type`, from the listings table.
-    `host_name`, from the listings table.
-    `days_vacant`, which is the number of days in June of 2023, that the given listing was marked as available.
+    - `id`, which is the id of the listing from the listings table.
+    - `property_type`, from the listings table.
+    - `host_name`, from the listings table.
+    - `days_vacant`, which is the number of days in June of 2023, that the given listing was marked as available.
 
     ---
     </details>
@@ -176,7 +176,14 @@ The availabilities table contains the following columns:
 
 
 ### 🎯 Solution
-...
+| View | Commit |
+|:----------|--------|
+| `june_vacancies`  |  [ 41d6428](https://github.com/lucasOlivein/CS50-Harvard/commit/41d6428874579d6fd6928af421354543f81305a8) |
+| `frequently_reviewed`  | [c1f30da](https://github.com/lucasOlivein/CS50-Harvard/commit/c1f30dabcd23f008782e35f2fcc2d14ca3c4c183)  |
+| `available`  | [de1f4f0](https://github.com/lucasOlivein/CS50-Harvard/commit/de1f4f093ffba373a7fbffe6d836dc010416b865)  |
+| `one_bedrooms`  | [a6311ba](https://github.com/lucasOlivein/CS50-Harvard/commit/a6311ba8cca4ca7050d17b7beb8eee11b57eba77)  |
+|  `no_descriptions` | [1caed0e](https://github.com/lucasOlivein/CS50-Harvard/commit/1caed0e8bc88f601ea1f3fabd4cdaf3b99259d67)  |
+
 
 ### 📚 Source
 _Bed and Breakfast_ from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/4/bnb/
