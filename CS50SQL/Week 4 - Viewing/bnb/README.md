@@ -17,7 +17,11 @@ You’re a data analyst for the City of Boston and you’re interested in discov
 
 ### 🗃️ Schema
 
-<svg id="mermaid-1770486867048" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="erDiagram" style="max-width: 375.4666748046875px;" viewBox="0 0 375.4666748046875 285" role="graphics-document document" aria-roledescription="er"><style>#mermaid-1770486867048{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#ccc;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-1770486867048 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-1770486867048 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-1770486867048 .error-icon{fill:#a44141;}#mermaid-1770486867048 .error-text{fill:#ddd;stroke:#ddd;}#mermaid-1770486867048 .edge-thickness-normal{stroke-width:1px;}#mermaid-1770486867048 .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1770486867048 .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1770486867048 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-1770486867048 .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1770486867048 .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1770486867048 .marker{fill:lightgrey;stroke:lightgrey;}#mermaid-1770486867048 .marker.cross{stroke:lightgrey;}#mermaid-1770486867048 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mermaid-1770486867048 p{margin:0;}#mermaid-1770486867048 .entityBox{fill:#1f2020;stroke:#ccc;}#mermaid-1770486867048 .relationshipLabelBox{fill:hsl(20, 1.5873015873%, 12.3529411765%);opacity:0.7;background-color:hsl(20, 1.5873015873%, 12.3529411765%);}#mermaid-1770486867048 .relationshipLabelBox rect{opacity:0.5;}#mermaid-1770486867048 .labelBkg{background-color:rgba(32.0000000001, 31.3333333334, 31.0000000001, 0.5);}#mermaid-1770486867048 .edgeLabel .label{fill:#ccc;font-size:14px;}#mermaid-1770486867048 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#ccc;}#mermaid-1770486867048 .edge-pattern-dashed{stroke-dasharray:8,8;}#mermaid-1770486867048 .node rect,#mermaid-1770486867048 .node circle,#mermaid-1770486867048 .node ellipse,#mermaid-1770486867048 .node polygon{fill:#1f2020;stroke:#ccc;stroke-width:1px;}#mermaid-1770486867048 .relationshipLine{stroke:lightgrey;stroke-width:1;fill:none;}#mermaid-1770486867048 .marker{fill:none!important;stroke:lightgrey!important;stroke-width:1;}#mermaid-1770486867048 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><defs><marker id="mermaid-1770486867048_er-onlyOneStart" class="marker onlyOne er" refX="0" refY="9" markerWidth="18" markerHeight="18" orient="auto"><path d="M9,0 L9,18 M15,0 L15,18"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-onlyOneEnd" class="marker onlyOne er" refX="18" refY="9" markerWidth="18" markerHeight="18" orient="auto"><path d="M3,0 L3,18 M9,0 L9,18"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-zeroOrOneStart" class="marker zeroOrOne er" refX="0" refY="9" markerWidth="30" markerHeight="18" orient="auto"><circle fill="white" cx="21" cy="9" r="6"></circle><path d="M9,0 L9,18"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-zeroOrOneEnd" class="marker zeroOrOne er" refX="30" refY="9" markerWidth="30" markerHeight="18" orient="auto"><circle fill="white" cx="9" cy="9" r="6"></circle><path d="M21,0 L21,18"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-oneOrMoreStart" class="marker oneOrMore er" refX="18" refY="18" markerWidth="45" markerHeight="36" orient="auto"><path d="M0,18 Q 18,0 36,18 Q 18,36 0,18 M42,9 L42,27"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-oneOrMoreEnd" class="marker oneOrMore er" refX="27" refY="18" markerWidth="45" markerHeight="36" orient="auto"><path d="M3,9 L3,27 M9,18 Q27,0 45,18 Q27,36 9,18"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-zeroOrMoreStart" class="marker zeroOrMore er" refX="18" refY="18" markerWidth="57" markerHeight="36" orient="auto"><circle fill="white" cx="48" cy="18" r="6"></circle><path d="M0,18 Q18,0 36,18 Q18,36 0,18"></path></marker></defs><defs><marker id="mermaid-1770486867048_er-zeroOrMoreEnd" class="marker zeroOrMore er" refX="39" refY="18" markerWidth="57" markerHeight="36" orient="auto"><circle fill="white" cx="9" cy="18" r="6"></circle><path d="M21,18 Q39,0 57,18 Q39,36 21,18"></path></marker></defs><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M132.867,87.04L120.389,96.283C107.911,105.526,82.956,124.013,70.478,141.673C58,159.333,58,176.167,58,184.583L58,193" id="id_entity-Listing-0_entity-Review-1_0" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Listing-0_entity-Review-1_0" data-points="W3sieCI6MTMyLjg2NjY2NDg4NjQ3NDYsInkiOjg3LjAzOTUwOTMzNzQ1OTQ4fSx7IngiOjU4LCJ5IjoxNDIuNX0seyJ4Ijo1OCwieSI6MTkzfV0=" marker-start="url(#mermaid-1770486867048_er-onlyOneStart)" marker-end="url(#mermaid-1770486867048_er-zeroOrMoreEnd)"></path><path d="M232.867,87.04L245.344,96.283C257.822,105.526,282.778,124.013,295.256,141.673C307.733,159.333,307.733,176.167,307.733,184.583L307.733,193" id="id_entity-Listing-0_entity-Availability-2_1" class="edge-thickness-normal edge-pattern-solid relationshipLine" style="undefined;;;undefined" data-edge="true" data-et="edge" data-id="id_entity-Listing-0_entity-Availability-2_1" data-points="W3sieCI6MjMyLjg2NjY2NDg4NjQ3NDYsInkiOjg3LjAzOTUwOTMzNzQ1OTQ4fSx7IngiOjMwNy43MzMzMjk3NzI5NDkyLCJ5IjoxNDIuNX0seyJ4IjozMDcuNzMzMzI5NzcyOTQ5MiwieSI6MTkzfV0=" marker-start="url(#mermaid-1770486867048_er-onlyOneStart)" marker-end="url(#mermaid-1770486867048_er-oneOrMoreEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel" transform="translate(58, 142.5)"><g class="label" data-id="id_entity-Listing-0_entity-Review-1_0" transform="translate(-25.89167022705078, -10.5)"><foreignObject width="51.78334045410156" height="21"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml" class="labelBkg"><span class="edgeLabel"><p>receives</p></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(307.7333297729492, 142.5)"><g class="label" data-id="id_entity-Listing-0_entity-Availability-2_1" transform="translate(-10.333335876464844, -10.5)"><foreignObject width="20.666671752929688" height="21"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml" class="labelBkg"><span class="edgeLabel"><p>has</p></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="entity-Listing-0" transform="translate(182.8666648864746, 50)"><rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"></rect><g class="label" style="" transform="translate(-23.425003051757812, -12)"><rect></rect><foreignObject width="46.850006103515625" height="24"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Listing</p></span></div></foreignObject></g></g><g class="node default" id="entity-Review-1" transform="translate(58, 235)"><rect class="basic label-container" style="" x="-50" y="-42" width="100" height="84"></rect><g class="label" style="" transform="translate(-25.21666717529297, -12)"><rect></rect><foreignObject width="50.43333435058594" height="24"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 100px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Review</p></span></div></foreignObject></g></g><g class="node default" id="entity-Availability-2" transform="translate(307.7333297729492, 235)"><rect class="basic label-container" style="" x="-59.73332977294922" y="-42" width="119.46665954589844" height="84"></rect><g class="label" style="" transform="translate(-39.73332977294922, -12)"><rect></rect><foreignObject width="79.46665954589844" height="24"><div style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span class="nodeLabel"><p>Availability</p></span></div></foreignObject></g></g></g></g></g></svg>
+```mermaid
+erDiagram
+    Listing ||--o{ Review : receives
+    Listing ||--|{ Availability : has
+```
 
 Within `bnb.db`, you’ll find three tables that implement the relationships described in the ER diagram above.
 
@@ -76,11 +80,11 @@ The availabilities table contains the following columns:
 
 ⭐ **Note**: while views can be created from other views, each of your views should stand alone (i.e., not rely on a prior view).
 
-<details><summary><strong>📋 Requirements</strong></summary>
+<details><summary><strong>✔️ Requirements</strong></summary>
 
 ---
 
--  <details><summary><strong>⬜ No Descriptions</strong></summary>
+-  <details><summary><strong>✅ No Descriptions</strong></summary>
 
     ---
     You might notice that when running
@@ -96,7 +100,7 @@ The availabilities table contains the following columns:
 
     </details>
 
-- <details><summary><strong>⬜ One-Bedrooms</strong></summary>
+- <details><summary><strong>✅ One-Bedrooms</strong></summary>
 
     ---
 
@@ -114,7 +118,7 @@ The availabilities table contains the following columns:
     ---
     </details>
 
-- <details><summary><strong>⬜ Available</strong></summary>
+- <details><summary><strong>✅ Available</strong></summary>
 
     --- 
     In `available.sql`, write a SQL statement to create a view named `available`. 
@@ -131,7 +135,7 @@ The availabilities table contains the following columns:
     ---
     </details>
 
-- <details><summary><strong>⬜ Frequently Reviewed</strong></summary>
+- <details><summary><strong>✅ Frequently Reviewed</strong></summary>
 
     ---
     In `frequently_reviewed.sql`, write a SQL statement to create a view named `frequently_reviewed`. 
@@ -149,7 +153,7 @@ The availabilities table contains the following columns:
     ---
     </details>
 
-- <details><summary><strong>⬜ June Vacancies</strong></summary>
+- <details><summary><strong>✅ June Vacancies</strong></summary>
 
     ---
 
@@ -159,10 +163,10 @@ The availabilities table contains the following columns:
     
     Ensure the view contains the following columns:
 
-    `id`, which is the id of the listing from the listings table.
-    `property_type`, from the listings table.
-    `host_name`, from the listings table.
-    `days_vacant`, which is the number of days in June of 2023, that the given listing was marked as available.
+    - `id`, which is the id of the listing from the listings table.
+    - `property_type`, from the listings table.
+    - `host_name`, from the listings table.
+    - `days_vacant`, which is the number of days in June of 2023, that the given listing was marked as available.
 
     ---
     </details>
@@ -172,7 +176,14 @@ The availabilities table contains the following columns:
 
 
 ### 🎯 Solution
-...
+| View | Commit |
+|:----------|--------|
+| `june_vacancies`  |  [ 41d6428](https://github.com/lucasOlivein/CS50-Harvard/commit/41d6428874579d6fd6928af421354543f81305a8) |
+| `frequently_reviewed`  | [c1f30da](https://github.com/lucasOlivein/CS50-Harvard/commit/c1f30dabcd23f008782e35f2fcc2d14ca3c4c183)  |
+| `available`  | [de1f4f0](https://github.com/lucasOlivein/CS50-Harvard/commit/de1f4f093ffba373a7fbffe6d836dc010416b865)  |
+| `one_bedrooms`  | [a6311ba](https://github.com/lucasOlivein/CS50-Harvard/commit/a6311ba8cca4ca7050d17b7beb8eee11b57eba77)  |
+|  `no_descriptions` | [1caed0e](https://github.com/lucasOlivein/CS50-Harvard/commit/1caed0e8bc88f601ea1f3fabd4cdaf3b99259d67)  |
+
 
 ### 📚 Source
 _Bed and Breakfast_ from Harvard’s CS50 SQL course: https://cs50.harvard.edu/sql/psets/4/bnb/
