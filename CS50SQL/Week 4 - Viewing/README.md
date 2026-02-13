@@ -1,12 +1,12 @@
-# 🗓 Week 3 - Viewing
+# 🗓 Week 4 - Viewing
 
 📌**Problem Set 4**: _Submit the problems bellow._
 
 ## 📝 Problems
 
-- ⬜ [Census Taker](./census/)
-- ⬜ [The Private Eye](./private/)
-- ⬜ [Bed and Breakfast](./bnb/)
+- ✅ [Census Taker](./census/)
+- ✅ [The Private Eye](./private/)
+- ✅ [Bed and Breakfast](./bnb/)
 
 ## 🏷️ Topics
 
