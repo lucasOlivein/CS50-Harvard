@@ -1,8 +1,8 @@
 # 🗄️  CS50's Introduction to Databases with SQL
 
 <p align="left">
-  <img src="https://img.shields.io/badge/Progress-4%2F7%20weeks-6C757D?style=for-the-badge&logo=databricks&logoColor=white"/> 
-  <img src="https://img.shields.io/badge/57%25-yellow?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Progress-5%2F7%20weeks-6C757D?style=for-the-badge&logo=databricks&logoColor=white"/> 
+  <img src="https://img.shields.io/badge/71%25-green?style=for-the-badge"/>
   <a href="../../LICENSE">
     <img src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey?style=for-the-badge&logo=creativecommons&logoColor=white"/>
   </a>
@@ -14,7 +14,7 @@
 - ✅ [Week 1 - Relating](./Week%201%20-%20Relating/)
 - ✅ [Week 2 - Designing](./Week%202%20-%20Designing/)
 - ✅ [Week 3 - Writing](./Week%203%20-%20Writing/)
-- ⬜ Week 4 - Viewing
+- ✅ [Week 4 - Viewing](./Week%204%20-%20Viewing/)
 - ⬜ Week 5 - Optimizing
 - ⬜ Week 6 - Scaling
 
