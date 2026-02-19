@@ -15,7 +15,7 @@
 - ✅ [Week 2 - Designing](./Week%202%20-%20Designing/)
 - ✅ [Week 3 - Writing](./Week%203%20-%20Writing/)
 - ✅ [Week 4 - Viewing](./Week%204%20-%20Viewing/)
-- ⬜ Week 5 - Optimizing
+- 👉 ⬜ [Week 5 - Optimizing](./Week%205%20-%20Optimizing/)
 - ⬜ Week 6 - Scaling
 
 ## 📂  Projects
