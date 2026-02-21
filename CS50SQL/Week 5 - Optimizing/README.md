@@ -4,8 +4,8 @@
 
 ## 📝 Problems
 
-- ⬜ In a Snap
-- ⬜ your.harvard
+- ⬜ [In a Snap](./snap/)
+- ⬜ [your.harvard](./harvard/)
 
 ## 🏷️ Topics
 
