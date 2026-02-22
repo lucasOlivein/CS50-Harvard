@@ -6,7 +6,61 @@
 ...
 
 ### 🗃️ Schema
-...
+
+
+```mermaid
+erDiagram
+    USER {
+    }
+
+    MESSAGE {
+    }
+
+    USER ||--o{ MESSAGE : sends
+    USER ||--o{ MESSAGE : views
+    USER }o--o{ USER : friends
+```
+
+<details><summary><code>users</code> table</summary>
+
+---
+
+The `users` table contains the following columns:
+
+- `id`, which is the user’s ID.
+- `username`, which is the user’s username.
+- `phone_number`, which is the user’s phone number.
+- `joined_date`, which is the date the user joined the app.
+- `last_login_date`, which is the date the user last logged in.
+
+</details>
+
+<details><summary><code>friends</code> table</summary>
+
+---
+
+The `friends` table contains the following columns:
+
+- `user_id`, which is the ID of a given user.
+- `friend_id`, which is the ID of the user with whom the given user is friends.
+- `friendship_date`, which is the date the friendship began.
+
+For each row, the user in the `user_id` column counts the user in the `friend_id` column among their friends—but not necessarily vice versa. When two users both count each other among their friends, two rows are inserted:
+
+
+| user_id |  friend_id | friendship_date
+| --------| --------- | --------------|
+| 1 | 	2 | 	2024-01-01 |
+| 2	 | 1	| 2024-01-01 | 
+
+</details>
+
+<details><summary><code>messages</code> table</summary>
+
+---
+
+</details>
+
 
 ### ⚙️ Specification
 📌 **Task**: In each corresponding `.sql` file, write a SQL query to implement the features described below. 
@@ -128,11 +182,11 @@
     </details>
 </details>
 
-<details><summary><strong>📋 Requirements</strong></summary>
+<details><summary><strong>✔️ Requirements</strong></summary>
 
 ---
 
-- <details><summary>⬜ <code>1.sql</code>: The app’s user engagement team needs to identify active users</summary>
+- <details><summary>✅ <code>1.sql</code>: The app’s user engagement team needs to identify active users</summary>
 
     ---
 
@@ -146,7 +200,7 @@
 
     </details>
 
-- <details><summary>⬜ <code>2.sql</code>: Users need to be prevented from re-opening a message that has expired</summary>
+- <details><summary>✅ <code>2.sql</code>: Users need to be prevented from re-opening a message that has expired</summary>
 
     ---
 
@@ -156,7 +210,7 @@
     </details>
 
 
-- <details><summary>⬜ <code>3.sql</code>: The app needs to rank a user’s “best friends,” similar to Snapchat’s “Friend Emojis” feature</summary>
+- <details><summary>✅ <code>3.sql</code>: The app needs to rank a user’s “best friends,” similar to Snapchat’s “Friend Emojis” feature</summary>
 
     ---
 
@@ -173,7 +227,7 @@
     </details>
 
 
-- <details><summary>⬜ <code>4.sql</code>: The app needs to send users a summary of their engagement</summary>
+- <details><summary>✅ <code>4.sql</code>: The app needs to send users a summary of their engagement</summary>
 
     ---
 
@@ -188,7 +242,7 @@
     </details>
 
 
-- <details><summary>⬜ <code>5.sql</code>: For any two users, the app needs to quickly show a list of the friends they have in common</summary>
+- <details><summary>✅ <code>5.sql</code>: For any two users, the app needs to quickly show a list of the friends they have in common</summary>
 
     ---
 
@@ -205,7 +259,14 @@
 </details>
 
 ### 🎯 Solution
-...
+
+| Question | Commit |
+|:------:|-------|
+| 05     |  [bfb6af9](https://github.com/lucasOlivein/CS50-Harvard/commit/bfb6af9f8d446f6544769dc3ebdda73fca3b61e7) |
+| 04     |  [91c8639](https://github.com/lucasOlivein/CS50-Harvard/commit/91c8639f2fc536336ccd005c1befac4552b939f4)
+| 03     | [c9107fc](https://github.com/lucasOlivein/CS50-Harvard/commit/c9107fcdf5d6c0601ede9910c6a9962626633916)
+| 02     | [f1e8e7f](https://github.com/lucasOlivein/CS50-Harvard/commit/f1e8e7fe770ae363c0ad7de37ada6e568f4b6aa1)
+| 01     | [6528daf](https://github.com/lucasOlivein/CS50-Harvard/commit/6528dafd3333a986837d53ec50af71cc76d06fbf)
 
 ### 📚 Source
 _In a Snap_ from Harvard’s CS50 SQL course:https://cs50.harvard.edu/sql/psets/5/snap/
