@@ -12,121 +12,121 @@
 ### ⚙️ Specification
 📌 **Task**: In `indexes.sql`, write a set of SQL statements that create indexes which will speed up typical queries on the `harvard.db` database.    
 
+- <details><summary>✔️ Typical <code>SELECT</code> queries on <code>harvard.db</code></summary>
+
+    ---
+    When engineers optimize a database, they often care about the typical queries run on the database. Such queries highlight patterns with which a database is accessed, thus revealing the best columns and tables on which to create indexes.
+
+    - <details><summary>✅️ Find a student’s historical course enrollments, based on their ID:</summary>
+
+        ---
+        ```sql
+        SELECT "courses"."title", "courses"."semester"
+        FROM "enrollments"
+        JOIN "courses" ON "enrollments"."course_id" = "courses"."id"
+        JOIN "students" ON "enrollments"."student_id" = "students"."id"
+        WHERE "students"."id" = 3;
+        ```
+        </details>
+
+    - <details><summary>✅️Find all students who enrolled in Computer Science 50 in Fall 2023:</summary>
+
+        ---
+        ```sql
+        SELECT "id", "name"
+        FROM "students"
+        WHERE "id" IN (
+            SELECT "student_id"
+            FROM "enrollments"
+            WHERE "course_id" = (
+                SELECT "id"
+                FROM "courses"
+                WHERE "courses"."department" = 'Computer Science'
+                AND "courses"."number" = 50
+                AND "courses"."semester" = 'Fall 2023'
+            )
+        );
+        ```
+        </details>
+
+    - <details><summary>✅️ Sort courses by most- to least-enrolled in Fall 2023:</summary>
+
+        ---
+        ```sql
+        SELECT "courses"."id", "courses"."department", "courses"."number", "courses"."title", COUNT(*) AS "enrollment"
+        FROM "courses"
+        JOIN "enrollments" ON "enrollments"."course_id" = "courses"."id"
+        WHERE "courses"."semester" = 'Fall 2023'
+        GROUP BY "courses"."id"
+        ORDER BY "enrollment" DESC;
+        ```
+        </details>
+
+    - <details><summary>✅️ Find all computer science courses taught in Spring 2024:</summary>
+
+        ---
+        ```sql
+        SELECT "courses"."id", "courses"."department", "courses"."number", "courses"."title"
+        FROM "courses"
+        WHERE "courses"."department" = 'Computer Science'
+        AND "courses"."semester" = 'Spring 2024';
+        ```
+        </details>
+
+    - <details><summary>✅️ Find the requirement satisfied by “Advanced Databases” in Fall 2023:</summary>
+
+        ---
+        ```sql
+        SELECT "requirements"."name"
+        FROM "requirements"
+        WHERE "requirements"."id" = (
+            SELECT "requirement_id"
+            FROM "satisfies"
+            WHERE "course_id" = (
+                SELECT "id"
+                FROM "courses"
+                WHERE "title" = 'Advanced Databases'
+                AND "semester" = 'Fall 2023'
+            )
+        );
+        ```
+        </details>
+
+    - <details><summary>✅️ Find how many courses in each requirement a student has satisfied:</summary>
+
+        ---
+        ```sql
+        SELECT "requirements"."name", COUNT(*) AS "courses"
+        FROM "requirements"
+        JOIN "satisfies" ON "requirements"."id" = "satisfies"."requirement_id"
+        WHERE "satisfies"."course_id" IN (
+            SELECT "course_id"
+            FROM "enrollments"
+            WHERE "enrollments"."student_id" = 8
+        )
+        GROUP BY "requirements"."name";
+        ```
+        </details>
+
+    - <details><summary>✅️ Search for a course by title and semester:</summary>
+
+        ---
+        ```sql
+        SELECT "department", "number", "title"
+        FROM "courses"
+        WHERE "title" LIKE "History%"
+        AND "semester" = 'Fall 2023';
+        ```
+        </details>
+
+    </details>
+
+
 ⭐ **Note**: The number of indexes you create, as well as the columns they include, is entirely up to you. 
 
 
 
-⭐ **Note**: When engineers optimize a database, they often care about the typical queries run on the database.  
-Such queries highlight patterns with which a database is accessed, thus revealing the best columns and tables on which to create indexes. 
 
-
-<details><summary>Typical <code>SELECT</code> queries on <code>harvard.db</code></summary>
-
----
-
-- <details><summary>Find a student’s historical course enrollments, based on their ID:</summary>
-
-    ---
-    ```sql
-    SELECT "courses"."title", "courses"."semester"
-    FROM "enrollments"
-    JOIN "courses" ON "enrollments"."course_id" = "courses"."id"
-    JOIN "students" ON "enrollments"."student_id" = "students"."id"
-    WHERE "students"."id" = 3;
-    ```
-    </details>
-
-- <details><summary>Find all students who enrolled in Computer Science 50 in Fall 2023:</summary>
-
-    ---
-    ```sql
-    SELECT "id", "name"
-    FROM "students"
-    WHERE "id" IN (
-        SELECT "student_id"
-        FROM "enrollments"
-        WHERE "course_id" = (
-            SELECT "id"
-            FROM "courses"
-            WHERE "courses"."department" = 'Computer Science'
-            AND "courses"."number" = 50
-            AND "courses"."semester" = 'Fall 2023'
-        )
-    );
-    ```
-    </details>
-
-- <details><summary>Sort courses by most- to least-enrolled in Fall 2023:</summary>
-
-    ---
-    ```sql
-    SELECT "courses"."id", "courses"."department", "courses"."number", "courses"."title", COUNT(*) AS "enrollment"
-    FROM "courses"
-    JOIN "enrollments" ON "enrollments"."course_id" = "courses"."id"
-    WHERE "courses"."semester" = 'Fall 2023'
-    GROUP BY "courses"."id"
-    ORDER BY "enrollment" DESC;
-    ```
-    </details>
-
-- <details><summary>Find all computer science courses taught in Spring 2024:</summary>
-
-    ---
-    ```sql
-    SELECT "courses"."id", "courses"."department", "courses"."number", "courses"."title"
-    FROM "courses"
-    WHERE "courses"."department" = 'Computer Science'
-    AND "courses"."semester" = 'Spring 2024';
-    ```
-    </details>
-
-- <details><summary>Find the requirement satisfied by “Advanced Databases” in Fall 2023:</summary>
-
-    ---
-    ```sql
-    SELECT "requirements"."name"
-    FROM "requirements"
-    WHERE "requirements"."id" = (
-        SELECT "requirement_id"
-        FROM "satisfies"
-        WHERE "course_id" = (
-            SELECT "id"
-            FROM "courses"
-            WHERE "title" = 'Advanced Databases'
-            AND "semester" = 'Fall 2023'
-        )
-    );
-    ```
-    </details>
-
-- <details><summary>Find how many courses in each requirement a student has satisfied:</summary>
-
-    ---
-    ```sql
-    SELECT "requirements"."name", COUNT(*) AS "courses"
-    FROM "requirements"
-    JOIN "satisfies" ON "requirements"."id" = "satisfies"."requirement_id"
-    WHERE "satisfies"."course_id" IN (
-        SELECT "course_id"
-        FROM "enrollments"
-        WHERE "enrollments"."student_id" = 8
-    )
-    GROUP BY "requirements"."name";
-    ```
-    </details>
-
-- <details><summary>Search for a course by title and semester:</summary>
-
-    ---
-    ```sql
-    SELECT "department", "number", "title"
-    FROM "courses"
-    WHERE "title" LIKE "History%"
-    AND "semester" = 'Fall 2023';
-    ```
-    </details>
-
-</details>
 
 <details><summary>💎 <strong>Advice</strong></summary>
 
@@ -173,13 +173,18 @@ In this problem, you’ll take the opposite perspective you did while working on
     - Does removing an index have any impact on each query’s plan? If not, might be best to remove it!
     </details>
 
+⚠️ Be sure to balance speed with disk space, only creating indexes you need.
+
 </details>
 
-⚠️ Be sure to balance speed with disk space, only creating indexes you need.
+
 
 
 ### 🎯 Solution
-...
+
+| Indexed Tables  | Commit
+|-----|------|
+| enrollments, courses and satisfies | [0086e00](https://github.com/lucasOlivein/CS50-Harvard/commit/0086e001103b8390684d98a451b34d935b766f87)
 
 ### 📚 Source
 _your.harvard_ from Harvard’s CS50 SQL course:https://cs50.harvard.edu/sql/psets/5/your.harvard/
