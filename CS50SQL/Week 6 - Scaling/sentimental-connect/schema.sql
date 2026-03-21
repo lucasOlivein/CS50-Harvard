@@ -45,4 +45,19 @@ CREATE TABLE `user_connections` (
     UNIQUE (`user1_id`, `user2_id`)
 );
 
+CREATE TABLE `school_connections` (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `user_id` INT UNSIGNED,
+    `school_id` INT UNSIGNED,
+    `start` DATE,
+    `end` DATE,
+    `degree_type` VARCHAR(60),
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY(`school_id`) REFERENCES `schools`(`id`),
+
+    CONSTRAINT unique_school_connections
+    UNIQUE (`user_id`, `school_id`)
+);
+
 
