@@ -33,4 +33,16 @@ CREATE TABLE `companies` (
     UNIQUE (`name`, `industry`, `location`)
 );
 
+CREATE TABLE `user_connections` (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `user1_id` INT UNSIGNED,
+    `user2_id` INT UNSIGNED,
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`user1_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY(`user2_id`) REFERENCES `users`(`id`),
+
+    CONSTRAINT unique_user_connection
+    UNIQUE (`user1_id`, `user2_id`)
+);
+
 
