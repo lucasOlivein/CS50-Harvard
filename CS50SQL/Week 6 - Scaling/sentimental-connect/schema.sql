@@ -22,4 +22,15 @@ CREATE TABLE `schools` (
     UNIQUE (`school_name`, `school_type`, `location`)
 );
 
+CREATE TABLE `companies` (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `name` VARCHAR(60),
+    `industry` ENUM('Technology', 'Education', 'Business'),
+    `location` VARCHAR(60),
+    PRIMARY KEY(`id`),
+
+    CONSTRAINT unique_company
+    UNIQUE (`name`, `industry`, `location`)
+);
+
 
