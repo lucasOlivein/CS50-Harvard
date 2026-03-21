@@ -10,3 +10,16 @@ CREATE TABLE `users` (
     UNIQUE (`username`)
 );
 
+CREATE TABLE `schools` (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `school_name` VARCHAR(60),
+    `school_type` ENUM('Primary', 'Secondary', 'Higher Education'),
+    `location` VARCHAR(60),
+    `year` SMALLINT UNSIGNED,
+    PRIMARY KEY(`id`),
+
+    CONSTRAINT unique_school
+    UNIQUE (`school_name`, `school_type`, `location`)
+);
+
+
