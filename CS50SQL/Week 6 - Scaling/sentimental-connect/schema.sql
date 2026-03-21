@@ -60,4 +60,18 @@ CREATE TABLE `school_connections` (
     UNIQUE (`user_id`, `school_id`)
 );
 
+CREATE TABLE `company_connections` (
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `user_id` INT UNSIGNED,
+    `company_id` INT UNSIGNED,
+    `start` DATE,
+    `end` DATE,
+    `title` VARCHAR(60),
+    PRIMARY KEY(`id`),
+    FOREIGN KEY(`user_id`) REFERENCES `users`(`id`),
+    FOREIGN KEY(`company_id`) REFERENCES `companies`(`id`),
+
+    CONSTRAINT unique_company_connections
+    UNIQUE (`user_id`, `company_id`)
+);
 
